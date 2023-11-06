@@ -1,75 +1,23 @@
-# Nuxt 3 Minimal Starter
+# What is this?
+This will be a Nuxt Layer that will wrap `nuxt/ui` and provide reusable components with an opinionated style.
+This should speed up the creation process of new websites and webapps, while establishing a consistent UI structure between them for better recognizability.
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+It will be structured in two type of components: **Elements** and **Units**. The first being single reusable elements within **Units**, the second being reusable components within Pages.
 
-## Setup
+## Icons used
+PH, Simple Icons
 
-Make sure to install the dependencies:
+## Goal
+The goal of this project is to provide a boilerplate with opinionated styling for most of my project. But as usual I'm happy to see contributions and make it fit for more people's needs.
 
-```bash
-# npm
-npm install
+# Docs
+There are none at the moment.
 
-# pnpm
-pnpm install
+# Contribute
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+Fork the repo, install deps and start developing
 
 ```bash
-# npm
-npm run dev
-
 # pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+pnpm install --frozen-lockfile && pnpm run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
