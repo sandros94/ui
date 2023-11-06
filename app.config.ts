@@ -6,11 +6,11 @@ export default defineAppConfig({
       },
       light: {
         foreground: '#000000',
-        background: '#fafafa',
+        background: '#fafafa'
       },
       dark: {
         foreground: '#fafafa',
-        background: '#0f0f0f',
+        background: '#0f0f0f'
       }
     },
     primary: 'orange',

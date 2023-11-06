@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/ui'
   ],
   components: [
-    { path: '#s94-ui/components', prefix: 'S', pathPrefix: false },
+    { path: '#s94-ui/components', prefix: 'S', pathPrefix: false }
   ],
   devtools: { enabled: true },
 
@@ -43,11 +43,15 @@ export default defineNuxtConfig({
       }
     }
   },
+  ui: {
+    safelistColors: ['success', 'info', 'alert', 'warning'],
+    icons: ['ph', 'simple-icons']
+  },
 
   css: [
     '~/assets/css/main.css'
   ],
-  
+
   $development: {
     typescript: {
       shim: false
