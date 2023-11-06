@@ -13,6 +13,9 @@ The goal of this project is to provide a boilerplate with opinionated styling fo
 # Docs
 There are none at the moment.
 
+# Notes
+I'm currently using `app.vue` as a small playground to quickly check how components render.
+
 # Contribute
 
 Fork the repo, install deps and start developing
