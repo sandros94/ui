@@ -26,7 +26,7 @@ const defaultConfig = {
   inactive: '',
   wrapper: 'flex items-center gap-x-4 text-sm/6 font-semibold',
   base: 'flex items-center gap-1 relative hover:underline underline-offset-[10%]',
-  externalLink: 'aliased externalArrow text-gray-400 dark:text-gray-500'
+  externalLink: 'aliased linkExternalArrow text-gray-400 dark:text-gray-500'
 }
 
 const props = defineProps<{
@@ -35,17 +35,5 @@ const props = defineProps<{
   class?: any
 }>()
 
-const { ui, attrs } = useUI('s94.links', toRef(props, 'ui'), defaultConfig, toRef(props, 'class'))
+const { ui, attrs } = useUI('s94.links.horizontal', toRef(props, 'ui'), defaultConfig, toRef(props, 'class'))
 </script>
-
-<style scoped>
-.externalArrow {
-  width: auto;
-  height: 50%;
-  aspect-ratio: 1;
-  position: absolute;
-  top: 10%;
-  transform: translate(100%);
-  right: 0%;
-}
-</style>
