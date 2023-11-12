@@ -1,21 +1,23 @@
 <template>
-  <ul :class="ui.wrapper" v-bind="attrs">
-    <li v-for="(link, index) in links" :key="index">
-      <ULink
-        :to="link.to"
-        :class="ui.base"
-        :active-class="ui.active"
-        :inactive-class="ui.inactive"
-      >
-        {{ link.label }}
-        <UIcon
-          v-if="link.target === '_blank'"
-          name="i-ph-arrow-up-right-light"
-          :class="ui.externalLink"
-        />
-      </ULink>
-    </li>
-  </ul>
+  <nav class="not-prose">
+    <ul :class="ui.wrapper" v-bind="attrs">
+      <li v-for="(link, index) in links" :key="index">
+        <ULink
+          :to="link.to"
+          :class="ui.base"
+          :active-class="ui.active"
+          :inactive-class="ui.inactive"
+        >
+          {{ link.label }}
+          <UIcon
+            v-if="link.target === '_blank'"
+            name="i-ph-arrow-up-right-light"
+            :class="ui.externalLink"
+          />
+        </ULink>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script setup lang="ts">
