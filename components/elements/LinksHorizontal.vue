@@ -6,7 +6,6 @@
         :class="ui.base"
         :active-class="ui.active"
         :inactive-class="ui.inactive"
-        :ui="{active: 'text-primary'}"
       >
         {{ link.label }}
         <UIcon
