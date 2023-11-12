@@ -46,20 +46,20 @@ const props = defineProps<{
 }>()
 
 const horizontalConfig: DefaultConfig = {
-  active: 'text-primary underline underline-offset-[10%]',
-  inactive: '',
-  wrapper: 'flex items-center gap-x-3 text-sm/6 font-semibold',
+  wrapper: 'not-prose flex items-center gap-x-3 text-sm/6 font-semibold',
   base: 'relative inline-flex gap-x-1 hover:underline underline-offset-[10%]',
   label: '',
+  active: 'text-primary underline underline-offset-[10%]',
+  inactive: '',
   externalLink: 'aliased text-gray-400 dark:text-gray-500 -ml-1'
 }
 
 const verticalConfig: DefaultConfig = {
-  active: 'text-primary border-current font-semibold',
-  inactive: 'border-transparent text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:border-black dark:hover:border-white',
-  wrapper: 'flex flex-col items-start gap-y-1 border-s border-gray-200 dark:border-gray-800',
+  wrapper: 'not-prose flex flex-col items-start gap-y-1 border-s border-gray-200 dark:border-gray-800',
   base: 'w-full -ml-[1px] mr-[1px] border-s group relative inline-flex gap-x-1',
   label: 'py-[2%] truncate',
+  active: 'text-primary border-current font-semibold',
+  inactive: 'border-transparent text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:border-black dark:hover:border-white',
   externalLink: 'aliased text-gray-400 dark:text-gray-500'
 }
 
