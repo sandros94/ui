@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full h-screen grid place-items-center">
+  <div class="w-full h-[100svh]">
     <!-- Component to be tested -->
-    <SColorModeToggle />
+    <NuxtPage />
   </div>
 </template>
