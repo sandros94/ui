@@ -7,7 +7,7 @@
       :target="link.target"
       :class="ui.base"
       :style="{
-        paddingLeft: vertical ? (padding ?? '1rem') : '0',
+        paddingLeft: vertical ? (verticalPadding ?? '1rem') : '0',
       }"
       :active-class="ui.active"
       :inactive-class="ui.inactive"
@@ -42,7 +42,7 @@ const props = defineProps<{
   ui?: DefaultConfig,
   class?: any,
   vertical?: boolean,
-  padding?: string
+  verticalPadding?: string
 }>()
 
 const horizontalConfig: DefaultConfig = {
