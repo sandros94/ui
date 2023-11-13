@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full grid place-items-center">
-    <SLinks class="text-7xl" :links="links" vertical />
+    <SLinks class="text-2xl" :links="links" />
   </div>
 </template>
 
@@ -14,8 +14,18 @@ const links = [
     to: 'https://google.com',
     target: '_blank'
   }, {
-    label: 'TEST',
-    to: '/test'
+    label: 'GUNSweek',
+    to: 'https://gunsweek.com',
+    target: '_blank'
+  }, {
+    icon: 'i-simple-icons-instagram',
+    to: 'https://instagram.com'
+  }, {
+    icon: 'i-simple-icons-x',
+    to: 'https://twitter.com'
+  }, {
+    icon: 'i-simple-icons-github',
+    to: 'https://github.com'
   }
 ]
 </script>
