@@ -16,9 +16,16 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   googleFonts: {
+    download: true,
     families: {
-      'DM+Sans': true,
-      'DM+Mono': true
+      'DM+Sans': {
+        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+      },
+      'DM+Mono': {
+        wght: [300, 400, 500],
+        ital: [300, 400, 500]
+      }
     }
   },
 
