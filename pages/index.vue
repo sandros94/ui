@@ -1,5 +1,6 @@
 <template>
   <div class="w-full h-full grid place-items-center">
+    <!-- Component to be tested -->
     <SLinks class="text-2xl" :links="links" />
   </div>
 </template>
