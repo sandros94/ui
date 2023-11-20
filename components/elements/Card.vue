@@ -19,9 +19,9 @@
 <script setup lang="ts">
 const defaultConfig = {
   wrapper: 'min-h-full flex flex-col overflow-y-auto',
-  header: 'flex-none flex-grow-0 px-4 py-5 sm:px-6 bg-red-500',
+  header: 'flex-none flex-grow-0 px-4 py-5 sm:px-6',
   base: 'flex-grow px-4 py-5 sm:px-6',
-  footer: 'flex-none px-4 py-5 sm:px-6 bg-green-500'
+  footer: 'flex-none px-4 py-5 sm:px-6'
 }
 
 const props = withDefaults(defineProps<{
