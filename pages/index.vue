@@ -5,8 +5,10 @@
   </div>
 </template>
 
-<script setup>
-const links = [
+<script setup lang="ts">
+import type { Link } from '#s94-ui/types'
+
+const links: Link[] = [
   {
     label: 'HOME',
     to: '/'

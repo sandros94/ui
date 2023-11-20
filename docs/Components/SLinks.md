@@ -4,14 +4,15 @@ Use `vertical` prop to define a vertical instance.
 
 ```vue
 <template>
-  <div class="w-full h-full grid place-items-center">
-    <!-- Component to be tested -->
+  <div>
     <SLinks class="text-2xl" :links="links" />
   </div>
 </template>
 
-<script setup>
-const links = [
+<script setup lang="ts">
+import type { Link } from '#s94-ui/types'
+
+const links: Link[] = [
   {
     label: 'HOME',
     to: '/'
@@ -35,4 +36,5 @@ const links = [
   }
 ]
 </script>
+
 ```
