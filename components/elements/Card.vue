@@ -18,10 +18,10 @@
 
 <script setup lang="ts">
 interface DefaultConfig {
-  wrapper: string,
-  header: string,
-  base: string,
-  footer: string
+  wrapper?: string,
+  header?: string,
+  base?: string,
+  footer?: string
 }
 
 const props = withDefaults(defineProps<{
