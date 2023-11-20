@@ -2,7 +2,7 @@ export default defineAppConfig({
   ui: {
     s94: {
       header: {
-        height: '4rem'
+        height: '5rem'
       },
       light: {
         foreground: '#000000',
