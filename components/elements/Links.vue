@@ -101,5 +101,5 @@ const variant = props.variant ?? 'line'
 
 const config = mergeConfig<DefaultConfig>('merge', configMap[direction][variant], configMap[direction].ghost)
 
-const { ui, attrs } = useUI('s94.links.horizontal', toRef(props, 'ui'), config, toRef(props, 'class'))
+const { ui, attrs } = useUI('s94.links', toRef(props, 'ui'), config, toRef(props, 'class'))
 </script>
