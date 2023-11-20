@@ -17,29 +17,22 @@
 </template>
 
 <script setup lang="ts">
-interface DefaultConfig {
-  wrapper?: string,
-  header?: string,
-  base?: string,
-  footer?: string
+const defaultConfig = {
+  wrapper: 'min-h-full flex flex-col overflow-y-auto',
+  header: 'flex-none flex-grow-0 px-4 py-5 sm:px-6 bg-red-500',
+  base: 'flex-grow px-4 py-5 sm:px-6',
+  footer: 'flex-none px-4 py-5 sm:px-6 bg-green-500'
 }
 
 const props = withDefaults(defineProps<{
   as?: string,
-  ui?: DefaultConfig,
+  ui?: Partial<typeof defaultConfig>,
   class?: any,
 }>(), {
   as: 'div',
   ui: undefined,
   class: undefined
 })
-
-const defaultConfig: DefaultConfig = {
-  wrapper: 'min-h-full flex flex-col overflow-y-auto',
-  header: 'flex-none flex-grow-0 px-4 py-5 sm:px-6 bg-red-500',
-  base: 'flex-grow px-4 py-5 sm:px-6',
-  footer: 'flex-none px-4 py-5 sm:px-6 bg-green-500'
-}
 
 const { ui, attrs } = useUI('s94.card', toRef(props, 'ui'), defaultConfig, toRef(props, 'class'))
 </script>
