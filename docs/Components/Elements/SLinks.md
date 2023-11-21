@@ -1,6 +1,10 @@
 Example of using the `SLinks` component.
 
+Use `links` prop to define the links to be rendered.
+
 Use `vertical` prop to define a vertical instance.
+
+Use `variant` to distinguish between a `ghost` and `line` variants.
 
 ```vue
 <template>
@@ -36,5 +40,4 @@ const links: Link[] = [
   }
 ]
 </script>
-
 ```

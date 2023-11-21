@@ -17,7 +17,7 @@
 
       <div :class="ui.right">
         <slot name="right">
-          <SLinks v-if="socials && !disableSocials" :links="socials" :ui="ui.socials" />
+          <SLinks v-if="socials" :class="disableSocials ? 'hidden lg:flex' : undefined" :links="socials" :ui="ui.socials" />
         </slot>
 
         <slot name="panel-button" :open="isMenuOpen">
@@ -72,16 +72,14 @@
 </template>
 
 <script setup lang="ts">
-import type { Link } from '#s94-ui/types'
+import type { Link, HeaderConfig as Config } from '#s94-ui/types'
 
-const config = {
+const config: Config = {
   wrapper: 'bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px sticky top-0 z-50 text-xl',
   container: 'flex items-center justify-between gap-3 h-[--header-height]',
   left: 'lg:flex-1 flex items-center gap-1.5 text-2xl',
   center: 'hidden lg:flex text-lg',
-  links: undefined,
   right: 'flex items-center justify-end lg:flex-1 gap-2',
-  socials: undefined,
   logo: 'flex-shrink-0 font-bold text-gray-900 dark:text-white flex items-end gap-1.5 break-keep',
   panel: {
     wrapper: 'fixed inset-0 z-50 overflow-y-auto bg-background lg:hidden',
@@ -117,7 +115,7 @@ const props = withDefaults(defineProps<{
   title?: string
   links?: Link[]
   socials?: Link[]
-  ui?: Partial<typeof config>
+  ui?: Partial<Config>
   class?: any,
   disableSocials?: boolean
 }>(), {

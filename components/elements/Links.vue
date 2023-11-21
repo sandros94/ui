@@ -32,28 +32,18 @@
 
 <script setup lang="ts">
 import { mergeConfig } from '#s94-ui/utils'
-import type { Link } from '#s94-ui/types'
-
-interface DefaultConfig {
-  active: string,
-  inactive: string,
-  wrapper: string,
-  base: string,
-  label: string,
-  iconClass: string,
-  externalLink: string
-}
+import type { Link, LinkConfig as Config } from '#s94-ui/types'
 
 const props = defineProps<{
   links: Link[],
-  ui?: DefaultConfig,
+  ui?: Partial<Config>,
   class?: any,
   variant?: 'line' | 'ghost',
   vertical?: boolean,
   verticalPadding?: string
 }>()
 
-const horizontalGhost: DefaultConfig = {
+const horizontalGhost: Config = {
   wrapper: 'not-prose flex items-center gap-x-3',
   base: 'relative inline-flex gap-x-1 hover:underline underline-offset-[10%]',
   label: '',
@@ -63,12 +53,12 @@ const horizontalGhost: DefaultConfig = {
   externalLink: 'aliased text-gray-400 dark:text-gray-500 -ml-1'
 }
 
-const horizontalLine: Partial<DefaultConfig> = {
+const horizontalLine: Partial<Config> = {
   active: 'text-primary',
   inactive: 'text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
 }
 
-const verticalGhost: DefaultConfig = {
+const verticalGhost: Config = {
   wrapper: 'not-prose flex flex-col items-start gap-y-1',
   base: 'w-full group relative inline-flex gap-x-1',
   label: 'py-[2%] truncate',
@@ -78,7 +68,7 @@ const verticalGhost: DefaultConfig = {
   externalLink: 'aliased text-gray-400 dark:text-gray-500'
 }
 
-const verticalLine: Partial<DefaultConfig> = {
+const verticalLine: Partial<Config> = {
   wrapper: 'border-s border-gray-200 dark:border-gray-800',
   base: '-ml-[1px] mr-[1px] border-s',
   active: 'text-primary border-current',
@@ -99,7 +89,7 @@ const configMap = {
 const direction = props.vertical ? 'vertical' : 'horizontal'
 const variant = props.variant ?? 'line'
 
-const config = mergeConfig<DefaultConfig>('merge', configMap[direction][variant], configMap[direction].ghost)
+const config = mergeConfig<Config>('merge', configMap[direction][variant], configMap[direction].ghost)
 
 const { ui, attrs } = useUI('s94.links', toRef(props, 'ui'), config, toRef(props, 'class'))
 </script>
