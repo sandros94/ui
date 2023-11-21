@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-full grid place-items-center">
+  <div class="w-full h-full grid place-items-start">
     <!-- Component to be tested -->
-    <SLinks class="text-2xl" :links="links" />
+    <SHeader class="w-full" :links="links" :socials="socials" disable-socials />
   </div>
 </template>
 
@@ -20,7 +20,11 @@ const links: Link[] = [
     label: 'GUNSweek',
     to: 'https://gunsweek.com',
     target: '_blank'
-  }, {
+  }
+]
+
+const socials: Link[] = [
+  {
     icon: 'i-simple-icons-instagram',
     to: 'https://instagram.com'
   }, {
