@@ -35,9 +35,9 @@
       </div>
     </UContainer>
 
-    <USlideover v-model="isMenuOpen" :ui="ui.slideover">
+    <USlideover v-model="isMenuOpen" :ui="ui.panel.slideover">
       <slot name="panel">
-        <SCard :ui="ui.slideover.card">
+        <SCard :ui="ui.panel.card">
           <template #header>
             <slot name="left">
               <NuxtLink :to="to" aria-label="Logo" :class="ui.logo">
@@ -58,8 +58,8 @@
             />
           </template>
           <slot name="panel-center">
-            <div :class="ui.slideover.card.center">
-              <SLinks v-if="links" :links="links" :class="ui.slideover.card.links" :ui="ui.links" vertical />
+            <div :class="ui.panel.card.center">
+              <SLinks v-if="links" :links="links" :class="ui.panel.card.links" :ui="ui.links" vertical />
             </div>
           </slot>
           <template #footer>
@@ -81,11 +81,6 @@ const config: Config = {
   center: 'hidden lg:flex text-lg',
   right: 'flex items-center justify-end lg:flex-1 gap-2',
   logo: 'flex-shrink-0 font-bold text-gray-900 dark:text-white flex items-end gap-1.5 break-keep',
-  panel: {
-    wrapper: 'fixed inset-0 z-50 overflow-y-auto bg-background lg:hidden',
-    header: 'px-4 sm:px-6',
-    body: 'px-4 sm:px-6 pt-3 pb-6'
-  },
   button: {
     base: 'lg:hidden',
     icon: {
@@ -93,9 +88,11 @@ const config: Config = {
       close: 'i-ph-x'
     }
   },
-  slideover: {
-    overlay: {
-      background: 'bg-gray-50/75 dark:bg-gray-950/75'
+  panel: {
+    slideover: {
+      overlay: {
+        background: 'bg-gray-50/75 dark:bg-gray-950/75'
+      }
     },
     card: {
       header: 'w-full h-[--header-height] inline-flex items-center justify-between border-b border-gray-200 dark:border-gray-800 text-2xl',
