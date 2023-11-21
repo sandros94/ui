@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full grid place-items-start">
     <!-- Component to be tested -->
-    <SHeader class="w-full" :links="links" :socials="socials" disable-socials />
+    <SHeader :links="links" :socials="socials" disable-socials />
   </div>
 </template>
 
