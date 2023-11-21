@@ -4,7 +4,7 @@ Use `links` prop to define the links to be rendered. Same goes for `socials` pro
 
 Use `vertical` prop to define a vertical instance.
 
-Use `disable-socials` to only show `socials` links in the mobile menu.
+Use `disable-socials` to only show `socials` links in the menu when on mobile.
 
 ```vue
 <template>
