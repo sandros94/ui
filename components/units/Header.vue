@@ -99,8 +99,8 @@ const config: Config = {
     },
     card: {
       header: 'w-full h-[--header-height] inline-flex items-center justify-between border-b border-gray-200 dark:border-gray-800 text-2xl',
-      center: 'w-fit h-full pt-4 m-auto text-xl flex items-center',
-      links: 'text-2xl gap-y-3 -mt-6',
+      center: 'w-fit h-full pt-[--header-height] m-auto text-xl flex items-center',
+      links: 'text-2xl gap-y-3 -mt-[--header-height]',
       footer: 'py-8 mx-auto text-2xl'
     }
   }
