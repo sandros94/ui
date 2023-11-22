@@ -47,7 +47,7 @@ const horizontalGhost: Config = {
   wrapper: 'not-prose flex items-center gap-x-3',
   base: 'relative inline-flex gap-x-1 hover:underline underline-offset-[10%]',
   label: '',
-  iconClass: 'm-[2%]',
+  iconClass: 'm-[2%] place-self-center',
   active: 'font-semibold underline underline-offset-[10%]',
   inactive: 'font-light',
   externalLink: 'aliased text-gray-400 dark:text-gray-500 -ml-1'
@@ -62,7 +62,7 @@ const verticalGhost: Config = {
   wrapper: 'not-prose flex flex-col items-start gap-y-1',
   base: 'w-full group relative inline-flex gap-x-1',
   label: 'py-[2%] truncate',
-  iconClass: 'm-[2%]',
+  iconClass: 'm-[2%] place-self-center',
   active: 'font-semibold',
   inactive: 'font-light',
   externalLink: 'aliased text-gray-400 dark:text-gray-500'
