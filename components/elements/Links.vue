@@ -12,20 +12,24 @@
       :active-class="ui.active"
       :inactive-class="ui.inactive"
     >
-      <UIcon
-        v-if="link.icon"
-        :name="link.icon"
-        :class="ui.iconClass"
-      />
-      <p v-if="link.label" :class="ui.label">
-        {{ link.label }}
-      </p>
-      <sup v-if="link.label && link.target === '_blank'" class="h-fit top-0">
-        <UIcon
-          name="i-ph-arrow-up-right-light"
-          :class="ui.externalLink"
-        />
-      </sup>
+      <slot name="label">
+        <span class="max-w-full inline-flex gap-x-2">
+          <UIcon
+            v-if="link.icon"
+            :name="link.icon"
+            :class="ui.iconClass"
+          />
+          <span v-if="link.label" :class="ui.label">
+            {{ link.label }}
+          </span>
+          <sup v-if="link.label && link.target === '_blank'" class="h-fit top-0 -ml-1.5">
+            <UIcon
+              name="i-ph-arrow-up-right-light"
+              :class="ui.externalLink"
+            />
+          </sup>
+        </span>
+      </slot>
     </ULink>
   </nav>
 </template>
@@ -45,12 +49,12 @@ const props = defineProps<{
 
 const horizontalGhost: Config = {
   wrapper: 'not-prose flex items-center gap-x-3',
-  base: 'relative inline-flex gap-x-1 hover:underline underline-offset-[10%]',
+  base: 'relative inline-flex gap-x-2 hover:underline underline-offset-[10%]',
   label: '',
-  iconClass: 'm-[2%] place-self-center',
+  iconClass: 'place-self-center',
   active: 'font-semibold underline underline-offset-[10%]',
   inactive: 'font-light',
-  externalLink: 'aliased text-gray-400 dark:text-gray-500 -ml-1'
+  externalLink: 'aliased text-gray-400 dark:text-gray-500'
 }
 
 const horizontalLine: Partial<Config> = {
@@ -59,10 +63,10 @@ const horizontalLine: Partial<Config> = {
 }
 
 const verticalGhost: Config = {
-  wrapper: 'not-prose flex flex-col items-start gap-y-1',
-  base: 'w-full group relative inline-flex gap-x-1',
-  label: 'py-[2%] truncate',
-  iconClass: 'm-[2%] place-self-center',
+  wrapper: 'not-prose max-w-[inherit] flex flex-col items-start gap-y-2',
+  base: 'w-full group relative',
+  label: 'max-w-full truncate',
+  iconClass: 'place-self-center',
   active: 'font-semibold',
   inactive: 'font-light',
   externalLink: 'aliased text-gray-400 dark:text-gray-500'
