@@ -1,29 +1,10 @@
-import type { slideover as USlideover } from '@nuxt/ui/dist/runtime/ui.config'
-import type { LinkConfig } from './elements'
+import type { button as UButton } from '@nuxt/ui/dist/runtime/ui.config'
 
-export interface HeaderConfig {
+export interface HeroConfig {
   wrapper: string,
   container: string,
-  left: string,
-  center: string,
-  links?: Partial<LinkConfig>,
-  right: string,
-  socials?: Partial<LinkConfig>,
-  logo: string,
-  button: {
-    base: string,
-    icon: {
-      open: string,
-      close: string
-    }
-  },
-  panel: {
-    slideover: Partial<USlideover>
-    card: {
-      header: string,
-      center: string,
-      links: string,
-      footer: string
-    }
-  }
+  base: string,
+  headline: string,
+  subhead: string,
+  cta: string,
 }

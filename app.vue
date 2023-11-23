@@ -16,11 +16,11 @@ const links: Link[] = [
     to: '/'
   }, {
     label: 'sandros94/ui',
+    icon: 'i-simple-icons-github',
     to: 'https://github.com/sandros94/ui',
     target: '_blank'
   }, {
     label: 'Sandros94',
-    icon: 'i-simple-icons-github',
     to: 'https://github.com/sandros94',
     target: '_blank'
   }
@@ -29,7 +29,8 @@ const links: Link[] = [
 const socials: Link[] = [
   {
     icon: 'i-simple-icons-github',
-    to: 'https://github.com>/sandros94'
+    to: 'https://github.com/sandros94/ui',
+    target: '_blank'
   }
 ]
 </script>
