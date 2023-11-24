@@ -76,7 +76,7 @@ import type { Link, HeaderConfig as Config } from '#s94-ui/types'
 
 const config: Config = {
   wrapper: 'w-full bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px sticky top-0 z-50 text-xl',
-  container: 'flex items-center justify-between gap-3 h-[--header-height]',
+  container: 'flex items-center justify-between gap-3 h-[--header-height] max-w-[90rem]',
   left: 'lg:flex-1 flex items-center gap-1.5 text-2xl',
   center: 'hidden lg:flex text-lg',
   right: 'flex items-center justify-end lg:flex-1 gap-2',
