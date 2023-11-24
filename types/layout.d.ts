@@ -1,5 +1,6 @@
-import type { slideover as USlideover } from '@nuxt/ui/dist/runtime/ui.config'
+import type { slideover as slideoverConfig } from '@nuxt/ui/dist/runtime/ui.config'
 import type { LinkConfig } from './elements'
+import type { Optional } from './'
 
 export interface HeaderConfig {
   wrapper: string,
@@ -18,7 +19,7 @@ export interface HeaderConfig {
     }
   },
   panel: {
-    slideover: Partial<USlideover>
+    slideover: Optional<typeof slideoverConfig>
     card: {
       header: string,
       center: string,
