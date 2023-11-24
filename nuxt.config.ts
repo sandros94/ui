@@ -56,7 +56,7 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '~/assets/css/main.css'
+    '#s94-ui/assets/css/main.css'
   ],
 
   $development: {
