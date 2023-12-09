@@ -8,13 +8,13 @@ export default defineNuxtPlugin(() => {
 
   const root = computed(() => {
     return `:root {
-  --header-height: ${appConfig.ui.s94.header.height};
+  --header-height: ${appConfig.s94Ui.header.height};
 
-  ${Object.entries(appConfig.ui.s94.light).map(([key, value]) => `--ui-s94-${key}: ${value};`).join('\n')}
+  ${Object.entries(appConfig.s94Ui.light).map(([key, value]) => `--ui-s94-${key}: ${value};`).join('\n')}
 }
 
 .dark {
-  ${Object.entries(appConfig.ui.s94.dark).map(([key, value]) => `--ui-s94-${key}: ${value};`).join('\n')}
+  ${Object.entries(appConfig.s94Ui.dark).map(([key, value]) => `--ui-s94-${key}: ${value};`).join('\n')}
 }`
   })
 
