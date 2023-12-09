@@ -1,5 +1,5 @@
 <template>
-  <SHeader :links="links" :socials="socials" disable-socials />
+  <SHeader :links="links" :socials="socials" sticky disable-socials />
   <SMain>
     <NuxtLayout>
       <NuxtPage />
