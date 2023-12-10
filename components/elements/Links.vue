@@ -53,7 +53,7 @@ const horizontalGhost: Config = {
   label: '',
   iconClass: 'place-self-center',
   active: 'font-medium underline underline-offset-[10%]',
-  inactive: 'font-light',
+  inactive: 'font-extralight',
   externalLink: 'aliased text-gray-400 dark:text-gray-500'
 }
 
@@ -68,7 +68,7 @@ const verticalGhost: Config = {
   label: 'max-w-full truncate',
   iconClass: 'place-self-center',
   active: 'font-medium',
-  inactive: 'font-light',
+  inactive: 'font-extralight',
   externalLink: 'aliased text-gray-400 dark:text-gray-500'
 }
 
