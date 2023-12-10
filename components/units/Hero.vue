@@ -49,8 +49,8 @@ const props = defineProps<{
 }>()
 
 const baseConfig: Config = {
-  wrapper: 'prose dark:prose-invert py-16 sm:py-24 relative max-w-full',
-  container: 'gap-8 sm:gap-y-16 max-w-screen-xl',
+  wrapper: 'prose dark:prose-invert py-16 sm:py-24 relative mx-auto max-w-full',
+  container: 'gap-8 sm:gap-y-16 max-w-screen-lg',
   base: '',
   headline: 'text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl',
   subhead: 'text-lg tracking-tight text-gray-600 dark:text-gray-300',
