@@ -6,7 +6,6 @@ const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
   alias: { '#s94-ui': resolve('./') },
   modules: [
-    '@nuxtjs/eslint-module',
     '@nuxtjs/google-fonts',
     '@nuxt/ui'
   ],
