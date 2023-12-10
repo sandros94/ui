@@ -49,8 +49,8 @@ const props = defineProps<{
 }>()
 
 const baseConfig: Config = {
-  wrapper: 'prose dark:prose-invert py-24 sm:py-32 md:py-40 relative',
-  container: 'gap-8 sm:gap-y-16',
+  wrapper: 'prose dark:prose-invert py-16 sm:py-24 relative max-w-full',
+  container: 'gap-8 sm:gap-y-16 max-w-screen-xl',
   base: '',
   headline: 'text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl',
   subhead: 'text-lg tracking-tight text-gray-600 dark:text-gray-300',
@@ -58,7 +58,7 @@ const baseConfig: Config = {
 }
 
 const horizontalConfig: Partial<Config> = {
-  container: 'grid lg:grid-cols-2 lg:items-center'
+  container: 'grid md:grid-cols-2 md:items-center'
 }
 
 const verticalConfig: Partial<Config> = {

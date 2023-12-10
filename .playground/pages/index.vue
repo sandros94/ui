@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-fit mx-auto">
+  <div class="h-full w-full mx-auto">
     <div v-for="(_i, index) of 1" :key="index">
       <!-- Component to be tested -->
       <SHero headline="Welcome to s94/ui" subhead="This is a custom Nuxt layer that extends Nuxt UI's components." :cta="[{label: 'Install it now', trailingIcon: 'i-ph-arrow-right'}, {label: 'More info', color: 'gray', trailingIcon: 'i-ph-question'}]" horizontal>
