@@ -17,7 +17,7 @@
 
       <div :class="ui.right">
         <slot name="right">
-          <SLinks v-if="socials" :class="disableSocials ? 'hidden lg:flex' : undefined" :links="socials" :ui="ui.socials" />
+          <SLinks v-if="socials && disableSocials !== true" :class="disableSocials ? disableSocialsMap[disableSocials] : undefined" :links="socials" :ui="ui.socials" />
         </slot>
 
         <slot name="panel-button" :open="isMenuOpen">
@@ -113,18 +113,24 @@ const props = withDefaults(defineProps<{
   title?: string
   links?: Link[]
   socials?: Link[]
+  disableSocials?: 'mobile' | 'desktop' | boolean
   sticky?: boolean
   ui?: Partial<Config>
-  class?: any,
-  disableSocials?: boolean
+  class?: any
 }>(), {
   to: '/',
   title: 'S94-UI',
   links: () => [],
   socials: () => [],
+  disableSocials: undefined,
   ui: () => ({}),
   class: undefined
 })
+
+const disableSocialsMap = {
+  mobile: 'hidden lg:flex',
+  desktop: 'lg:hidden'
+}
 
 config.wrapper = twMerge(config.wrapper, props.sticky ? 'sticky top-0 z-50' : '')
 
