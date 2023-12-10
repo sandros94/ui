@@ -3,18 +3,18 @@ import { computed } from 'vue'
 import { defineNuxtPlugin, useAppConfig, useNuxtApp, useHead } from '#imports'
 
 export default defineNuxtPlugin(() => {
-  const appConfig = useAppConfig()
+  const { s94Ui } = useAppConfig()
   const nuxtApp = useNuxtApp()
 
   const root = computed(() => {
     return `:root {
-  --header-height: ${appConfig.s94Ui.header.height};
+  --header-height: ${s94Ui.header.height};
 
-  ${Object.entries(appConfig.s94Ui.light).map(([key, value]) => `--ui-s94-${key}: ${value};`).join('\n')}
+  ${Object.entries(s94Ui.light).map(([key, value]) => `--ui-s94-${key}: ${value};`).join('\n')}
 }
 
 .dark {
-  ${Object.entries(appConfig.s94Ui.dark).map(([key, value]) => `--ui-s94-${key}: ${value};`).join('\n')}
+  ${Object.entries(s94Ui.dark).map(([key, value]) => `--ui-s94-${key}: ${value};`).join('\n')}
 }`
   })
 
