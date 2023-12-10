@@ -1,0 +1,37 @@
+# Nuxt dev/build outputs
+.output
+.nuxt
+.nitro
+.cache
+dist
+
+# Nuxt layer
+/.github
+/.playground
+/.eslitntignore
+/.eslitrc
+
+# Node dependencies
+node_modules
+.pnpm-store
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+
+# VSCode
+/.vscode
+
+# Misc
+.DS_Store
+.AppleDouble
+.LSOverride
+.fleet
+.idea
+
+# Project specific
