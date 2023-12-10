@@ -1,4 +1,4 @@
-import type { Link as ULink } from '@nuxt/ui/dist/runtime/types/link.d'
+import type { Link as ULink } from '@nuxt/ui/dist/runtime/types'
 
 export interface Link extends ULink {
   label?: string;
