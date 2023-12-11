@@ -10,6 +10,7 @@ dist
 /.playground
 /.eslitntignore
 /.eslitrc
+/tsconfig.json
 
 # Node dependencies
 node_modules
