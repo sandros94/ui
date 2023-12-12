@@ -49,26 +49,26 @@ const props = defineProps<{
 
 const horizontalGhost: Config = {
   wrapper: 'not-prose flex items-center gap-x-3',
-  base: 'relative inline-flex gap-x-2 hover:underline underline-offset-[10%]',
+  base: 'relative inline-flex gap-x-2 font-light hover:underline underline-offset-[10%] decoration-from-font',
   label: '',
   iconClass: 'place-self-center',
-  active: 'font-medium underline underline-offset-[10%]',
-  inactive: 'font-extralight',
+  active: 'underline underline-offset-[10%]',
+  inactive: '',
   externalLink: 'aliased text-gray-400 dark:text-gray-500'
 }
 
 const horizontalLine: Partial<Config> = {
   active: 'text-primary',
-  inactive: 'text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
+  inactive: 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white'
 }
 
 const verticalGhost: Config = {
-  wrapper: 'not-prose max-w-[inherit] flex flex-col items-start gap-y-2',
+  wrapper: 'not-prose max-w-[inherit] flex flex-col items-start gap-y-2 font-light',
   base: 'w-full group relative',
   label: 'max-w-full truncate',
   iconClass: 'place-self-center',
-  active: 'font-medium',
-  inactive: 'font-extralight',
+  active: '',
+  inactive: '',
   externalLink: 'aliased text-gray-400 dark:text-gray-500'
 }
 
