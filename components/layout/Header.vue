@@ -1,7 +1,7 @@
 <template>
   <header :class="ui.wrapper" v-bind="attrs">
     <UContainer :class="ui.container">
-      <div :class="ui.left">
+      <div v-if="!hide.left" :class="ui.left">
         <slot name="left">
           <NuxtLink :to="to" aria-label="Logo" :class="ui.logo">
             <slot name="logo">
@@ -12,17 +12,17 @@
       </div>
 
       <slot name="center">
-        <SLinks v-if="links" :links="links" :class="ui.center" :ui="ui.links" />
+        <SLinks v-if="links && !hide.center" :links="links" :class="ui.center" :ui="ui.links" />
       </slot>
 
-      <div :class="ui.right">
+      <div v-if="!hide.right" :class="ui.right">
         <slot name="right">
-          <SLinks v-if="socials && disableSocials !== true" :class="disableSocials ? disableSocialsMap[disableSocials] : undefined" :links="socials" :ui="ui.socials" />
+          <SLinks v-if="socials && hide.socials !== true" :class="hide.socials ? hideSocialsMap[hide.socials] : undefined" :links="socials" :ui="ui.socials" />
         </slot>
 
         <slot name="panel-button" :open="isMenuOpen">
           <UButton
-            v-if="links.length || $slots.panel"
+            v-if="!hide.panel && (links.length || $slots.panel)"
             color="gray"
             variant="ghost"
             size="xl"
@@ -35,7 +35,7 @@
       </div>
     </UContainer>
 
-    <USlideover v-model="isMenuOpen" :ui="ui.panel.slideover">
+    <USlideover v-if="!hide.panel" v-model="isMenuOpen" :ui="ui.panel.slideover">
       <slot name="panel">
         <SCard :ui="ui.panel.card">
           <template #header>
@@ -113,7 +113,13 @@ const props = withDefaults(defineProps<{
   title?: string
   links?: Link[]
   socials?: Link[]
-  disableSocials?: 'mobile' | 'desktop' | boolean
+  hide?: {
+    socials?: 'mobile' | 'desktop' | boolean
+    left?: boolean
+    center?: boolean
+    right?: boolean
+    panel?: boolean
+  }
   sticky?: boolean
   ui?: Partial<Config>
   class?: any
@@ -122,12 +128,18 @@ const props = withDefaults(defineProps<{
   title: 'S94-UI',
   links: () => [],
   socials: () => [],
-  disableSocials: undefined,
+  hide: () => ({
+    socials: undefined,
+    left: false,
+    center: false,
+    right: false,
+    panel: false
+  }),
   ui: () => ({}),
   class: undefined
 })
 
-const disableSocialsMap = {
+const hideSocialsMap = {
   mobile: 'hidden lg:flex',
   desktop: 'lg:hidden'
 }
