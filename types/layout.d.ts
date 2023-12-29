@@ -3,27 +3,27 @@ import type { LinkConfig } from './elements'
 import type { Optional } from './'
 
 export interface HeaderConfig {
-  wrapper: string,
-  container: string,
-  left: string,
-  center: string,
-  links?: Partial<LinkConfig>,
-  right: string,
-  socials?: Partial<LinkConfig>,
-  logo: string,
+  wrapper: string
+  container: string
+  left: string
+  center: string
+  links?: Partial<LinkConfig>
+  right: string
+  socials?: Partial<LinkConfig>
+  logo: string
   button: {
-    base: string,
+    base: string
     icon: {
-      open: string,
+      open: string
       close: string
     }
-  },
+  }
   panel: {
     slideover: Optional<typeof slideoverConfig>
     card: {
-      header: string,
-      center: string,
-      links: string,
+      header: string
+      center: string
+      links: string
       footer: string
     }
   }
