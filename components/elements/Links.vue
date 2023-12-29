@@ -1,7 +1,7 @@
 <template>
   <nav :class="ui.wrapper" v-bind="attrs">
     <ULink
-      v-for="(link, index) in links"
+      v-for="(link, index) in filteredLinks"
       :key="index"
       :to="link.to"
       :target="link.target"
@@ -96,4 +96,6 @@ const variant = props.variant ?? 'line'
 const config = mergeConfig<Config>('merge', configMap[direction][variant], configMap[direction].ghost)
 
 const { ui, attrs } = useUI('s94.links', toRef(props, 'ui'), config, toRef(props, 'class'))
+
+const filteredLinks = computed(() => props.links.filter(link => unref(link.visible) ?? true))
 </script>

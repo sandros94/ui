@@ -10,6 +10,8 @@
 <script setup lang="ts">
 import type { Link } from '#s94-ui/types'
 
+const isVisible = ref(false)
+
 const links: Link[] = [
   {
     label: 'HOME',
@@ -22,7 +24,8 @@ const links: Link[] = [
   }, {
     label: 'Sandros94',
     to: 'https://github.com/sandros94',
-    target: '_blank'
+    target: '_blank',
+    visible: isVisible.value
   }
 ]
 
