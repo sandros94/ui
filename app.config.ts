@@ -1,3 +1,6 @@
+import type { DeepPartial, S94UiConfig } from '#s94-ui/types'
+import type { AllConfigs } from '#s94-ui/types/configs'
+
 export default defineAppConfig({
   s94Ui: {
     header: {
@@ -11,27 +14,9 @@ export default defineAppConfig({
       foreground: '#fafafa',
       background: '#0f0f0f'
     }
-  },
+  } as Partial<S94UiConfig> & DeepPartial<AllConfigs>,
   ui: {
     primary: 'orange',
     gray: 'neutral'
   }
 })
-
-declare module '@nuxt/schema' {
-  interface AppConfigInput {
-    s94Ui?: {
-      header?: {
-        height?: string
-      },
-      light?: {
-        foreground?: string
-        background?: string
-      },
-      dark?: {
-        foreground?: string
-        background?: string
-      }
-    }
-  }
-}

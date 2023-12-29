@@ -2,21 +2,30 @@ import { defu, createDefu } from 'defu'
 import { extendTailwindMerge } from 'tailwind-merge'
 import type { Strategy } from '#s94-ui/types'
 
-const customTwMerge = extendTailwindMerge({
-  classGroups: {
-    icons: [(classPart: string) => /^i-/.test(classPart)]
+// @ts-ignore
+const customTwMerge = extendTailwindMerge<string, string>({
+  extend: {
+    classGroups: {
+      icons: [(classPart: string) => /^i-/.test(classPart)]
+    }
   }
 })
 
 const defuTwMerge = createDefu((obj, key, value, namespace) => {
-  if (namespace !== 'default' && typeof obj[key] === 'string' && typeof value === 'string' && obj[key] && value) {
+  if (namespace === 'default' || namespace.startsWith('default.')) {
+    return false
+  }
+  if (namespace.endsWith('avatar') && key === 'size') {
+    return false
+  }
+  if (typeof obj[key] === 'string' && typeof value === 'string' && obj[key] && value) {
     // @ts-ignore
     obj[key] = customTwMerge(obj[key], value)
     return true
   }
 })
 
-export function mergeConfig<T> (strategy: Strategy, ...configs: any): T {
+export function mergeConfig<T> (strategy: Strategy | string, ...configs: any): T {
   if (strategy === 'override') {
     return defu({}, ...configs) as T
   }
@@ -39,7 +48,7 @@ export function hexToRgb (hex: string) {
 
 export function getSlotsChildren (slots: any) {
   let children = slots.default?.()
-  if (children.length) {
+  if (children?.length) {
     children = children.flatMap((c: any) => {
       if (typeof c.type === 'symbol') {
         if (typeof c.children === 'string') {
@@ -54,7 +63,7 @@ export function getSlotsChildren (slots: any) {
       return c
     }).filter(Boolean)
   }
-  return children
+  return children || []
 }
 
 /**

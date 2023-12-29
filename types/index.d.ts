@@ -1,9 +1,18 @@
 export * from './elements'
 export * from './layout'
 export * from './units'
+export * from './utils'
 
-export type Strategy = string
-
-export type Optional<T> = {
-  [P in keyof T]?: T[P] extends object ? Optional<T[P]> : T[P]
+export type S94UiConfig = {
+  header?: {
+    height?: string
+  }
+  light?: {
+    foreground?: string
+    background?: string
+  }
+  dark?: {
+    foreground?: string
+    background?: string
+  }
 }
