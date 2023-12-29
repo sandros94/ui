@@ -39,11 +39,11 @@ import { mergeConfig } from '#s94-ui/utils'
 import type { Link, LinkConfig as Config } from '#s94-ui/types'
 
 const props = defineProps<{
-  links: Link[],
-  ui?: Partial<Config>,
-  class?: any,
-  variant?: 'line' | 'ghost',
-  vertical?: boolean,
+  links: Ref<Link[]> | Link[]
+  ui?: Partial<Config>
+  class?: any
+  variant?: 'line' | 'ghost'
+  vertical?: boolean
   verticalPadding?: string
 }>()
 
@@ -97,5 +97,5 @@ const config = mergeConfig<Config>('merge', configMap[direction][variant], confi
 
 const { ui, attrs } = useUI('s94.links', toRef(props, 'ui'), config, toRef(props, 'class'))
 
-const filteredLinks = computed(() => props.links.filter(link => unref(link.visible) ?? true))
+const filteredLinks = computed(() => unref(props.links).filter(link => link.if ? link.if() : true))
 </script>

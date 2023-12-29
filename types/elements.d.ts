@@ -3,7 +3,7 @@ import type { Link as ULink } from '@nuxt/ui/dist/runtime/types'
 export interface Link extends ULink {
   label?: string
   icon?: string
-  visible?: boolean | Ref<boolean>
+  if?: () => boolean
 }
 
 interface LinkConfig {

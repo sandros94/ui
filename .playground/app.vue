@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import type { Link } from '#s94-ui/types'
 
-const isVisible = ref(false)
+const isVisible = useState('link-is-visible', () => false)
 
 const links: Link[] = [
   {
@@ -25,7 +25,7 @@ const links: Link[] = [
     label: 'Sandros94',
     to: 'https://github.com/sandros94',
     target: '_blank',
-    visible: isVisible.value
+    if: () => isVisible.value
   }
 ]
 
