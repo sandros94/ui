@@ -1,8 +1,8 @@
 {
   "name": "@sandros94/ui",
-  "private": true,
   "type": "module",
   "version": "0.1.0",
+  "private": true,
   "main": "./nuxt.config.ts",
   "scripts": {
     "build": "nuxt build .playground",
@@ -10,16 +10,9 @@
     "clear": "nuxt cleanup",
     "generate": "nuxt generate .playground",
     "preview": "nuxt preview .playground",
-    "postinstall": "nuxt prepare .playground"
-  },
-  "devDependencies": {
-    "@antfu/eslint-config": "^2.6.1",
-    "@nuxt/devtools": "^1.0.6",
-    "eslint": "^8.56.0",
-    "nuxt": "^3.9.0",
-    "typescript": "^5.3.3",
-    "vue": "^3.4.1",
-    "vue-router": "^4.2.5"
+    "postinstall": "nuxt prepare .playground",
+    "lint": "eslint .",
+    "format": "eslint . --fix"
   },
   "dependencies": {
     "@iconify-json/ph": "^1.1.9",
@@ -28,5 +21,15 @@
     "@nuxtjs/google-fonts": "^3.1.3",
     "@vueuse/core": "^10.7.1",
     "defu": "^6.1.3"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.6.1",
+    "@nuxt/devtools": "^1.0.6",
+    "eslint": "^8.56.0",
+    "eslint-plugin-tailwindcss": "^3.13.1",
+    "nuxt": "^3.9.0",
+    "typescript": "^5.3.3",
+    "vue": "^3.4.1",
+    "vue-router": "^4.2.5"
   }
 }
