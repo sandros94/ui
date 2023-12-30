@@ -10,7 +10,6 @@ export default antfu({
     }]
   }
 }, ...compat.config({
-  extends: ['@nuxtjs/eslint-config-typescript'],
   plugins: ['tailwindcss'],
   rules: {
     'tailwindcss/no-custom-classname': 'off',
