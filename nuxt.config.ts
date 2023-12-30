@@ -1,5 +1,7 @@
 import { createResolver } from 'nuxt/kit'
 import colors from 'tailwindcss/colors'
+import typography from '@tailwindcss/typography'
+
 const { resolve } = createResolver(import.meta.url)
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -7,10 +9,10 @@ export default defineNuxtConfig({
   alias: { '#s94-ui': resolve('./') },
   modules: [
     '@nuxtjs/google-fonts',
-    '@nuxt/ui'
+    '@nuxt/ui',
   ],
   components: [
-    { path: '#s94-ui/components', prefix: 'S', pathPrefix: false }
+    { path: '#s94-ui/components', prefix: 'S', pathPrefix: false },
   ],
   devtools: { enabled: true },
 
@@ -19,19 +21,19 @@ export default defineNuxtConfig({
     families: {
       'DM+Sans': {
         wght: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
-        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
       },
       'DM+Mono': {
         wght: [300, 400, 500],
-        ital: [300, 400, 500]
-      }
-    }
+        ital: [300, 400, 500],
+      },
+    },
   },
 
   tailwindcss: {
     config: {
       content: [],
-      plugins: [require('@tailwindcss/typography')],
+      plugins: [typography],
       theme: {
         extend: {
           colors: {
@@ -40,27 +42,27 @@ export default defineNuxtConfig({
             success: colors.green,
             info: colors.sky,
             alert: colors.yellow,
-            warning: colors.red
+            warning: colors.red,
           },
           fontFamily: {
-            sans: ['DM Sans', 'DM Mono']
-          }
-        }
-      }
-    }
+            sans: ['DM Sans', 'DM Mono'],
+          },
+        },
+      },
+    },
   },
   ui: {
     safelistColors: ['success', 'info', 'alert', 'warning'],
-    icons: ['ph', 'simple-icons']
+    icons: ['ph', 'simple-icons'],
   },
 
   css: [
-    '#s94-ui/assets/css/main.css'
+    '#s94-ui/assets/css/main.css',
   ],
 
   $development: {
     typescript: {
-      shim: false
-    }
-  }
+      shim: false,
+    },
+  },
 })
