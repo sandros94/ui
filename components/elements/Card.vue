@@ -17,7 +17,9 @@
 </template>
 
 <script setup lang="ts">
-const defaultConfig = {
+import type { CardUi, Strategy } from '#s94-ui/types'
+
+const defaultConfig: CardUi = {
   wrapper: 'min-h-full flex flex-col overflow-y-auto',
   header: 'flex-none flex-grow-0 px-4 py-5 sm:px-6',
   base: 'flex-grow px-4 py-5 sm:px-6',
@@ -26,7 +28,7 @@ const defaultConfig = {
 
 const props = withDefaults(defineProps<{
   as?: string,
-  ui?: Partial<typeof defaultConfig>,
+  ui?: Partial<CardUi> & { strategy?: Strategy },
   class?: any,
 }>(), {
   as: 'div',
