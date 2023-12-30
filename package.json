@@ -13,11 +13,9 @@
     "postinstall": "nuxt prepare .playground"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.6.1",
     "@nuxt/devtools": "^1.0.6",
-    "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@nuxtjs/eslint-module": "^4.1.0",
     "eslint": "^8.56.0",
-    "eslint-plugin-tailwindcss": "^3.13.1",
     "nuxt": "^3.9.0",
     "typescript": "^5.3.3",
     "vue": "^3.4.1",
