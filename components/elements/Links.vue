@@ -38,10 +38,9 @@
 import { mergeConfig } from '#s94-ui/utils'
 import type {
   Link,
-  LinksClasses,
+  LinksUi,
   LinksConfig,
-  LinksHorizontalVariant,
-  LinksVerticalVariant,
+  LinksVariant,
   Strategy
 } from '#s94-ui/types'
 
@@ -52,8 +51,8 @@ const linksDefaultConfigs: LinksConfig = {
     variant: 'line'
   },
 
-  horizontal: {
-    variant: {
+  variant: {
+    horizontal: {
       default: {
         wrapper: 'not-prose flex items-center gap-x-3',
         base: 'relative inline-flex gap-x-2 font-light hover:underline underline-offset-[10%] decoration-from-font',
@@ -67,11 +66,8 @@ const linksDefaultConfigs: LinksConfig = {
         active: 'text-primary',
         inactive: 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white'
       }
-    }
-  },
-
-  vertical: {
-    variant: {
+    },
+    vertical: {
       default: {
         wrapper: 'not-prose max-w-[inherit] flex flex-col items-start gap-y-2 font-light',
         base: 'w-full group relative',
@@ -93,9 +89,9 @@ const linksDefaultConfigs: LinksConfig = {
 
 const props = defineProps<{
   links: Ref<Link[]> | Link[]
-  ui?: Partial<LinksClasses> & { strategy?: Strategy }
+  ui?: Partial<LinksUi> & { strategy?: Strategy }
   class?: any
-  variant?: LinksHorizontalVariant | LinksVerticalVariant
+  variant?: LinksVariant
   vertical?: boolean
   verticalPadding?: string
 }>()
@@ -105,7 +101,7 @@ const configDefaults = mergeConfig<typeof linksDefaultConfigs>(uiConfig.strategy
 const direction = props.vertical ? 'vertical' : 'horizontal'
 const variant = props.variant ?? configDefaults.default.variant
 
-const config = mergeConfig<LinksClasses>('merge', configDefaults[direction].variant[variant], configDefaults[direction].variant.default)
+const config = mergeConfig<LinksUi>('merge', configDefaults.variant[direction][variant], configDefaults.variant[direction].default)
 
 const { ui, attrs } = useUI('s94.links', toRef(props, 'ui'), config, toRef(props, 'class'))
 

@@ -1,5 +1,5 @@
 import type { slideover as slideoverConfig } from '@nuxt/ui/dist/runtime/ui.config'
-import type { LinksClasses } from './elements'
+import type { LinksUi } from './elements'
 import type { Optional } from './'
 
 export interface HeaderConfig {
@@ -7,9 +7,9 @@ export interface HeaderConfig {
   container: string
   left: string
   center: string
-  links?: Partial<LinksClasses>
+  links?: Partial<LinksUi>
   right: string
-  socials?: Partial<LinksClasses>
+  socials?: Partial<LinksUi>
   logo: string
   button: {
     base: string
