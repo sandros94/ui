@@ -1,8 +1,9 @@
-import {
+import type {
+  CardConfig,
   LinksConfig,
-  CardUi
 } from '#s94-ui/types'
 
-export type AllConfigs = {
+export interface AllConfigs {
+  card: CardConfig
   links: LinksConfig
 }
