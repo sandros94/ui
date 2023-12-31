@@ -34,6 +34,9 @@ devDependencies:
   eslint:
     specifier: ^8.56.0
     version: 8.56.0
+  eslint-plugin-perfectionist:
+    specifier: ^2.5.0
+    version: 2.5.0(eslint@8.56.0)(typescript@5.3.3)
   eslint-plugin-tailwindcss:
     specifier: ^3.13.1
     version: 3.13.1(tailwindcss@3.4.0)
@@ -3076,6 +3079,33 @@ packages:
     resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
     engines: {node: '>=12'}
 
+  /eslint-plugin-perfectionist@2.5.0(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-F6XXcq4mKKUe/SREoMGQqzgw6cgCgf3pFzkFfQVIGtqD1yXVpQjnhTepzhBeZfxZwgMzR9HO4yH4CUhIQ2WBcQ==}
+    peerDependencies:
+      astro-eslint-parser: ^0.16.0
+      eslint: '>=8.0.0'
+      svelte: '>=3.0.0'
+      svelte-eslint-parser: ^0.33.0
+      vue-eslint-parser: '>=9.0.0'
+    peerDependenciesMeta:
+      astro-eslint-parser:
+        optional: true
+      svelte:
+        optional: true
+      svelte-eslint-parser:
+        optional: true
+      vue-eslint-parser:
+        optional: true
+    dependencies:
+      '@typescript-eslint/utils': 6.16.0(eslint@8.56.0)(typescript@5.3.3)
+      eslint: 8.56.0
+      minimatch: 9.0.3
+      natural-compare-lite: 1.4.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
+
   /eslint-plugin-tailwindcss@3.13.1(tailwindcss@3.4.0):
     resolution: {integrity: sha512-2Nlgr9doO6vFAG9w4iGU0sspWXuzypfng10HTF+dFS2NterhweWtgdRvf/f7aaoOUUxVZM8wMIXzazrZ7CxyeA==}
     engines: {node: '>=12.13.0'}
@@ -4416,6 +4446,10 @@ packages:
 
   /napi-wasm@1.1.0:
     resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
+
+  /natural-compare-lite@1.4.0:
+    resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}
+    dev: true
 
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
