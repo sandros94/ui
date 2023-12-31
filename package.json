@@ -7,7 +7,7 @@
   "scripts": {
     "build": "nuxt build .playground",
     "dev": "nuxt dev .playground",
-    "clear": "nuxt cleanup",
+    "clear": "nuxt cleanup .playground",
     "generate": "nuxt generate .playground",
     "preview": "nuxt preview .playground",
     "postinstall": "nuxt prepare .playground",
