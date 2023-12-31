@@ -7,7 +7,7 @@ dist
 
 # Nuxt layer
 /.github
-/.playground
+/playground
 /.eslitntignore
 /.eslitrc
 /tsconfig.json
