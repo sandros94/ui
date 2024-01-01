@@ -4,7 +4,7 @@
 
     <UContainer :class="ui.container">
       <div :class="ui.base">
-        <div v-if="headline || $slots.headline" :class="ui.headline">
+        <div :class="ui.headline" v-if="headline || $slots.headline">
           <slot name="headline">
             <h1>
               {{ headline }}
@@ -12,7 +12,7 @@
           </slot>
         </div>
 
-        <div v-if="subhead || $slots.subhead" :class="ui.subhead">
+        <div :class="ui.subhead" v-if="subhead || $slots.subhead">
           <slot name="subhead">
             <p>
               {{ subhead }}
@@ -20,9 +20,14 @@
           </slot>
         </div>
 
-        <div v-if="cta?.length || $slots.cta" :class="ui.cta">
+        <div :class="ui.cta" v-if="cta?.length || $slots.cta">
           <slot name="cta">
-            <UButton v-for="(link, index) in cta" :key="index" v-bind="link" @click="link.click" />
+            <UButton
+              :key="index"
+              v-for="(link, index) in cta"
+              v-bind="link"
+              @click="link.click"
+            />
           </slot>
         </div>
       </div>
@@ -35,50 +40,50 @@
 </template>
 
 <script setup lang="ts">
-import type { Button } from '#ui/types'
 import type { HeroConfig as Config } from '#s94-ui/types'
+import type { Button } from '#ui/types'
 
 const props = defineProps<{
-  headline?: string
-  subhead?: string
-  cta?:(Button & { click?: Function })[]
-  horizontal?: boolean
-  variant?: 'normal' // TODO: add `overlay` variant with text over image
-  ui?: Partial<Config>
   class?: any
+  cta?: (Button & { click?: Function })[]
+  headline?: string
+  horizontal?: boolean
+  subhead?: string
+  ui?: Partial<Config>
+  variant?: 'normal' // TODO: add `overlay` variant with text over image
 }>()
 
 const baseConfig: Config = {
-  wrapper: 'prose dark:prose-invert py-16 sm:py-24 relative mx-auto max-w-full',
-  container: 'gap-8 sm:gap-y-16 max-w-screen-lg',
   base: '',
+  container: 'gap-8 sm:gap-y-16 max-w-screen-lg',
+  cta: 'mt-12 flex flex-wrap gap-x-6 gap-y-3',
   headline: 'text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl',
   subhead: 'text-lg tracking-tight text-gray-600 dark:text-gray-300',
-  cta: 'mt-12 flex flex-wrap gap-x-6 gap-y-3'
+  wrapper: 'prose dark:prose-invert py-16 sm:py-24 relative mx-auto max-w-full',
 }
 
 const horizontalConfig: Partial<Config> = {
-  container: 'grid md:grid-cols-2 md:items-center'
+  container: 'grid md:grid-cols-2 md:items-center',
 }
 
 const verticalConfig: Partial<Config> = {
-  container: 'flex flex-col',
   base: 'text-center',
-  cta: 'justify-center'
+  container: 'flex flex-col',
+  cta: 'justify-center',
 }
 
 const configMap = {
   horizontal: {
-    normal: horizontalConfig
+    normal: horizontalConfig,
   },
   vertical: {
-    normal: verticalConfig
-  }
+    normal: verticalConfig,
+  },
 }
 const direction = props.horizontal ? 'horizontal' : 'vertical'
 const variant = props.variant ?? 'normal'
 
 const config = mergeConfig<Config>('merge', configMap[direction][variant], baseConfig)
 
-const { ui, attrs } = useUI('s94.hero', toRef(props, 'ui'), config, toRef(props, 'class'))
+const { attrs, ui } = useUI('s94.hero', toRef(props, 'ui'), config, toRef(props, 'class'))
 </script>

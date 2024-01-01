@@ -3,20 +3,22 @@ import type { AllConfigs } from '#s94-ui/types/configs'
 
 export default defineAppConfig({
   s94Ui: {
+    /* eslint-disable perfectionist/sort-objects */
     header: {
-      height: '4.5rem'
+      height: '4.5rem',
     },
     light: {
+      background: '#fafafa',
       foreground: '#000000',
-      background: '#fafafa'
     },
     dark: {
+      background: '#0f0f0f',
       foreground: '#fafafa',
-      background: '#0f0f0f'
-    }
+    },
+    /* eslint-enable perfectionist/sort-objects */
   } as Partial<S94UiConfig> & DeepPartial<AllConfigs>,
   ui: {
+    gray: 'neutral',
     primary: 'orange',
-    gray: 'neutral'
-  }
+  },
 })

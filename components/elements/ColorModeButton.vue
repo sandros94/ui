@@ -1,14 +1,14 @@
 <template>
   <ClientOnly>
     <UButton
+      :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
       :icon="isDark ? 'i-ph-moon' : 'i-ph-sun'"
+      @click="isDark = !isDark"
       color="gray"
       variant="ghost"
-      :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
-      @click="isDark = !isDark"
     />
     <template #fallback>
-      <div class="w-8 h-8" />
+      <div class="h-8 w-8" />
     </template>
   </ClientOnly>
 </template>
@@ -17,11 +17,11 @@
 const colorMode = useColorMode()
 
 const isDark = computed({
-  get () {
+  get() {
     return colorMode.value === 'dark'
   },
-  set () {
+  set() {
     colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-  }
+  },
 })
 </script>

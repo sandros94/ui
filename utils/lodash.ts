@@ -1,6 +1,6 @@
-export function omit<T extends Record<string, any>, K extends keyof T> (
+export function omit<T extends Record<string, any>, K extends keyof T>(
   object: T,
-  keysToOmit: K[] | any[]
+  keysToOmit: K[] | any[],
 ): Pick<T, Exclude<keyof T, K>> {
   const result = { ...object }
 
@@ -11,7 +11,7 @@ export function omit<T extends Record<string, any>, K extends keyof T> (
   return result
 }
 
-export function get (object: Record<string, any>, path: (string | number)[] | string, defaultValue?: any): any {
+export function get(object: Record<string, any>, path: (number | string)[] | string, defaultValue?: any): any {
   if (typeof path === 'string') {
     path = path.split('.').map((key) => {
       const numKey = Number(key)

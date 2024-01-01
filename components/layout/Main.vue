@@ -10,20 +10,20 @@
 import { twMerge } from 'tailwind-merge'
 
 const config = {
-  wrapper: 'min-h-[calc(100svh-var(--header-height))] @container/main'
+  wrapper: 'min-h-[calc(100svh-var(--header-height))] @container/main',
 }
 
 const props = withDefaults(defineProps<{
-  ui?: Partial<typeof config>
   class?: any
   padded?: boolean
+  ui?: Partial<typeof config>
 }>(), {
-  ui: () => ({}),
   class: undefined,
-  padded: true
+  padded: true,
+  ui: () => ({}),
 })
 
 config.wrapper = twMerge(config.wrapper, props.padded ? 'flex flex-col justify-around' : '')
 
-const { ui, attrs } = useUI('s94.main', toRef(props, 'ui'), config, toRef(props, 'class'))
+const { attrs, ui } = useUI('s94.main', toRef(props, 'ui'), config, toRef(props, 'class'))
 </script>

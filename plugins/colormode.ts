@@ -1,6 +1,6 @@
 // Source: `https://github.com/nuxt/ui/blob/dev/src/runtime/plugins/colors.ts`
+import { defineNuxtPlugin, useAppConfig, useHead, useNuxtApp } from '#imports'
 import { computed } from 'vue'
-import { defineNuxtPlugin, useAppConfig, useNuxtApp, useHead } from '#imports'
 
 export default defineNuxtPlugin(() => {
   const { s94Ui } = useAppConfig()
@@ -21,10 +21,10 @@ export default defineNuxtPlugin(() => {
   // Head
   const headData: any = {
     style: [{
+      id: 'nuxt-s94-ui',
       innerHTML: () => root.value,
       tagPriority: -2,
-      id: 'nuxt-s94-ui'
-    }]
+    }],
   }
 
   // SPA mode
@@ -36,7 +36,7 @@ export default defineNuxtPlugin(() => {
     document.head.appendChild(style)
 
     headData.script = [{
-      innerHTML: 'document.head.removeChild(document.querySelector(\'[data-nuxt-s94-ui]\'))'
+      innerHTML: 'document.head.removeChild(document.querySelector(\'[data-nuxt-s94-ui]\'))',
     }]
   }
 

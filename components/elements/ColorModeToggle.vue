@@ -1,13 +1,13 @@
 <template>
   <ClientOnly>
     <UToggle
-      v-model="isDark"
-      on-icon="i-ph-moon"
-      off-icon="i-ph-sun"
       :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
+      off-icon="i-ph-sun"
+      on-icon="i-ph-moon"
+      v-model="isDark"
     />
     <template #fallback>
-      <div class="w-8 h-8" />
+      <div class="h-8 w-8" />
     </template>
   </ClientOnly>
 </template>
@@ -16,11 +16,11 @@
 const colorMode = useColorMode()
 
 const isDark = computed({
-  get () {
+  get() {
     return colorMode.value === 'dark'
   },
-  set () {
+  set() {
     colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-  }
+  },
 })
 </script>

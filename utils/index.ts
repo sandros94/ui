@@ -1,14 +1,15 @@
-import { defu, createDefu } from 'defu'
-import { extendTailwindMerge } from 'tailwind-merge'
 import type { Strategy } from '#s94-ui/types'
+
+import { createDefu, defu } from 'defu'
+import { extendTailwindMerge } from 'tailwind-merge'
 
 // @ts-ignore
 const customTwMerge = extendTailwindMerge<string, string>({
   extend: {
     classGroups: {
-      icons: [(classPart: string) => /^i-/.test(classPart)]
-    }
-  }
+      icons: [(classPart: string) => /^i-/.test(classPart)],
+    },
+  },
 })
 
 const defuTwMerge = createDefu((obj, key, value, namespace) => {
@@ -25,7 +26,7 @@ const defuTwMerge = createDefu((obj, key, value, namespace) => {
   }
 })
 
-export function mergeConfig<T> (strategy: Strategy | string, ...configs: any): T {
+export function mergeConfig<T>(strategy: Strategy | string, ...configs: any): T {
   if (strategy === 'override') {
     return defu({}, ...configs) as T
   }
@@ -33,7 +34,7 @@ export function mergeConfig<T> (strategy: Strategy | string, ...configs: any): T
   return defuTwMerge({}, ...configs) as T
 }
 
-export function hexToRgb (hex: string) {
+export function hexToRgb(hex: string) {
   // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
   hex = hex.replace(shorthandRegex, function (_, r, g, b) {
@@ -46,7 +47,7 @@ export function hexToRgb (hex: string) {
     : null
 }
 
-export function getSlotsChildren (slots: any) {
+export function getSlotsChildren(slots: any) {
   let children = slots.default?.()
   if (children?.length) {
     children = children.flatMap((c: any) => {
@@ -57,7 +58,8 @@ export function getSlotsChildren (slots: any) {
           return
         }
         return c.children
-      } else if (c.type.name === 'ContentSlot') {
+      }
+      else if (c.type.name === 'ContentSlot') {
         return c.ctx.slots.default?.()
       }
       return c
@@ -70,7 +72,7 @@ export function getSlotsChildren (slots: any) {
  * "123-foo" will be parsed to 123
  * This is used for the .number modifier in v-model
  */
-export function looseToNumber (val: any): any {
+export function looseToNumber(val: any): any {
   const n = parseFloat(val)
   return isNaN(n) ? val : n
 }

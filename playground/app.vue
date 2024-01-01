@@ -1,5 +1,10 @@
 <template>
-  <SHeader :links="links" :socials="socials" sticky disable-socials />
+  <SHeader
+    :links="links"
+    :socials="socials"
+    disable-socials
+    sticky
+  />
   <SMain>
     <NuxtLayout>
       <NuxtPage />
@@ -15,25 +20,25 @@ const isVisible = useState('link-is-visible', () => false)
 const links: Link[] = [
   {
     label: 'HOME',
-    to: '/'
+    to: '/',
   }, {
-    label: 'sandros94/ui',
     icon: 'i-simple-icons-github',
-    to: 'https://github.com/sandros94/ui',
-    target: '_blank'
-  }, {
-    label: 'Sandros94',
-    to: 'https://github.com/sandros94',
+    label: 'sandros94/ui',
     target: '_blank',
-    if: () => isVisible.value
-  }
+    to: 'https://github.com/sandros94/ui',
+  }, {
+    if: () => isVisible.value,
+    label: 'Sandros94',
+    target: '_blank',
+    to: 'https://github.com/sandros94',
+  },
 ]
 
 const socials: Link[] = [
   {
     icon: 'i-simple-icons-github',
+    target: '_blank',
     to: 'https://github.com/sandros94/ui',
-    target: '_blank'
-  }
+  },
 ]
 </script>

@@ -4,15 +4,17 @@ export * from './units'
 export * from './utils'
 
 export type S94UiConfig = {
+  /* eslint-disable perfectionist/sort-object-types */
   header?: {
     height?: string
   }
   light?: {
-    foreground?: string
     background?: string
+    foreground?: string
   }
   dark?: {
-    foreground?: string
     background?: string
+    foreground?: string
   }
+  /* eslint-enable perfectionist/sort-object-types */
 }

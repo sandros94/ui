@@ -1,9 +1,9 @@
 <template>
   <header :class="ui.wrapper" v-bind="attrs">
     <UContainer :class="ui.container">
-      <div v-if="!hide.left" :class="ui.left">
+      <div :class="ui.left" v-if="!hide.left">
         <slot name="left">
-          <NuxtLink :to="to" aria-label="Logo" :class="ui.logo">
+          <NuxtLink :class="ui.logo" :to="to" aria-label="Logo">
             <slot name="logo">
               {{ title }}
             </slot>
@@ -12,58 +12,74 @@
       </div>
 
       <slot name="center">
-        <SLinks v-if="links && !hide.center" :links="links" :class="ui.center" :ui="ui.links" />
+        <SLinks
+          :class="ui.center"
+          :links="links"
+          :ui="ui.links"
+          v-if="links && !hide.center"
+        />
       </slot>
 
-      <div v-if="!hide.right" :class="ui.right">
+      <div :class="ui.right" v-if="!hide.right">
         <slot name="right">
-          <SLinks v-if="socials && hide.socials !== true" :class="hide.socials ? hideSocialsMap[hide.socials] : undefined" :links="socials" :ui="ui.socials" />
+          <SLinks
+            :class="hide.socials ? hideSocialsMap[hide.socials] : undefined"
+            :links="socials"
+            :ui="ui.socials"
+            v-if="socials && hide.socials !== true"
+          />
         </slot>
 
-        <slot name="panel-button" :open="isMenuOpen">
+        <slot :open="isMenuOpen" name="panel-button">
           <UButton
-            v-if="!hide.panel && (links.length || $slots.panel)"
-            color="gray"
-            variant="ghost"
-            size="xl"
-            :class="ui.button.base"
             :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Menu`"
+            :class="ui.button.base"
             :icon="isMenuOpen ? ui.button.icon.close : ui.button.icon.open"
             @click="isMenuOpen = !isMenuOpen"
+            color="gray"
+            size="xl"
+            v-if="!hide.panel && (links.length || $slots.panel)"
+            variant="ghost"
           />
         </slot>
       </div>
     </UContainer>
 
-    <USlideover v-if="!hide.panel" v-model="isMenuOpen" :ui="ui.panel.slideover">
+    <USlideover :ui="ui.panel.slideover" v-if="!hide.panel" v-model="isMenuOpen">
       <slot name="panel">
         <SCard :ui="ui.panel.card">
           <template #header>
             <slot name="left">
-              <NuxtLink :to="to" aria-label="Logo" :class="ui.logo">
+              <NuxtLink :class="ui.logo" :to="to" aria-label="Logo">
                 <slot name="logo">
                   {{ title }}
                 </slot>
               </NuxtLink>
             </slot>
             <UButton
-              v-if="links.length || $slots.panel"
-              color="gray"
-              variant="ghost"
-              size="xl"
-              :class="ui.button.base"
               :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Menu`"
+              :class="ui.button.base"
               :icon="isMenuOpen ? ui.button.icon.close : ui.button.icon.open"
               @click="isMenuOpen = !isMenuOpen"
+              color="gray"
+              size="xl"
+              v-if="links.length || $slots.panel"
+              variant="ghost"
             />
           </template>
           <slot name="panel-center">
             <div :class="ui.panel.card.center">
-              <SLinks v-if="links" :links="links" :class="ui.panel.card.links" :ui="ui.links" vertical />
+              <SLinks
+                :class="ui.panel.card.links"
+                :links="links"
+                :ui="ui.links"
+                v-if="links"
+                vertical
+              />
             </div>
           </slot>
           <template #footer>
-            <SLinks v-if="socials" :links="socials" :ui="ui.socials" />
+            <SLinks :links="socials" :ui="ui.socials" v-if="socials" />
           </template>
         </SCard>
       </slot>
@@ -72,82 +88,83 @@
 </template>
 
 <script setup lang="ts">
+import type { HeaderConfig as Config, Link } from '#s94-ui/types'
+
 import { twMerge } from 'tailwind-merge'
-import type { Link, HeaderConfig as Config } from '#s94-ui/types'
 
 const config: Config = {
-  wrapper: 'w-full bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
-  container: 'flex items-center justify-between gap-3 h-[--header-height] max-w-[90rem]',
-  left: 'lg:flex-1 flex items-center gap-1.5 text-2xl',
-  center: 'hidden lg:flex text-lg',
-  right: 'flex items-center justify-end lg:flex-1 gap-2',
-  logo: 'flex-shrink-0 font-bold text-gray-900 dark:text-white flex items-end gap-1.5 break-keep',
   button: {
     base: 'lg:hidden',
     icon: {
+      close: 'i-ph-x',
       open: 'i-ph-list',
-      close: 'i-ph-x'
-    }
+    },
   },
+  center: 'hidden lg:flex text-lg',
+  container: 'flex items-center justify-between gap-3 h-[--header-height] max-w-[90rem]',
+  left: 'lg:flex-1 flex items-center gap-1.5 text-2xl',
+  logo: 'flex-shrink-0 font-bold text-gray-900 dark:text-white flex items-end gap-1.5 break-keep',
   panel: {
+    card: {
+      center: 'max-w-full w-fit h-full pt-[--header-height] m-auto text-xl flex items-center',
+      footer: 'py-8 mx-auto text-2xl',
+      header: 'w-full h-[--header-height] inline-flex items-center justify-between border-b border-gray-200 dark:border-gray-800 text-2xl',
+      links: 'text-2xl gap-y-3 -mt-[--header-height]',
+    },
     slideover: {
       overlay: {
-        background: 'bg-gray-50/75 dark:bg-gray-950/75'
-      }
+        background: 'bg-gray-50/75 dark:bg-gray-950/75',
+      },
     },
-    card: {
-      header: 'w-full h-[--header-height] inline-flex items-center justify-between border-b border-gray-200 dark:border-gray-800 text-2xl',
-      center: 'max-w-full w-fit h-full pt-[--header-height] m-auto text-xl flex items-center',
-      links: 'text-2xl gap-y-3 -mt-[--header-height]',
-      footer: 'py-8 mx-auto text-2xl'
-    }
-  }
+  },
+  right: 'flex items-center justify-end lg:flex-1 gap-2',
+  wrapper: 'w-full bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
 }
 
 defineOptions({
-  inheritAttrs: false
+  inheritAttrs: false,
 })
 
 const props = withDefaults(defineProps<{
-  to?: string
-  title?: string
+  class?: any
+  hide?: {
+    center?: boolean
+    left?: boolean
+    panel?: boolean
+    right?: boolean
+    socials?: 'desktop' | 'mobile' | boolean
+  }
   links?: Link[]
   socials?: Link[]
-  hide?: {
-    socials?: 'mobile' | 'desktop' | boolean
-    left?: boolean
-    center?: boolean
-    right?: boolean
-    panel?: boolean
-  }
   sticky?: boolean
+  title?: string
+  to?: string
   ui?: Partial<Config>
-  class?: any
 }>(), {
-  to: '/',
-  title: 'S94-UI',
+  class: undefined,
+  hide: () => ({
+    center: false,
+    left: false,
+    panel: false,
+    right: false,
+    socials: undefined,
+  }),
   links: () => [],
   socials: () => [],
-  hide: () => ({
-    socials: undefined,
-    left: false,
-    center: false,
-    right: false,
-    panel: false
-  }),
+  title: 'S94-UI',
+  to: '/',
   ui: () => ({}),
-  class: undefined
 })
 
 const hideSocialsMap = {
+  desktop: 'lg:hidden',
   mobile: 'hidden lg:flex',
-  desktop: 'lg:hidden'
 }
 
 config.wrapper = twMerge(config.wrapper, props.sticky ? 'sticky top-0 z-50' : '')
 
 const route = useRoute()
-const { ui, attrs } = useUI('s94.header', toRef(props, 'ui'), config, toRef(props, 'class'), true)
+const { attrs, ui } = useUI('s94.header', toRef(props, 'ui'), config, toRef(props, 'class'), true)
 
 const isMenuOpen = ref(false)
 

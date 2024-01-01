@@ -2,12 +2,12 @@ export type Strategy = 'merge' | 'override'
 
 export type NestedKeyOf<ObjectType extends Record<string, any>> = {
   [Key in keyof ObjectType]: ObjectType[Key] extends Record<string, any>
-  ? NestedKeyOf<ObjectType[Key]>
-  : Key
+    ? NestedKeyOf<ObjectType[Key]>
+    : Key
 }[keyof ObjectType]
 
 export type DeepPartial<T> = Partial<{
-  [P in keyof T]: DeepPartial<T[P]> | { [key: string]: string | object }
+  [P in keyof T]: { [key: string]: object | string } | DeepPartial<T[P]>
 }>
 
 type DeepKey<T, Keys extends string[]> =

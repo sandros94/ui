@@ -1,24 +1,28 @@
-import type { AppConfig } from 'nuxt/schema'
-import type { ExtractDeepKey } from '../utils'
 import type { Link as ULink } from '@nuxt/ui/dist/runtime/types'
+import type { AppConfig } from 'nuxt/schema'
+
+import type { ExtractDeepKey } from '../utils'
 
 export interface Link extends ULink {
-  label?: string
   icon?: string
   if?: () => boolean
+  label?: string
 }
 
 export interface LinksUi {
   active: string
-  inactive: string
-  wrapper: string
   base: string
-  label: string
-  iconClass: string
   externalLink: string
+  iconClass: string
+  inactive: string
+  label: string
+  wrapper: string
 }
 
 export interface LinksConfig {
+  default: {
+    variant: LinksVariant
+  }
   variant: {
     horizontal: {
       default: LinksUi
@@ -29,9 +33,6 @@ export interface LinksConfig {
       line: Partial<LinksUi>
     }
   }
-  default: {
-    variant: LinksVariant
-  }
 }
 
-export type LinksVariant = keyof LinksConfig['variant']['horizontal'] | keyof LinksConfig['variant']['vertical'] | ExtractDeepKey<AppConfig, ['s94Ui', 'links', 'variant', 'horizontal']> | ExtractDeepKey<AppConfig, ['s94Ui', 'links', 'variant', 'vertical']>
+export type LinksVariant = ExtractDeepKey<AppConfig, ['s94Ui', 'links', 'variant', 'horizontal']> | ExtractDeepKey<AppConfig, ['s94Ui', 'links', 'variant', 'vertical']> | keyof LinksConfig['variant']['horizontal'] | keyof LinksConfig['variant']['vertical']

@@ -1,34 +1,43 @@
+import typography from '@tailwindcss/typography'
 import { createResolver } from 'nuxt/kit'
 import colors from 'tailwindcss/colors'
-import typography from '@tailwindcss/typography'
 
 const { resolve } = createResolver(import.meta.url)
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  $development: {
+    typescript: {
+      shim: false,
+    },
+  },
   alias: { '#s94-ui': resolve('./') },
-  modules: [
-    '@nuxtjs/google-fonts',
-    '@nuxt/ui',
-  ],
   components: [
-    { path: '#s94-ui/components', prefix: 'S', pathPrefix: false },
+    { path: '#s94-ui/components', pathPrefix: false, prefix: 'S' },
   ],
+  css: [
+    '#s94-ui/assets/css/main.css',
+  ],
+
   devtools: { enabled: true },
 
   googleFonts: {
     download: true,
     families: {
-      'DM+Sans': {
-        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
-        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
-      },
       'DM+Mono': {
-        wght: [300, 400, 500],
         ital: [300, 400, 500],
+        wght: [300, 400, 500],
+      },
+      'DM+Sans': {
+        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
       },
     },
   },
+  modules: [
+    '@nuxtjs/google-fonts',
+    '@nuxt/ui',
+  ],
 
   tailwindcss: {
     config: {
@@ -37,11 +46,11 @@ export default defineNuxtConfig({
       theme: {
         extend: {
           colors: {
+            alert: colors.yellow,
             background: 'rgb(var(--ui-s94-background) / <alpha-value>)',
             foreground: 'rgb(var(--ui-s94-foreground) / <alpha-value>)',
-            success: colors.green,
             info: colors.sky,
-            alert: colors.yellow,
+            success: colors.green,
             warning: colors.red,
           },
           fontFamily: {
@@ -51,18 +60,9 @@ export default defineNuxtConfig({
       },
     },
   },
+
   ui: {
-    safelistColors: ['success', 'info', 'alert', 'warning'],
     icons: ['ph', 'simple-icons'],
-  },
-
-  css: [
-    '#s94-ui/assets/css/main.css',
-  ],
-
-  $development: {
-    typescript: {
-      shim: false,
-    },
+    safelistColors: ['success', 'info', 'alert', 'warning'],
   },
 })
