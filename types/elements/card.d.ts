@@ -5,4 +5,4 @@ export interface CardUi {
   wrapper: string
 }
 
-export type CardConfig = CardUi
+export type CardConfig = Partial<CardUi>
