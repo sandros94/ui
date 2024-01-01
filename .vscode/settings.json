@@ -19,7 +19,5 @@
     "typescript",
     "typescriptreact",
     "vue",
-    "html",
-    "json",
   ]
 }
