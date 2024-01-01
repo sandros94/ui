@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import type { CardConfig, CardUi, Strategy } from '#s94-ui/types'
 
-const { s94Ui: { card: SCard }, ui: { strategy } } = useAppConfig()
+const { s94Ui: { card: sCard }, ui: { strategy } } = useAppConfig()
 
 const configDefault: CardConfig = {
   base: 'flex-grow px-4 py-5 sm:px-6',
@@ -38,7 +38,7 @@ const props = withDefaults(defineProps<{
   ui: undefined,
 })
 
-const config = mergeConfig<CardConfig>(strategy, SCard, configDefault)
+const config = mergeConfig<CardConfig>(strategy, sCard, configDefault)
 
 const { attrs, ui } = useUI('s94.card', toRef(props, 'ui'), config, toRef(props, 'class'))
 </script>

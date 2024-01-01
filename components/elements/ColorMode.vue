@@ -31,7 +31,7 @@ import type { ColorModeConfig, ColorModeUi, Strategy } from '#s94-ui/types'
 
 import { mergeConfig } from '#s94-ui/utils'
 
-const { s94Ui, ui: uiConfig } = useAppConfig()
+const { s94Ui: { colorMode: sColorMode }, ui: { strategy } } = useAppConfig()
 
 const colorMode = useColorMode()
 
@@ -61,7 +61,7 @@ const props = defineProps<{
   variant?: ColorModeConfig['style']['button']['variant']
 }>()
 
-const configDefaults = mergeConfig<typeof colorModeConfigDefault>(uiConfig.strategy, s94Ui.colorMode, colorModeConfigDefault)
+const configDefaults = mergeConfig<typeof colorModeConfigDefault>(strategy, sColorMode, colorModeConfigDefault)
 
 const { attrs, ui } = useUI('s94.colorMode.button', toRef(props, 'ui'), configDefaults, toRef(props, 'class'))
 
