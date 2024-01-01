@@ -1,7 +1,11 @@
 {
   "root": true,
-  "extends": ["@nuxt/eslint-config", "plugin:perfectionist/recommended-natural"],
-  "plugins": ["tailwindcss", "perfectionist"],
+  "extends": [
+    "@nuxt/eslint-config",
+    "plugin:perfectionist/recommended-natural",
+    "plugin:@stylistic/recommended-extends",
+    "plugin:tailwindcss/recommended"
+  ],
   "rules": {
     "vue/max-attributes-per-line": ["warn", {
       "singleline": {
