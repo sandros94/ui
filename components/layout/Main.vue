@@ -7,21 +7,32 @@
 </template>
 
 <script setup lang="ts">
+import type { MainConfig, MainUi, Strategy } from '#s94-ui/types'
+
 import { twMerge } from 'tailwind-merge'
 
-const config = {
+const { s94Ui: { main: sMain }, ui: { strategy } } = useAppConfig()
+
+const configDefault: MainConfig = {
   wrapper: 'min-h-[calc(100svh-var(--header-height))] @container/main',
 }
 
-const props = withDefaults(defineProps<{
-  class?: any
-  padded?: boolean
-  ui?: Partial<typeof config>
-}>(), {
-  class: undefined,
-  padded: true,
-  ui: () => ({}),
+const props = defineProps({
+  class: {
+    default: () => '',
+    type: String as PropType<any>,
+  },
+  padded: {
+    default: true,
+    type: Boolean,
+  },
+  ui: {
+    default: () => ({}),
+    type: Object as PropType<Partial<MainUi> & { strategy?: Strategy }>,
+  },
 })
+
+const config = mergeConfig<MainConfig>(strategy, sMain, configDefault)
 
 config.wrapper = twMerge(config.wrapper, props.padded ? 'flex flex-col justify-around' : '')
 

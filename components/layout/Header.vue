@@ -88,11 +88,13 @@
 </template>
 
 <script setup lang="ts">
-import type { HeaderConfig as Config, Link } from '#s94-ui/types'
+import type { HeaderConfig, HeaderUi, Link, Strategy } from '#s94-ui/types'
 
 import { twMerge } from 'tailwind-merge'
 
-const config: Config = {
+const { s94Ui: { main: sHeader }, ui: { strategy } } = useAppConfig()
+
+const configDefault: HeaderConfig = {
   button: {
     base: 'lg:hidden',
     icon: {
@@ -125,36 +127,54 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<{
-  class?: any
-  hide?: {
-    center?: boolean
-    left?: boolean
-    panel?: boolean
-    right?: boolean
-    socials?: 'desktop' | 'mobile' | boolean
-  }
-  links?: Link[]
-  socials?: Link[]
-  sticky?: boolean
-  title?: string
-  to?: string
-  ui?: Partial<Config>
-}>(), {
-  class: undefined,
-  hide: () => ({
-    center: false,
-    left: false,
-    panel: false,
-    right: false,
-    socials: undefined,
-  }),
-  links: () => [],
-  socials: () => [],
-  title: 'S94-UI',
-  to: '/',
-  ui: () => ({}),
+const props = defineProps({
+  class: {
+    default: () => '',
+    type: [String, Object, Array] as PropType<any>,
+  },
+  hide: {
+    default: () => ({
+      center: false,
+      left: false,
+      panel: false,
+      right: false,
+      socials: undefined,
+    }),
+    type: Object as PropType<{
+      center?: boolean
+      left?: boolean
+      panel?: boolean
+      right?: boolean
+      socials?: 'desktop' | 'mobile' | boolean
+    }>,
+  },
+  links: {
+    default: () => [],
+    type: Array as PropType<Link[]>,
+  },
+  socials: {
+    default: () => [],
+    type: Array as PropType<Link[]>,
+  },
+  sticky: {
+    default: true,
+    type: Boolean,
+  },
+  title: {
+    default: 'S94-UI',
+    type: String,
+  },
+  to: {
+    default: '/',
+    type: String,
+  },
+  ui: {
+    default: () => ({}),
+    type: Object as PropType<Partial<HeaderUi> & { strategy?: Strategy }>,
+  },
 })
+
+const config = mergeConfig<HeaderConfig>(strategy, sHeader, configDefault)
 
 const hideSocialsMap = {
   desktop: 'lg:hidden',
@@ -163,9 +183,9 @@ const hideSocialsMap = {
 
 config.wrapper = twMerge(config.wrapper, props.sticky ? 'sticky top-0 z-50' : '')
 
-const route = useRoute()
 const { attrs, ui } = useUI('s94.header', toRef(props, 'ui'), config, toRef(props, 'class'), true)
 
+const route = useRoute()
 const isMenuOpen = ref(false)
 
 watch(() => route.fullPath, () => {

@@ -28,14 +28,19 @@ const configDefault: CardConfig = {
   wrapper: 'min-h-full flex flex-col overflow-y-auto',
 }
 
-const props = withDefaults(defineProps<{
-  as?: string
-  class?: any
-  ui?: Partial<CardUi> & { strategy?: Strategy }
-}>(), {
-  as: 'div',
-  class: undefined,
-  ui: undefined,
+const props = defineProps({
+  as: {
+    default: 'div',
+    type: String as PropType<any>,
+  },
+  class: {
+    default: () => '',
+    type: String as PropType<any>,
+  },
+  ui: {
+    default: () => ({}),
+    type: Object as PropType<Partial<CardUi> & { strategy?: Strategy }>,
+  },
 })
 
 const config = mergeConfig<CardConfig>(strategy, sCard, configDefault)

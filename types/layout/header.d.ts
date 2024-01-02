@@ -1,9 +1,7 @@
+import type { LinksUi, Optional } from '#s94-ui/types'
 import type { slideover as slideoverConfig } from '@nuxt/ui/dist/runtime/ui.config'
 
-import type { Optional } from './'
-import type { LinksUi } from './elements'
-
-export interface HeaderConfig {
+export interface HeaderUi {
   button: {
     base: string
     icon: {
@@ -29,3 +27,5 @@ export interface HeaderConfig {
   socials?: Partial<LinksUi>
   wrapper: string
 }
+
+export type HeaderConfig = HeaderUi
