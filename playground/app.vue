@@ -3,13 +3,10 @@
     :links="links"
     :socials="socials"
     disable-socials
-    sticky
   />
-  <SMain>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </SMain>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
