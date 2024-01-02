@@ -162,7 +162,7 @@ const props = defineProps({
     type: Array as PropType<Link[]>,
   },
   sticky: {
-    default: true,
+    default: false,
     type: Boolean,
   },
   title: {
