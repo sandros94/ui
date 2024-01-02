@@ -47,7 +47,7 @@ import { mergeConfig } from '#s94-ui/utils'
 
 const { s94Ui: { links: sLinks }, ui: { strategy } } = useAppConfig()
 
-const linksDefaultConfigs: LinksConfig = {
+const linksConfigDefault: LinksConfig = {
   default: {
     variant: 'line',
   },
@@ -97,12 +97,12 @@ const props = defineProps<{
   verticalPadding?: string
 }>()
 
-const configDefaults = mergeConfig<typeof linksDefaultConfigs>(strategy, sLinks, linksDefaultConfigs)
+const configDefault = mergeConfig<LinksConfig>(strategy, sLinks, linksConfigDefault)
 
 const direction = props.vertical ? 'vertical' : 'horizontal'
-const variant = props.variant ?? configDefaults.default.variant
+const variant = props.variant ?? configDefault.default.variant
 
-const config = mergeConfig<LinksUi>('merge', configDefaults.variant[direction][variant], configDefaults.variant[direction].default)
+const config = mergeConfig<LinksUi>('merge', configDefault.variant[direction][variant], configDefault.variant[direction].default)
 
 const { attrs, ui } = useUI('s94.links', toRef(props, 'ui'), config, toRef(props, 'class'))
 
