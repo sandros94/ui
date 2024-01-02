@@ -44,6 +44,8 @@ import type {
 } from '#s94-ui/types'
 
 import { mergeConfig } from '#s94-ui/utils'
+import UIcon from '#ui/components/elements/Icon.vue'
+import ULink from '#ui/components/elements/Link.vue'
 
 const { s94Ui: { links: sLinks }, ui: { strategy } } = useAppConfig()
 

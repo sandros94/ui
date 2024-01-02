@@ -90,7 +90,12 @@
 <script setup lang="ts">
 import type { HeaderConfig, HeaderUi, Link, Strategy } from '#s94-ui/types'
 
+import UButton from '#ui/components/elements/Button.vue'
+import UContainer from '#ui/components/layout/Container.vue'
+import USlideover from '#ui/components/overlays/Slideover.vue'
 import { twMerge } from 'tailwind-merge'
+
+import SLinks from '../elements/Links.vue'
 
 const { s94Ui: { main: sHeader }, ui: { strategy } } = useAppConfig()
 

@@ -51,6 +51,8 @@ import type {
 } from '#s94-ui/types'
 
 import { mergeConfig } from '#s94-ui/utils'
+import UButton from '#ui/components/elements/Button.vue'
+import UContainer from '#ui/components/layout/Container.vue'
 
 const { s94Ui: { main: sHero }, ui: { strategy } } = useAppConfig()
 

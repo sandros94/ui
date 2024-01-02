@@ -30,6 +30,8 @@
 import type { ColorModeConfig, ColorModeUi, Strategy } from '#s94-ui/types'
 
 import { mergeConfig } from '#s94-ui/utils'
+import UButton from '#ui/components/elements/Button.vue'
+import UToggle from '#ui/components/forms/Toggle.vue'
 
 const { s94Ui: { colorMode: sColorMode }, ui: { strategy } } = useAppConfig()
 
