@@ -26,6 +26,7 @@
               :key="index"
               v-for="(link, index) in cta"
               v-bind="link"
+              :ui="ui.cta.button"
               @click="link.click"
             />
           </slot>
