@@ -14,9 +14,9 @@ Use `variant` to distinguish between a `ghost` and `line` variants.
 </template>
 
 <script setup lang="ts">
-import type { Link } from '#s94-ui/types'
+import type { Links } from '#s94-ui/types'
 
-const links: Link[] = [
+const links: Links = [
   {
     label: 'HOME',
     to: '/'

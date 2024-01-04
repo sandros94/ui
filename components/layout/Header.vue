@@ -88,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import type { HeaderConfig, HeaderUi, Link, Strategy } from '#s94-ui/types'
+import type { HeaderConfig, HeaderUi, Links, Strategy } from '#s94-ui/types'
 
 import UButton from '#ui/components/elements/Button.vue'
 import UContainer from '#ui/components/layout/Container.vue'
@@ -155,11 +155,11 @@ const props = defineProps({
   },
   links: {
     default: () => [],
-    type: Array as PropType<Link[]>,
+    type: Array as PropType<Links>,
   },
   socials: {
     default: () => [],
-    type: Array as PropType<Link[]>,
+    type: Array as PropType<Links>,
   },
   sticky: {
     default: false,

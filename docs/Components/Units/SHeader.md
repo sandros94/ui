@@ -15,9 +15,9 @@ Use `disable-socials` to only show `socials` links in the menu when on mobile.
 </template>
 
 <script setup lang="ts">
-import type { Link } from '#s94-ui/types'
+import type { Links } from '#s94-ui/types'
 
-const links: Link[] = [
+const links: Links = [
   {
     label: 'HOME',
     to: '/'
@@ -32,7 +32,7 @@ const links: Link[] = [
   }
 ]
 
-const socials: Link[] = [
+const socials: Links = [
   {
     icon: 'i-simple-icons-instagram',
     to: 'https://instagram.com'

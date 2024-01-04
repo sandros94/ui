@@ -9,6 +9,8 @@ export interface Link extends ULink {
   label?: string
 }
 
+export interface Links extends Array<Link> {}
+
 export interface LinksUi {
   active: string
   base: string

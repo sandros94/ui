@@ -10,11 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Link } from '#s94-ui/types'
+import type { Links } from '#s94-ui/types'
 
 const isVisible = useState('link-is-visible', () => false)
 
-const links: Link[] = [
+const links: Links = [
   {
     label: 'HOME',
     to: '/',
@@ -31,11 +31,15 @@ const links: Link[] = [
   },
 ]
 
-const socials: Link[] = [
+const socialsState = useState<Links | undefined>('socials', () => undefined)
+
+const socials: Links = [
   {
     icon: 'i-simple-icons-github',
     target: '_blank',
     to: 'https://github.com/sandros94/ui',
   },
 ]
+
+socialsState.value = socials
 </script>

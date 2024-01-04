@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import type {
-  Link,
+  Links,
   LinksConfig,
   LinksUi,
   LinksVariant,
@@ -92,7 +92,7 @@ const linksConfigDefault: LinksConfig = {
 
 const props = defineProps<{
   class?: any
-  links: Link[] | Ref<Link[]>
+  links: Links | Ref<Links>
   ui?: Partial<LinksUi> & { strategy?: Strategy }
   variant?: LinksVariant
   vertical?: boolean
