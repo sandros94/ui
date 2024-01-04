@@ -12,12 +12,17 @@
     <UContainer :class="ui.container">
       <div :class="ui.left" v-if="($slots.left || $slots.logo || title || socials) && !hide.left">
         <slot name="left">
-          <NuxtLink :class="ui.logo" :to="titleTo" aria-label="Logo">
+          <NuxtLink
+            :class="ui.logo"
+            :to="titleTo"
+            aria-label="Logo"
+            v-if="title || $slots.logo"
+          >
             <slot name="logo">
               {{ title }}
             </slot>
           </NuxtLink>
-          <SLinks :links="socials" :ui="ui.socials" />
+          <SLinks :links="socials" :ui="ui.socials" v-if="socials" />
         </slot>
       </div>
 
