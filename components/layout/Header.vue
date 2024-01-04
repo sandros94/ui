@@ -109,7 +109,7 @@ const configDefault: HeaderConfig = {
   },
   center: 'hidden lg:flex text-lg',
   container: 'flex items-center justify-between gap-3 h-[--header-height] max-w-[90rem]',
-  left: 'lg:flex-1 flex items-center gap-1.5 text-2xl',
+  left: 'lg:flex-1 flex items-center gap-1.5 text-2xl truncate',
   logo: 'flex-shrink-0 font-bold text-gray-900 dark:text-white flex items-end gap-1.5 break-keep',
   panel: {
     card: {
