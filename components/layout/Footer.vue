@@ -1,21 +1,28 @@
 <template>
   <footer :class="ui.wrapper">
-    <!-- TODO: add line divider with page content by using UDivider -->
+    <slot name="divider">
+      <UDivider
+        :avatar="dividerAvatar"
+        :icon="dividerIcon"
+        :label="dividerLabel"
+        :ui="ui.divider"
+        v-if="!hide.divider"
+      />
+    </slot>
     <UContainer :class="ui.container">
-      <div :class="ui.left" v-if="($slots.left || $slots.logo || title) && !hide.left">
+      <div :class="ui.left" v-if="($slots.left || $slots.logo || title || socials) && !hide.left">
         <slot name="left">
-          <NuxtLink :class="ui.logo" :to="to" aria-label="Logo">
+          <NuxtLink :class="ui.logo" :to="titleTo" aria-label="Logo">
             <slot name="logo">
-              <!-- TODO: remove default title -->
               {{ title }}
             </slot>
           </NuxtLink>
-          <!-- TODO: add socials below logo/title -->
+          <SLinks :links="socials" :ui="ui.socials" />
         </slot>
       </div>
 
-      <div v-if="$slots.center && !hide.center">
-        <slot name="center" />
+      <div v-if="$slots.default && !hide.default">
+        <slot />
       </div>
 
       <div :class="ui.right" v-if="($slots.right || links) && !hide.right">
@@ -31,53 +38,84 @@
         </slot>
       </div>
     </UContainer>
-    <!-- TODO: add conditional hide for legal section -->
-    <UContainer :class="ui.legal">
+    <UContainer :class="ui.legal" v-if="(legal || $slots.legal) && !hide.legal">
       <slot name="legal">
-        <div>
-          © 1994-{{ new Date().getFullYear() }}, Made by
-          <NuxtLink class="underline underline-offset-2" target="_blank" to="https://github.com/sandros94">
-            Sandros94
-          </NuxtLink>
-        </div>
+        {{ legal }}
       </slot>
     </UContainer>
   </footer>
 </template>
 
 <script setup lang="ts">
-import type { Link, Strategy } from '#s94-ui/types'
+import type { FooterUi, Links, Strategy } from '#s94-ui/types'
+import type { Avatar } from '#ui/types'
 
 import UContainer from '#ui/components/layout/Container.vue'
+import UDivider from '#ui/components/layout/Divider.vue'
 
-const configDefault = {
+const configDefault: FooterUi = {
   center: 'flex items-center justify-center gap-3',
-  container: 'py-4 mb-24 flex items-center justify-between gap-3 max-w-[90rem]',
-  left: 'text-lg',
-  legal: 'py-2 flex items-center justify-between gap-3 max-w-[90rem] text-sm',
+  container: 'py-4 mb-24 flex flex-wrap items-center justify-between gap-3 max-w-[90rem]',
+  divider: {
+    border: {
+      base: 'flex border-gray-200 dark:border-gray-800',
+    },
+    icon: {
+      base: 'w-6 h-6',
+    },
+    label: 'text-lg',
+  },
+  left: 'text-lg flex flex-col gap-3',
+  legal: 'py-2 flex items-center justify-center gap-3 max-w-[90rem] text-sm',
   logo: '',
   right: '',
-  wrapper: 'w-full py-2 mb-8 bg-background/75 backdrop-blur border-t border-gray-200 dark:border-gray-800',
+  socials: {
+    strategy: 'merge',
+    wrapper: 'text-2xl',
+  },
+  wrapper: 'w-full py-2 mb-8 bg-background/75 backdrop-blur',
 }
 
 const props = defineProps({
+  dividerAvatar: {
+    default: null,
+    type: Object as PropType<Avatar>,
+  },
+  dividerIcon: {
+    default: '',
+    type: String,
+  },
+  dividerLabel: {
+    default: '',
+    type: String,
+  },
   hide: {
     default: () => ({}),
     type: Object as PropType<{
-      center?: boolean
+      default?: boolean
+      divider?: boolean
       left?: boolean
+      legal?: boolean
       right?: boolean
     }>,
   },
-  links: {
-    default: () => [],
-    type: Array as PropType<Link[]>,
-  },
-  title: {
-    default: 'S94-UI',
+  legal: {
+    default: null,
     type: String,
   },
-  to: {
+  links: {
+    default: () => [],
+    type: Array as PropType<Links>,
+  },
+  socials: {
+    default: () => [],
+    type: Array as PropType<Links>,
+  },
+  title: {
+    default: null,
+    type: String,
+  },
+  titleTo: {
     default: '/',
     type: String,
   },
