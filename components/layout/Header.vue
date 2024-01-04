@@ -3,7 +3,7 @@
     <UContainer :class="ui.container">
       <div :class="ui.left" v-if="!hide.left">
         <slot name="left">
-          <NuxtLink :class="ui.logo" :to="to" aria-label="Logo">
+          <NuxtLink :class="ui.logo" :to="titleTo" aria-label="Logo">
             <slot name="logo">
               {{ title }}
             </slot>
@@ -50,7 +50,7 @@
         <SCard :ui="ui.panel.card">
           <template #header>
             <slot name="left">
-              <NuxtLink :class="ui.logo" :to="to" aria-label="Logo">
+              <NuxtLink :class="ui.logo" :to="titleTo" aria-label="Logo">
                 <slot name="logo">
                   {{ title }}
                 </slot>
@@ -169,7 +169,7 @@ const props = defineProps({
     default: 'S94-UI',
     type: String,
   },
-  to: {
+  titleTo: {
     default: '/',
     type: String,
   },
