@@ -5,9 +5,6 @@
       :class="ui.base"
       :inactive-class="ui.inactive"
       :key="index"
-      :style="{
-        paddingLeft: vertical ? (verticalPadding ?? '1rem') : '0',
-      }"
       :target="link.target"
       :to="link.to"
       v-for="(link, index) in filteredLinks"
@@ -82,7 +79,7 @@ const linksConfigDefault: LinksConfig = {
       },
       line: {
         active: 'text-primary border-current',
-        base: '-ml-[1px] mr-[1px] border-s',
+        base: 'pl-4 -ml-[1px] mr-[1px] border-s',
         inactive: 'border-transparent hover:border-black dark:hover:border-white text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white',
         wrapper: 'border-s border-gray-200 dark:border-gray-800',
       },
