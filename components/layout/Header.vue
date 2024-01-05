@@ -119,8 +119,9 @@ const configDefault: HeaderConfig = {
       links: 'text-2xl gap-y-3 -mt-[--header-height]',
     },
     slideover: {
+      background: 'bg-background dark:bg-background',
       overlay: {
-        background: 'bg-gray-50/75 dark:bg-gray-950/75',
+        background: 'bg-background/75 dark:bg-background/75',
       },
     },
   },
