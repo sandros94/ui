@@ -10,11 +10,11 @@ export default defineNuxtPlugin(() => {
     return `:root {
   --header-height: ${s94Ui.header.height};
 
-  ${Object.entries(s94Ui.light).map(([key, value]) => `--ui-s94-${key}: ${value};`).join('\n')}
+  ${Object.entries(s94Ui.light).map(([key, value]) => `--s94-ui-${key}: ${value};`).join('\n')}
 }
 
 .dark {
-  ${Object.entries(s94Ui.dark).map(([key, value]) => `--ui-s94-${key}: ${value};`).join('\n')}
+  ${Object.entries(s94Ui.dark).map(([key, value]) => `--s94-ui-${key}: ${value};`).join('\n')}
 }`
   })
 

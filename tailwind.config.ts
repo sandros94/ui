@@ -23,12 +23,12 @@ export default <Partial<Config>>{
       colors: {
         alert: colors.yellow,
         // once Firefox supports https://caniuse.com/css-relative-colors we should use the following:
-        // background: 'rgb(from var(--ui-s94-background) r g b / <alpha-value>)',
-        background: colorMixAlphaValueWithCustomProperty('--ui-s94-background'),
+        // background: 'rgb(from var(--s94-ui-background) r g b / <alpha-value>)',
+        background: colorMixAlphaValueWithCustomProperty('--s94-ui-background'),
         current: 'currentColor',
         // once Firefox supports https://caniuse.com/css-relative-colors we should use the following:
-        // foreground: 'rgb(from var(--ui-s94-foreground) r g b / <alpha-value>)',
-        foreground: colorMixAlphaValueWithCustomProperty('--ui-s94-foreground'),
+        // foreground: 'rgb(from var(--s94-ui-foreground) r g b / <alpha-value>)',
+        foreground: colorMixAlphaValueWithCustomProperty('--s94-ui-foreground'),
         info: colors.sky,
         success: colors.green,
         transparent: 'transparent',
