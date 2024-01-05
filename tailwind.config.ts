@@ -3,6 +3,13 @@ import type { Config } from 'tailwindcss'
 import typography from '@tailwindcss/typography'
 import colors from 'tailwindcss/colors'
 
+// source: https://github.com/tailwindlabs/tailwindcss/issues/9143#issuecomment-1878889257
+const colorMixAlphaValueWithCustomProperty = customPropertyName => `color-mix(
+  in srgb,
+  var(${customPropertyName}),
+  transparent calc(100% - 100% * <alpha-value>)
+)`
+
 export default <Partial<Config>>{
   plugins: [typography],
   safelist: [
@@ -15,9 +22,13 @@ export default <Partial<Config>>{
     extend: {
       colors: {
         alert: colors.yellow,
-        background: 'var(--ui-s94-background)',
+        // once Firefox supports https://caniuse.com/css-relative-colors we should use the following:
+        // background: 'rgb(from var(--ui-s94-background) r g b / <alpha-value>)',
+        background: colorMixAlphaValueWithCustomProperty('--ui-s94-background'),
         current: 'currentColor',
-        foreground: 'var(--ui-s94-foreground)',
+        // once Firefox supports https://caniuse.com/css-relative-colors we should use the following:
+        // foreground: 'rgb(from var(--ui-s94-foreground) r g b / <alpha-value>)',
+        foreground: colorMixAlphaValueWithCustomProperty('--ui-s94-foreground'),
         info: colors.sky,
         success: colors.green,
         transparent: 'transparent',

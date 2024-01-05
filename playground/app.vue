@@ -3,6 +3,7 @@
     :links="links"
     :socials="socials"
     disable-socials
+    sticky
   />
   <NuxtLayout>
     <NuxtPage />
