@@ -12,7 +12,7 @@ export default defineAppConfig({
       foreground: '#000000',
     },
     dark: {
-      background: '#0f0f0f',
+      background: '#090909',
       foreground: '#fafafa',
     },
     /* eslint-enable perfectionist/sort-objects */

@@ -1,6 +1,4 @@
-import typography from '@tailwindcss/typography'
 import { createResolver } from 'nuxt/kit'
-import colors from 'tailwindcss/colors'
 
 const { resolve } = createResolver(import.meta.url)
 
@@ -38,28 +36,6 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxt/ui',
   ],
-
-  tailwindcss: {
-    config: {
-      content: [],
-      plugins: [typography],
-      theme: {
-        extend: {
-          colors: {
-            alert: colors.yellow,
-            background: 'rgb(var(--ui-s94-background) / <alpha-value>)',
-            foreground: 'rgb(var(--ui-s94-foreground) / <alpha-value>)',
-            info: colors.sky,
-            success: colors.green,
-            warning: colors.red,
-          },
-          fontFamily: {
-            sans: ['DM Sans', 'DM Mono'],
-          },
-        },
-      },
-    },
-  },
 
   ui: {
     icons: ['ph', 'simple-icons'],
