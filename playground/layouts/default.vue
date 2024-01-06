@@ -23,42 +23,6 @@
 <script setup lang="ts">
 import type { Links, LinksGroup } from '#s94-ui/types'
 
+const linksGroup = useState<LinksGroup[] | undefined>('linksGroup')
 const socials = useState<Links | undefined>('socials')
-
-const linksGroup = useState<LinksGroup[] | undefined>('linksGroup', () => undefined)
-const linksGroupDefined: LinksGroup[] = [
-  {
-    links: [
-      {
-        label: 'Home',
-        target: '_blank',
-        to: '/',
-      },
-      {
-        label: 'About',
-        to: '/about',
-      },
-      {
-        label: 'Contact',
-        to: '/contact',
-      },
-    ],
-    name: 'Navigation',
-  },
-  {
-    links: [
-      {
-        label: 'Privacy Policy',
-        to: '/privacy-policy',
-      },
-      {
-        label: 'Terms of Use',
-        to: '/terms-of-use',
-      },
-    ],
-    name: 'Legal',
-  },
-]
-
-linksGroup.value = linksGroupDefined
 </script>
