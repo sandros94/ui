@@ -94,7 +94,7 @@ const linksConfigDefault: LinksConfig = {
         active: 'text-primary border-current',
         base: 'pl-4 -ml-[1px] mr-[1px] border-s',
         inactive: 'border-transparent hover:border-black dark:hover:border-white text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white',
-        wrapper: 'border-s border-gray-200 dark:border-gray-800',
+        wrapper: 'border-s border-gray-300 dark:border-gray-700',
       },
     },
   },
