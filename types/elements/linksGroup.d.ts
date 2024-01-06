@@ -10,9 +10,9 @@ export interface LinksGroup {
 
 export interface LinksGroupUi {
   group: {
-    base: string
+    base?: string
+    label?: string
     links?: Partial<LinksUi> & { variant?: LinksVariant, vertical?: boolean }
-    name: string
   }
   wrapper: string
 }

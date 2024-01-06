@@ -1,3 +1,4 @@
+import type { DeepPartial } from '#s94-ui/types'
 import type { AppConfig } from 'nuxt/schema'
 
 import { button, toggle } from '@nuxt/ui/dist/runtime/types'
@@ -5,9 +6,9 @@ import { button, toggle } from '@nuxt/ui/dist/runtime/types'
 import type { ExtractDeepKey } from '../utils'
 
 export interface ColorModeUi {
-  button: typeof button
+  button: DeepPartial<typeof button>
   classFallback: string
-  toggle: typeof toggle
+  toggle: DeepPartial<typeof toggle>
 }
 
 export interface ColorModeConfig {

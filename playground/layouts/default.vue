@@ -10,10 +10,11 @@
     >
       <template #legal>
         <div>
-          © 1994-{{ new Date().getFullYear() }}, Made by
+          © 1994-{{ new Date().getFullYear() }}, Grown up by
           <NuxtLink class="underline underline-offset-2" target="_blank" to="https://github.com/sandros94">
-            Sandros94
+            <span>Sandros94</span>
           </NuxtLink>
+          & parents
         </div>
       </template>
     </SFooter>

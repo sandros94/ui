@@ -2,7 +2,7 @@
   <nav :class="ui.wrapper" v-bind="attrs" v-if="links">
     <div :class="ui.group.base" :key="index" v-for="(linksGroup, index) of links">
       <slot :index="index" :links-group="linksGroup">
-        <div :class="ui.group.name" v-if="linksGroup.label || $slots.groupName">
+        <div :class="ui.group.label" v-if="linksGroup.label || $slots.groupName">
           <slot :group-name="linksGroup.label" name="group-name">
             {{ linksGroup.label }}
           </slot>
@@ -44,6 +44,7 @@ const configDefault: LinksGroupConfig = {
     centered: {
       group: {
         base: 'p-2 w-fit text-center',
+        label: 'pb-2 text-lg uppercase',
         links: {
           base: 'mx-auto',
           label: {
@@ -52,13 +53,13 @@ const configDefault: LinksGroupConfig = {
           variant: 'default',
           vertical: true,
         },
-        name: 'pb-2 text-lg uppercase',
       },
       wrapper: 'flex flex-wrap gap-4',
     },
     default: {
       group: {
         base: 'p-2 w-fit',
+        label: 'pb-2 text-lg uppercase',
         links: {
           base: '',
           label: {
@@ -67,13 +68,13 @@ const configDefault: LinksGroupConfig = {
           variant: 'default',
           vertical: true,
         },
-        name: 'pb-2 text-lg uppercase',
       },
       wrapper: 'flex flex-wrap gap-4',
     },
     rtl: {
       group: {
         base: 'p-2 w-fit text-right',
+        label: 'pb-2 text-lg uppercase',
         links: {
           base: 'ml-auto',
           label: {
@@ -82,7 +83,6 @@ const configDefault: LinksGroupConfig = {
           variant: 'default',
           vertical: true,
         },
-        name: 'pb-2 text-lg uppercase',
       },
       wrapper: 'flex flex-wrap gap-4',
     },

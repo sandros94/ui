@@ -14,7 +14,7 @@ export interface HeroUi {
   container: string
   cta: {
     button?: UButton
-    wrapper: string
+    wrapper?: string
   }
   headline: string
   subhead: string
