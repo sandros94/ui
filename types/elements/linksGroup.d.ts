@@ -4,7 +4,7 @@ import type { AppConfig } from 'nuxt/schema'
 import type { ExtractDeepKey } from '../utils'
 
 export interface LinksGroup {
-  label: string
+  label?: string
   links: Links
 }
 
