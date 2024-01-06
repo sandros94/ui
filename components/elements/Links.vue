@@ -9,21 +9,20 @@
       :to="link.to"
       v-for="(link, index) in filteredLinks"
     >
-    <!-- TODO: refactor slot and expose classes to config -->
       <slot name="label">
-        <span class="relative inline-flex max-w-full gap-x-2">
+        <span :class="ui.label.wrapper">
           <UIcon
             :class="ui.iconClass"
             :name="link.icon"
             v-if="link.icon"
           />
-          <span :class="ui.label" v-if="link.label">
+          <span :class="ui.label.base" v-if="link.label">
             {{ link.label }}
           </span>
-          <sup class="absolute top-0 right-0 translate-x-full h-fit" v-if="link.label && link.target === '_blank'">
+          <sup :class="ui.externalLink.base" v-if="link.label && link.target === '_blank'">
             <UIcon
-              :class="ui.externalLink"
-              name="i-ph-arrow-up-right-light"
+              :class="ui.externalLink.iconClass"
+              :name="externalIcon ?? configDefault.default.externalIcon"
             />
           </sup>
         </span>
@@ -50,6 +49,7 @@ const { s94Ui: { links: sLinks }, ui: { strategy } } = useAppConfig()
 const linksConfigDefault: LinksConfig = {
   default: {
     variant: 'line',
+    externalIcon: 'i-ph-arrow-up-right-light',
   },
 
   variant: {
@@ -57,11 +57,17 @@ const linksConfigDefault: LinksConfig = {
       default: {
         active: 'underline underline-offset-[10%]',
         base: 'relative inline-flex gap-x-2 font-light hover:underline underline-offset-[10%] decoration-from-font',
-        externalLink: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
+        externalLink: {
+          base: 'static top-0 -mx-1 h-fit',
+          iconClass: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
+        },
         iconClass: 'place-self-center',
         inactive: '',
-        label: '',
-        wrapper: 'not-prose flex items-center gap-x-3',
+        label: {
+          wrapper: 'relative inline-flex max-w-full gap-x-1',
+          base: '',
+        },
+        wrapper: 'not-prose flex items-center gap-x-4',
       },
       line: {
         active: 'text-primary',
@@ -72,10 +78,16 @@ const linksConfigDefault: LinksConfig = {
       default: {
         active: '',
         base: 'max-w-full group relative',
-        externalLink: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
+        externalLink: {
+          base: 'absolute top-0 right-0 translate-x-full h-fit',
+          iconClass: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
+        },
         iconClass: 'place-self-center',
         inactive: '',
-        label: 'max-w-full truncate',
+        label: {
+          wrapper: 'relative inline-flex max-w-full gap-x-2',
+          base: 'max-w-full truncate',
+        },
         wrapper: 'not-prose max-w-[inherit] flex flex-col items-start gap-y-2 font-light',
       },
       line: {
@@ -90,6 +102,7 @@ const linksConfigDefault: LinksConfig = {
 
 const props = defineProps<{
   class?: any
+  externalIcon?: string
   links: Links | Ref<Links>
   ui?: Partial<LinksUi> & { strategy?: Strategy }
   variant?: LinksVariant
