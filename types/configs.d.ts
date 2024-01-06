@@ -5,6 +5,7 @@ import type {
   HeaderConfig,
   HeroConfig,
   LinksConfig,
+  LinksGroupConfig,
   MainConfig,
 } from '#s94-ui/types'
 
@@ -15,5 +16,6 @@ export interface AllConfigs {
   header: HeaderConfig
   hero: HeroConfig
   links: LinksConfig
+  linksGroup: LinksGroupConfig
   main: MainConfig
 }
