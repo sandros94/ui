@@ -10,7 +10,7 @@
       v-for="(link, index) in filteredLinks"
     >
       <slot name="label">
-        <span class="inline-flex max-w-full gap-x-2">
+        <span class="inline-flex w-fit gap-x-2">
           <UIcon
             :class="ui.iconClass"
             :name="link.icon"
@@ -70,7 +70,7 @@ const linksConfigDefault: LinksConfig = {
     vertical: {
       default: {
         active: '',
-        base: 'w-full group relative',
+        base: 'group relative',
         externalLink: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
         iconClass: 'place-self-center',
         inactive: '',
