@@ -1,10 +1,10 @@
 <template>
   <nav :class="ui.wrapper" v-bind="attrs" v-if="links">
     <div :class="ui.group.base" :key="index" v-for="(linksGroup, index) of links">
-      <slot :links-group="linksGroup">
-        <div :class="ui.group.name" v-if="linksGroup.name || $slots.groupName">
-          <slot :group-name="linksGroup.name" name="group-name">
-            {{ linksGroup.name }}
+      <slot :index="index" :links-group="linksGroup">
+        <div :class="ui.group.name" v-if="$slots.groupName">
+          <slot :group-name="linksGroup.label" name="group-name">
+            {{ linksGroup.label }}
           </slot>
         </div>
         <slot :links="linksGroup.links" name="links">
