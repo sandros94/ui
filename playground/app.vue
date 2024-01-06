@@ -4,6 +4,7 @@
     :socials="socials"
     disable-socials
     sticky
+    variant="rtl"
   />
   <NuxtLayout>
     <NuxtPage />

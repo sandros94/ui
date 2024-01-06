@@ -1,19 +1,22 @@
 import type { LinksUi, Optional } from '#s94-ui/types'
 import type { slideover as slideoverConfig } from '@nuxt/ui/dist/runtime/ui.config'
+import type { AppConfig } from 'nuxt/schema'
+
+import type { ExtractDeepKey } from '../utils'
 
 export interface HeaderUi {
-  button: {
+  center: string
+  container: string
+  left: string
+  links?: Partial<LinksUi>
+  logo: string
+  mobileButton: {
     base?: string
     icon?: {
       close?: string
       open?: string
     }
   }
-  center: string
-  container: string
-  left: string
-  links?: Partial<LinksUi>
-  logo: string
   panel: {
     card?: {
       center?: string
@@ -21,11 +24,27 @@ export interface HeaderUi {
       header?: string
       links?: string
     }
-    slideover?: Optional<typeof slideoverConfig>
+    slideover?: Optional<typeof slideoverConfig> & { side?: 'left' | 'right' }
   }
   right: string
   socials?: Partial<LinksUi>
   wrapper: string
 }
 
-export type HeaderConfig = HeaderUi
+export interface HeaderConfig {
+  default: {
+    mobileButton?: {
+      icon?: {
+        close?: string
+        open?: string
+      }
+    }
+    variant: HeaderVariant
+  }
+  variant: {
+    default: HeaderUi
+    rtl: Partial<HeaderUi>
+  }
+}
+
+export type HeaderVariant = ExtractDeepKey<AppConfig, ['s94Ui', 'header', 'variant']> | keyof HeaderConfig['variant']
