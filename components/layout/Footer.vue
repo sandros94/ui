@@ -58,7 +58,7 @@ import type {
   FooterVariant,
   Links,
   LinksGroup,
-  Strategy
+  Strategy,
 } from '#s94-ui/types'
 import type { Avatar } from '#ui/types'
 
