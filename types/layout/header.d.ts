@@ -1,4 +1,4 @@
-import type { LinksUi, Optional } from '#s94-ui/types'
+import type { CardUi, LinksUi, Optional } from '#s94-ui/types'
 import type { slideover as slideoverConfig } from '@nuxt/ui/dist/runtime/ui.config'
 import type { AppConfig } from 'nuxt/schema'
 
@@ -18,10 +18,8 @@ export interface HeaderUi {
     }
   }
   panel: {
-    card?: {
-      center?: string
-      footer?: string
-      header?: string
+    card?: Partial<CardUi> & {
+      panelCenter?: string
       links?: string
     }
     slideover?: Optional<typeof slideoverConfig> & { side?: 'left' | 'right' }

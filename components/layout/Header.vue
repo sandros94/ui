@@ -74,7 +74,7 @@
             />
           </template>
           <slot name="panel-center">
-            <div :class="ui.panel?.card?.center">
+            <div :class="ui.panel?.card?.panelCenter">
               <SLinks
                 :class="ui.panel?.card?.links"
                 :links="links"
@@ -132,8 +132,8 @@ const headerConfigDefault: HeaderConfig = {
       },
       panel: {
         card: {
-          center: 'max-w-full w-fit h-full pt-[--header-height] m-auto text-xl flex items-center',
-          footer: 'py-8 mx-auto text-2xl',
+          panelCenter: 'max-w-full w-fit h-full pt-[--header-height] m-auto text-xl flex items-center',
+          footer: 'w-full py-8 mx-auto text-2xl',
           header: 'w-full h-[--header-height] inline-flex items-center justify-between border-b border-gray-200 dark:border-gray-800 text-2xl',
           links: 'text-2xl gap-y-3 -mt-[--header-height]',
         },
@@ -143,6 +143,9 @@ const headerConfigDefault: HeaderConfig = {
             background: 'bg-background/75 dark:bg-background/75',
           },
         },
+      },
+      socials: {
+        wrapper: 'w-fit mx-auto',
       },
       right: 'flex items-center justify-end lg:flex-1 gap-2',
       wrapper: 'w-full bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
@@ -155,7 +158,7 @@ const headerConfigDefault: HeaderConfig = {
           header: 'flex-row-reverse',
         },
         slideover: {
-          side: 'right',
+          side: 'left',
         },
       },
       right: 'flex-row-reverse',
