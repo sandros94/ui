@@ -9,8 +9,9 @@
       :to="link.to"
       v-for="(link, index) in filteredLinks"
     >
+    <!-- TODO: refactor slot and expose classes to config -->
       <slot name="label">
-        <span class="inline-flex w-fit max-w-full gap-x-2">
+        <span class="relative inline-flex max-w-full gap-x-2">
           <UIcon
             :class="ui.iconClass"
             :name="link.icon"
@@ -19,7 +20,7 @@
           <span :class="ui.label" v-if="link.label">
             {{ link.label }}
           </span>
-          <sup class="top-0 -ml-1.5 h-fit" v-if="link.label && link.target === '_blank'">
+          <sup class="absolute top-0 right-0 translate-x-full h-fit" v-if="link.label && link.target === '_blank'">
             <UIcon
               :class="ui.externalLink"
               name="i-ph-arrow-up-right-light"
@@ -70,7 +71,7 @@ const linksConfigDefault: LinksConfig = {
     vertical: {
       default: {
         active: '',
-        base: 'group relative',
+        base: 'max-w-full group relative',
         externalLink: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
         iconClass: 'place-self-center',
         inactive: '',
