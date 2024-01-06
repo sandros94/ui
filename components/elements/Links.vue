@@ -48,8 +48,8 @@ const { s94Ui: { links: sLinks }, ui: { strategy } } = useAppConfig()
 
 const linksConfigDefault: LinksConfig = {
   default: {
-    variant: 'line',
     externalIcon: 'i-ph-arrow-up-right-light',
+    variant: 'line',
   },
 
   variant: {
@@ -64,8 +64,8 @@ const linksConfigDefault: LinksConfig = {
         iconClass: 'place-self-center',
         inactive: '',
         label: {
-          wrapper: 'relative inline-flex max-w-full gap-x-1',
           base: '',
+          wrapper: 'relative inline-flex max-w-full gap-x-1',
         },
         wrapper: 'not-prose flex items-center gap-x-4',
       },
@@ -85,8 +85,8 @@ const linksConfigDefault: LinksConfig = {
         iconClass: 'place-self-center',
         inactive: '',
         label: {
-          wrapper: 'relative inline-flex max-w-full gap-x-2',
           base: 'max-w-full truncate',
+          wrapper: 'relative inline-flex max-w-full gap-x-2',
         },
         wrapper: 'not-prose max-w-[inherit] flex flex-col items-start gap-y-2 font-light',
       },
