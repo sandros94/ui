@@ -25,7 +25,8 @@ import type { Links, LinksGroup } from '#s94-ui/types'
 
 const socials = useState<Links | undefined>('socials')
 
-const linksGroup: LinksGroup[] = [
+const linksGroup = useState<LinksGroup[] | undefined>('linksGroup', () => undefined)
+const linksGroupDefined: LinksGroup[] = [
   {
     links: [
       {
@@ -58,4 +59,6 @@ const linksGroup: LinksGroup[] = [
     name: 'Legal',
   },
 ]
+
+linksGroup.value = linksGroupDefined
 </script>

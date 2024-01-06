@@ -1,21 +1,23 @@
 <template>
-  <nav :class="ui.wrapper" v-bind="attrs">
+  <nav :class="ui.wrapper" v-bind="attrs" v-if="links">
     <div :class="ui.group.base" :key="index" v-for="(linksGroup, index) of links">
-      <div :class="ui.group.name" v-if="linksGroup.name || $slots.groupName">
-        <slot :group-name="linksGroup.name" name="group-name">
-          {{ linksGroup.name }}
+      <slot :links-group="linksGroup">
+        <div :class="ui.group.name" v-if="linksGroup.name || $slots.groupName">
+          <slot :group-name="linksGroup.name" name="group-name">
+            {{ linksGroup.name }}
+          </slot>
+        </div>
+        <slot :links="linksGroup.links" name="links">
+          <SLinks
+            :class="ui.group.links?.wrapper"
+            :links="linksGroup.links"
+            :ui="ui.group.links"
+            v-bind="{
+              variant: ui.group.links?.variant,
+              vertical: ui.group.links?.vertical,
+            }"
+          />
         </slot>
-      </div>
-      <slot :links="linksGroup.links" name="links">
-        <SLinks
-          :class="ui.group.links?.wrapper"
-          :links="linksGroup.links"
-          :ui="ui.group.links"
-          v-bind="{
-            variant: ui.group.links?.variant,
-            vertical: ui.group.links?.vertical,
-          }"
-        />
       </slot>
     </div>
   </nav>
@@ -95,7 +97,7 @@ const props = defineProps({
     type: String as PropType<any>,
   },
   links: {
-    required: true,
+    default: undefined,
     type: Array as PropType<LinksGroup[]>,
   },
   ui: {
