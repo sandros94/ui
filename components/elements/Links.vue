@@ -56,7 +56,7 @@ const linksConfigDefault: LinksConfig = {
       default: {
         active: 'underline underline-offset-[10%]',
         base: 'relative inline-flex gap-x-2 font-light hover:underline underline-offset-[10%] decoration-from-font',
-        externalLink: 'aliased text-gray-400 dark:text-gray-500',
+        externalLink: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
         iconClass: 'place-self-center',
         inactive: '',
         label: '',
@@ -71,7 +71,7 @@ const linksConfigDefault: LinksConfig = {
       default: {
         active: '',
         base: 'w-full group relative',
-        externalLink: 'aliased text-gray-400 dark:text-gray-500',
+        externalLink: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
         iconClass: 'place-self-center',
         inactive: '',
         label: 'max-w-full truncate',
