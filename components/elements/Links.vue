@@ -10,7 +10,7 @@
       v-for="(link, index) in filteredLinks"
     >
       <slot name="label">
-        <span class="inline-flex w-fit gap-x-2">
+        <span class="inline-flex w-fit max-w-full gap-x-2">
           <UIcon
             :class="ui.iconClass"
             :name="link.icon"
