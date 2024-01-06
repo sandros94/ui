@@ -11,12 +11,12 @@ export interface FooterUi {
   left: string
   legal: string
   linksGroup?: {
-    ui?: DeepPartial<LinksGroupUi> & { strategy?: Strategy }
+    ui?: Partial<LinksGroupUi> & { strategy?: Strategy }
     variant?: LinksGroupVariant
   }
   logo: string
   right: string
-  socials?: DeepPartial<LinksUi> & { strategy?: Strategy }
+  socials?: Partial<LinksUi> & { strategy?: Strategy }
   wrapper: string
 }
 

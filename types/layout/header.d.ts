@@ -1,4 +1,4 @@
-import type { DeepPartial, LinksUi, Optional } from '#s94-ui/types'
+import type { LinksUi, Optional } from '#s94-ui/types'
 import type { slideover as slideoverConfig } from '@nuxt/ui/dist/runtime/ui.config'
 
 export interface HeaderUi {
@@ -12,7 +12,7 @@ export interface HeaderUi {
   center: string
   container: string
   left: string
-  links?: DeepPartial<LinksUi>
+  links?: Partial<LinksUi>
   logo: string
   panel: {
     card?: {
@@ -24,7 +24,7 @@ export interface HeaderUi {
     slideover?: Optional<typeof slideoverConfig>
   }
   right: string
-  socials?: DeepPartial<LinksUi>
+  socials?: Partial<LinksUi>
   wrapper: string
 }
 

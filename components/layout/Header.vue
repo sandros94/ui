@@ -34,7 +34,7 @@
           <UButton
             :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Menu`"
             :class="ui.button.base"
-            :icon="isMenuOpen ? ui.button.icon.close : ui.button.icon.open"
+            :icon="isMenuOpen ? ui.button.icon?.close : ui.button.icon?.open"
             @click="isMenuOpen = !isMenuOpen"
             color="gray"
             size="xl"
@@ -59,7 +59,7 @@
             <UButton
               :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Menu`"
               :class="ui.button.base"
-              :icon="isMenuOpen ? ui.button.icon.close : ui.button.icon.open"
+              :icon="isMenuOpen ? ui.button.icon?.close : ui.button.icon?.open"
               @click="isMenuOpen = !isMenuOpen"
               color="gray"
               size="xl"
@@ -68,9 +68,9 @@
             />
           </template>
           <slot name="panel-center">
-            <div :class="ui.panel.card.center">
+            <div :class="ui.panel.card?.center">
               <SLinks
-                :class="ui.panel.card.links"
+                :class="ui.panel.card?.links"
                 :links="links"
                 :ui="ui.links"
                 v-if="links"
