@@ -54,7 +54,7 @@ const configDefault: LinksGroupConfig = {
           vertical: true,
         },
       },
-      wrapper: 'flex flex-wrap gap-4',
+      wrapper: 'flex flex-wrap justify-center gap-4',
     },
     default: {
       group: {
