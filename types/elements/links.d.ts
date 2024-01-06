@@ -15,22 +15,22 @@ export interface LinksUi {
   active: string
   base: string
   externalLink: {
-    base: string
-    iconClass: string
+    base?: string
+    iconClass?: string
   }
   iconClass: string
   inactive: string
   label: {
-    wrapper: string
-    base: string
+    base?: string
+    wrapper?: string
   }
   wrapper: string
 }
 
 export interface LinksConfig {
   default: {
-    variant: LinksVariant
     externalIcon: string
+    variant: LinksVariant
   }
   variant: {
     horizontal: {

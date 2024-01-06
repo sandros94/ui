@@ -2,20 +2,20 @@
   <nav :class="ui.wrapper" v-bind="attrs">
     <div :class="ui.group.base" :key="index" v-for="(linksGroup, index) of links">
       <div :class="ui.group.name" v-if="linksGroup.name || $slots.groupName">
-        <slot name="group-name" :group-name="linksGroup.name">
+        <slot :group-name="linksGroup.name" name="group-name">
           {{ linksGroup.name }}
         </slot>
       </div>
-      <slot name="links" :links="linksGroup.links">
+      <slot :links="linksGroup.links" name="links">
         <SLinks
-        :class="ui.group.links?.wrapper"
-        :links="linksGroup.links"
-        :ui="ui.group.links"
-        v-bind="{
-          variant: ui.group.links?.variant,
-          vertical: ui.group.links?.vertical,
-        }"
-      />
+          :class="ui.group.links?.wrapper"
+          :links="linksGroup.links"
+          :ui="ui.group.links"
+          v-bind="{
+            variant: ui.group.links?.variant,
+            vertical: ui.group.links?.vertical,
+          }"
+        />
       </slot>
     </div>
   </nav>
@@ -27,7 +27,7 @@ import type {
   LinksGroupConfig,
   LinksGroupUi,
   LinksGroupVariant,
-  Strategy
+  Strategy,
 } from '#s94-ui/types'
 
 import SLinks from './Links.vue'
@@ -39,27 +39,33 @@ const configDefault: LinksGroupConfig = {
     variant: 'default',
   },
   variant: {
-    default: {
-      group: {
-        base: 'p-2 w-fit',
-        links: {
-          variant: 'default',
-          vertical: true,
-          base: ''
-        },
-        name: 'pb-1 text-lg uppercase',
-      },
-      wrapper: 'flex flex-wrap gap-4',
-    },
     centered: {
       group: {
         base: 'p-2 w-fit text-center',
         links: {
+          base: 'mx-auto',
+          label: {
+            base: 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100',
+          },
           variant: 'default',
           vertical: true,
-          base: 'mx-auto'
         },
-        name: 'pb-1 text-lg uppercase',
+        name: 'pb-2 text-lg uppercase',
+      },
+      wrapper: 'flex flex-wrap gap-4',
+    },
+    default: {
+      group: {
+        base: 'p-2 w-fit',
+        links: {
+          base: '',
+          label: {
+            base: 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100',
+          },
+          variant: 'default',
+          vertical: true,
+        },
+        name: 'pb-2 text-lg uppercase',
       },
       wrapper: 'flex flex-wrap gap-4',
     },
@@ -67,11 +73,14 @@ const configDefault: LinksGroupConfig = {
       group: {
         base: 'p-2 w-fit text-right',
         links: {
+          base: 'ml-auto',
+          label: {
+            base: 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100',
+          },
           variant: 'default',
           vertical: true,
-          base: 'ml-auto'
         },
-        name: 'pb-1 text-lg uppercase',
+        name: 'pb-2 text-lg uppercase',
       },
       wrapper: 'flex flex-wrap gap-4',
     },

@@ -22,8 +22,8 @@ export interface LinksGroupConfig {
     variant: LinksGroupVariant
   }
   variant: {
-    default: LinksGroupUi
     centered: LinksGroupUi
+    default: LinksGroupUi
     rtl: LinksGroupUi
   }
 }
