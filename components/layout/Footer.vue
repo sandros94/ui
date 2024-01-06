@@ -75,7 +75,7 @@ const configDefault: FooterConfig = {
   variant: {
     default: {
       center: 'flex items-center justify-center gap-3',
-      container: 'py-4 mt-4 mb-14 lg:mb-20 flex flex-wrap justify-around gap-3 max-w-[90rem]',
+      container: 'py-4 mt-4 mb-14 lg:mb-20 flex flex-wrap justify-around gap-12 max-w-[90rem]',
       divider: {
         border: {
           base: 'flex border-gray-200 dark:border-gray-800',
