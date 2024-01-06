@@ -3,7 +3,11 @@
     <SMain>
       <slot />
     </SMain>
-    <SFooter :divider-avatar="{ src: 'https://avatars.githubusercontent.com/u/13056429?v=4', size: 'lg' }" :socials="socials">
+    <SFooter
+      :divider-avatar="{ src: 'https://avatars.githubusercontent.com/u/13056429?v=4', size: 'lg' }"
+      :links="linksGroup"
+      :socials="socials"
+    >
       <template #legal>
         <div>
           © 1994-{{ new Date().getFullYear() }}, Made by
@@ -17,7 +21,41 @@
 </template>
 
 <script setup lang="ts">
-import type { Links } from '#s94-ui/types'
+import type { Links, LinksGroup } from '#s94-ui/types'
 
 const socials = useState<Links | undefined>('socials')
+
+const linksGroup: LinksGroup[] = [
+  {
+    links: [
+      {
+        label: 'Home',
+        target: '_blank',
+        to: '/',
+      },
+      {
+        label: 'About',
+        to: '/about',
+      },
+      {
+        label: 'Contact',
+        to: '/contact',
+      },
+    ],
+    name: 'Navigation',
+  },
+  {
+    links: [
+      {
+        label: 'Privacy Policy',
+        to: '/privacy-policy',
+      },
+      {
+        label: 'Terms of Use',
+        to: '/terms-of-use',
+      },
+    ],
+    name: 'Legal',
+  },
+]
 </script>

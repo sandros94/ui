@@ -1,5 +1,5 @@
 <template>
-  <footer :class="ui.wrapper">
+  <footer :class="ui.wrapper" v-bind="attrs">
     <slot name="divider">
       <UDivider
         :avatar="dividerAvatar"
@@ -32,14 +32,14 @@
 
       <div :class="ui.right" v-if="($slots.right || links) && !hide.right">
         <slot name="right">
-          <!-- TODO: create SLinksGroup component -->
-          Area for links
-          <!-- <SLinks
-            :class="ui.center"
+          <SLinksGroup
             :links="links"
-            :ui="ui.links"
-            v-if="links && !hide.center"
-          /> -->
+            v-if="links"
+            v-bind="{
+              variant: ui.linksGroup?.variant,
+              ui: ui.linksGroup?.ui,
+            }"
+          />
         </slot>
       </div>
     </UContainer>
@@ -52,36 +52,62 @@
 </template>
 
 <script setup lang="ts">
-import type { FooterUi, Links, Strategy } from '#s94-ui/types'
+import type {
+  FooterConfig,
+  FooterUi,
+  FooterVariant,
+  Links,
+  LinksGroup,
+  Strategy
+} from '#s94-ui/types'
 import type { Avatar } from '#ui/types'
 
+import SLinksGroup from '#s94-ui/components/elements/LinksGroup.vue'
 import UContainer from '#ui/components/layout/Container.vue'
 import UDivider from '#ui/components/layout/Divider.vue'
 
-const configDefault: FooterUi = {
-  center: 'flex items-center justify-center gap-3',
-  container: 'py-4 mb-24 flex flex-wrap items-center justify-between gap-3 max-w-[90rem]',
-  divider: {
-    border: {
-      base: 'flex border-gray-200 dark:border-gray-800',
-    },
-    icon: {
-      base: 'w-6 h-6',
-    },
-    label: 'text-lg',
+const { s94Ui: { footer: sFooter }, ui: { strategy } } = useAppConfig()
+
+const configDefault: FooterConfig = {
+  default: {
+    variant: 'default',
   },
-  left: 'text-lg flex flex-col gap-3',
-  legal: 'py-2 flex items-center justify-center gap-3 max-w-[90rem] text-sm',
-  logo: '',
-  right: '',
-  socials: {
-    strategy: 'merge',
-    wrapper: 'text-2xl',
+  variant: {
+    default: {
+      center: 'flex items-center justify-center gap-3',
+      container: 'py-4 mt-4 mb-14 lg:mb-20 flex flex-wrap justify-around gap-3 max-w-[90rem]',
+      divider: {
+        border: {
+          base: 'flex border-gray-200 dark:border-gray-800',
+        },
+        icon: {
+          base: 'w-6 h-6',
+        },
+        label: 'text-lg',
+      },
+      left: 'p-2 text-lg flex flex-col gap-3',
+      legal: 'py-2 flex items-center justify-center gap-3 max-w-[90rem] text-sm',
+      linksGroup: {
+        variant: 'centered',
+      },
+      logo: '',
+      right: '',
+      socials: {
+        strategy: 'merge',
+        wrapper: 'text-2xl',
+      },
+      wrapper: 'w-full py-2 mb-8 bg-background',
+    },
   },
-  wrapper: 'w-full py-2 mb-8 bg-background/75 backdrop-blur',
 }
 
+const config = mergeConfig<FooterConfig>(strategy, sFooter, configDefault)
+
 const props = defineProps({
+  class: {
+    default: undefined,
+    type: String as PropType<any>,
+  },
   dividerAvatar: {
     default: null,
     type: Object as PropType<Avatar>,
@@ -110,7 +136,7 @@ const props = defineProps({
   },
   links: {
     default: () => [],
-    type: Array as PropType<Links>,
+    type: Array as PropType<LinksGroup[]>,
   },
   socials: {
     default: () => [],
@@ -124,10 +150,19 @@ const props = defineProps({
     default: '/',
     type: String,
   },
+  ui: {
+    default: () => ({}),
+    type: Object as PropType<Partial<FooterUi> & { strategy?: Strategy }>,
+  },
+  variant: {
+    default: undefined,
+    type: String as PropType<FooterVariant>,
+  },
 })
 
-// TODO: finish adding ui merge
-const ui = configDefault
+const variant = props.variant ?? config.default.variant
+
+const { attrs, ui } = useUI('s94.footer', toRef(props, 'ui'), config.variant[variant], toRef(props, 'class'))
 </script>
 
 <style scoped>
