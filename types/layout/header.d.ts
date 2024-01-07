@@ -19,8 +19,8 @@ export interface HeaderUi {
   }
   panel: {
     card?: Partial<CardUi> & {
-      panelCenter?: string
       links?: string
+      panelCenter?: string
     }
     slideover?: Optional<typeof slideoverConfig> & { side?: 'left' | 'right' }
   }
