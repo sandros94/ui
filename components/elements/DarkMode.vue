@@ -27,17 +27,15 @@
 </template>
 
 <script setup lang="ts">
-import type { ColorModeConfig, ColorModeUi, Strategy } from '#s94-ui/types'
+import type { DarkModeConfig, DarkModeUi, Strategy } from '#s94-ui/types'
 
 import { mergeConfig } from '#s94-ui/utils'
 import UButton from '#ui/components/elements/Button.vue'
 import UToggle from '#ui/components/forms/Toggle.vue'
 
-const { s94Ui: { colorMode: sColorMode }, ui: { strategy } } = useAppConfig()
+const { s94Ui: { darkMode: sDarkMode }, ui: { strategy } } = useAppConfig()
 
-const colorMode = useColorMode()
-
-const colorModeConfigDefault: Partial<ColorModeConfig> = {
+const darkModeConfigDefault: Partial<DarkModeConfig> = {
   default: {
     button: {
       color: 'gray',
@@ -55,24 +53,17 @@ const colorModeConfigDefault: Partial<ColorModeConfig> = {
 
 const props = defineProps<{
   class?: any
-  color?: ColorModeConfig['style']['button']['color'] | ColorModeConfig['style']['toggle']['color']
+  color?: DarkModeConfig['style']['button']['color'] | DarkModeConfig['style']['toggle']['color']
   offIcon?: string
   onIcon?: string
   toggle?: boolean
-  ui?: Partial<ColorModeUi> & { strategy?: Strategy }
-  variant?: ColorModeConfig['style']['button']['variant']
+  ui?: Partial<DarkModeUi> & { strategy?: Strategy }
+  variant?: DarkModeConfig['style']['button']['variant']
 }>()
 
-const configDefaults = mergeConfig<typeof colorModeConfigDefault>(strategy, sColorMode, colorModeConfigDefault)
+const configDefaults = mergeConfig<typeof darkModeConfigDefault>(strategy, sDarkMode, darkModeConfigDefault)
 
-const { attrs, ui } = useUI('s94.colorMode.button', toRef(props, 'ui'), configDefaults, toRef(props, 'class'))
+const { attrs, ui } = useUI('s94.darkMode.button', toRef(props, 'ui'), configDefaults, toRef(props, 'class'))
 
-const isDark = computed({
-  get() {
-    return colorMode.value === 'dark'
-  },
-  set() {
-    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-  },
-})
+const isDark = useDarkMode()
 </script>

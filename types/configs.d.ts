@@ -1,6 +1,6 @@
 import type {
   CardConfig,
-  ColorModeConfig,
+  DarkModeConfig,
   FooterConfig,
   HeaderConfig,
   HeroConfig,
@@ -11,7 +11,7 @@ import type {
 
 export interface AllConfigs {
   card: CardConfig
-  colorMode: ColorModeConfig
+  darkMode: DarkModeConfig
   footer: FooterConfig
   header: HeaderConfig
   hero: HeroConfig

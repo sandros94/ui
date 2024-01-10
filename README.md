@@ -100,7 +100,7 @@ The layer is based on the [@nuxt/ui](https://github.com/nuxt/ui) module, thus al
 ### Currently available and planned
 
 - **Elements**
-  - [x] [SColorMode](/components/elements/ColorMode.vue)
+  - [x] [SDarkMode](/components/elements/DarkMode.vue)
   - [x] [SLinks](/components/elements/Links.vue)
   - [x] [SLinksGroup](/components/elements/LinksGroup.vue)
   - [ ] SLinksTree
