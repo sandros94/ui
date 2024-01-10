@@ -146,7 +146,7 @@ const headerConfigDefault: HeaderConfig = {
       },
       right: 'flex items-center justify-end lg:flex-1 gap-2',
       socials: {
-        wrapper: 'w-fit mx-auto',
+        wrapper: 'w-fit',
       },
       wrapper: 'w-full bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
     },
@@ -156,6 +156,7 @@ const headerConfigDefault: HeaderConfig = {
       panel: {
         card: {
           header: 'flex-row-reverse',
+          footer: 'inline-flex justify-center'
         },
         slideover: {
           side: 'left',
