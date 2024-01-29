@@ -1,8 +1,11 @@
 {
   "name": "@sandros94/ui",
-  "type": "module",
   "version": "0.1.0",
-  "private": true,
+  "type": "module",
+  "author": {
+    "name": "Sandro Circi",
+    "email": "sandro.circi@digitoolmedia.com"
+  },
   "main": "./nuxt.config.ts",
   "scripts": {
     "build": "nuxt build playground",
@@ -11,6 +14,7 @@
     "generate": "nuxt generate playground",
     "preview": "nuxt preview playground",
     "postinstall": "nuxt prepare playground",
+    "release": "npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -26,6 +30,7 @@
     "@nuxt/devtools": "^1.0.6",
     "@nuxt/eslint-config": "^0.2.0",
     "@stylistic/eslint-plugin": "^1.5.1",
+    "changelogen": "^0.5.5",
     "eslint": "^8.56.0",
     "eslint-plugin-perfectionist": "^2.5.0",
     "eslint-plugin-tailwindcss": "^3.13.1",
