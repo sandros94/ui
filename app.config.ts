@@ -1,6 +1,3 @@
-import type { DeepPartial, S94UiConfig } from '#s94-ui/types'
-import type { AllConfigs } from '#s94-ui/types/configs'
-
 export default defineAppConfig({
   s94Ui: {
     /* eslint-disable perfectionist/sort-objects */
@@ -16,7 +13,7 @@ export default defineAppConfig({
       foreground: '#fafafa',
     },
     /* eslint-enable perfectionist/sort-objects */
-  } as Partial<S94UiConfig> & DeepPartial<AllConfigs>,
+  },
   ui: {
     gray: 'neutral',
     primary: 'orange',
