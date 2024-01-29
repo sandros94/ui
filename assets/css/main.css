@@ -12,6 +12,8 @@ body {
 ::-webkit-scrollbar-thumb {
   @apply bg-foreground/20;
   border-radius: min(.25rem, 4px);
+  border: 2px var(--s94-ui-background) solid;
+  background-clip: padding-box;
 }
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-foreground/40;
