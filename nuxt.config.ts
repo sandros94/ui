@@ -35,7 +35,17 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/google-fonts',
     '@nuxt/ui',
+    'nuxt-markdown-render',
   ],
+
+  nuxtMarkdownRender: {
+    options: {
+      html: true,
+      linkify: true,
+      xhtmlOut: true,
+    },
+    vueRuntimeCompiler: true,
+  },
 
   ui: {
     icons: ['ph', 'simple-icons'],
