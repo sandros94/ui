@@ -1,8 +1,8 @@
 <template>
-  <nav :class="ui.wrapper" v-bind="attrs" v-if="links">
-    <div :class="ui.group.base" :key="index" v-for="(linksGroup, index) of links">
+  <nav v-if="links" :class="ui.wrapper" v-bind="attrs">
+    <div v-for="(linksGroup, index) of links" :key="index" :class="ui.group.base">
       <slot :index="index" :links-group="linksGroup">
-        <div :class="ui.group.label" v-if="linksGroup.label || $slots.groupName">
+        <div v-if="linksGroup.label || $slots.groupName" :class="ui.group.label">
           <slot :group-name="linksGroup.label" name="group-name">
             {{ linksGroup.label }}
           </slot>

@@ -1,7 +1,7 @@
 import type { DeepPartial } from '#s94-ui/types'
 import type { AppConfig } from 'nuxt/schema'
 
-import { button, toggle } from '#ui/types'
+import type { button, toggle } from '#ui/types'
 
 import type { ExtractDeepKey } from '../utils'
 

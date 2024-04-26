@@ -4,7 +4,7 @@
 
     <UContainer :class="ui.container">
       <div :class="ui.base">
-        <div :class="ui.headline" v-if="headline || $slots.headline">
+        <div v-if="headline || $slots.headline" :class="ui.headline">
           <slot name="headline">
             <h1>
               {{ headline }}
@@ -12,7 +12,7 @@
           </slot>
         </div>
 
-        <div :class="ui.subhead" v-if="subhead || $slots.subhead">
+        <div v-if="subhead || $slots.subhead" :class="ui.subhead">
           <slot name="subhead">
             <p>
               {{ subhead }}
@@ -20,11 +20,11 @@
           </slot>
         </div>
 
-        <div :class="ui.cta.wrapper" v-if="cta?.length || $slots.cta">
+        <div v-if="cta?.length || $slots.cta" :class="ui.cta.wrapper">
           <slot name="cta">
             <UButton
-              :key="index"
               v-for="(link, index) in cta"
+              :key="index"
               v-bind="link"
               :ui="ui.cta.button"
               @click="link.click"

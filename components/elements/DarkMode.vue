@@ -1,24 +1,24 @@
 <template>
   <ClientOnly>
     <UButton
+      v-if="!props.toggle"
       :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
       :color="color ?? ui.default?.button?.color"
       :icon="isDark ? (onIcon ?? ui.default?.onIcon) : (offIcon ?? ui.default?.offIcon)"
       :ui="ui.style?.button"
       :variant="variant ?? ui.default?.button?.variant"
-      @click="isDark = !isDark"
-      v-if="!props.toggle"
       v-bind="attrs"
+      @click="isDark = !isDark"
     />
     <UToggle
+      v-else
+      v-bind="attrs"
+      v-model="isDark"
       :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
       :color="color ?? ui.default?.toggle?.color"
       :off-icon="offIcon ?? ui.default?.offIcon"
       :on-icon="onIcon ?? ui.default?.onIcon"
       :ui="ui.style?.toggle"
-      v-else
-      v-bind="attrs"
-      v-model="isDark"
     />
     <template #fallback>
       <div :class="ui.style?.classFallback ?? ui.default?.classFallback" />

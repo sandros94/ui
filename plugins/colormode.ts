@@ -28,7 +28,7 @@ export default defineNuxtPlugin(() => {
   }
 
   // SPA mode
-  if (process.client && nuxtApp.isHydrating && !nuxtApp.payload.serverRendered) {
+  if (import.meta.client && nuxtApp.isHydrating && !nuxtApp.payload.serverRendered) {
     const style = document.createElement('style')
 
     style.innerHTML = root.value

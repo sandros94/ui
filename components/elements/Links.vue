@@ -1,25 +1,25 @@
 <template>
   <nav :class="ui.wrapper" v-bind="attrs">
     <ULink
+      v-for="(link, index) in filteredLinks"
+      :key="index"
       :active-class="ui.active"
       :class="ui.base"
       :inactive-class="ui.inactive"
-      :key="index"
       :target="link.target"
       :to="link.to"
-      v-for="(link, index) in filteredLinks"
     >
       <slot name="label">
         <span :class="ui.label.wrapper">
           <UIcon
+            v-if="link.icon"
             :class="ui.iconClass"
             :name="link.icon"
-            v-if="link.icon"
           />
-          <span :class="ui.label.base" v-if="link.label">
+          <span v-if="link.label" :class="ui.label.base">
             {{ link.label }}
           </span>
-          <sup :class="ui.externalLink.base" v-if="link.label && link.target === '_blank'">
+          <sup v-if="link.label && link.target === '_blank'" :class="ui.externalLink.base">
             <UIcon
               :class="ui.externalLink.iconClass"
               :name="externalIcon ?? configDefault.default.externalIcon"

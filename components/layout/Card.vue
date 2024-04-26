@@ -1,16 +1,16 @@
 <template>
   <component
-    :class="ui.wrapper"
     :is="$attrs.onSubmit ? 'form' : as"
+    :class="ui.wrapper"
     v-bind="attrs"
   >
-    <div :class="ui.header" v-if="$slots.header">
+    <div v-if="$slots.header" :class="ui.header">
       <slot name="header" />
     </div>
     <div :class="ui.base">
       <slot />
     </div>
-    <div :class="ui.footer" v-if="$slots.footer">
+    <div v-if="$slots.footer" :class="ui.footer">
       <slot name="footer" />
     </div>
   </component>

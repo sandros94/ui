@@ -2,27 +2,27 @@
   <footer :class="ui.wrapper" v-bind="attrs">
     <slot name="divider">
       <UDivider
+        v-if="!hide.divider"
         :avatar="dividerAvatar"
         :icon="dividerIcon"
         :label="dividerLabel"
         :ui="ui.divider"
-        v-if="!hide.divider"
       />
     </slot>
     <UContainer :class="ui.container">
-      <div :class="ui.left" v-if="($slots.left || $slots.logo || title || socials) && !hide.left">
+      <div v-if="($slots.left || $slots.logo || title || socials) && !hide.left" :class="ui.left">
         <slot name="left">
           <NuxtLink
+            v-if="title || $slots.logo"
             :class="ui.logo"
             :to="titleTo"
             aria-label="Logo"
-            v-if="title || $slots.logo"
           >
             <slot name="logo">
               {{ title }}
             </slot>
           </NuxtLink>
-          <SLinks :links="socials" :ui="ui.socials" v-if="socials" />
+          <SLinks v-if="socials" :links="socials" :ui="ui.socials" />
         </slot>
       </div>
 
@@ -30,11 +30,11 @@
         <slot />
       </div>
 
-      <div :class="ui.right" v-if="($slots.right || links) && !hide.right">
+      <div v-if="($slots.right || links) && !hide.right" :class="ui.right">
         <slot name="right">
           <SLinksGroup
-            :links="links"
             v-if="links"
+            :links="links"
             v-bind="{
               variant: ui.linksGroup?.variant,
               ui: ui.linksGroup?.ui,
@@ -43,7 +43,7 @@
         </slot>
       </div>
     </UContainer>
-    <UContainer :class="ui.legal" v-if="(legal || $slots.legal) && !hide.legal">
+    <UContainer v-if="(legal || $slots.legal) && !hide.legal" :class="ui.legal">
       <slot name="legal">
         {{ legal }}
       </slot>

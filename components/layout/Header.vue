@@ -1,7 +1,7 @@
 <template>
   <header :class="ui.wrapper" v-bind="attrs">
     <UContainer :class="ui.container">
-      <div :class="ui.left" v-if="!hide.left">
+      <div v-if="!hide.left" :class="ui.left">
         <slot name="left">
           <NuxtLink :class="ui.logo" :to="titleTo" aria-label="Logo">
             <slot name="logo">
@@ -13,44 +13,44 @@
 
       <slot name="center">
         <SLinks
+          v-if="links && !hide.center"
           :class="ui.center"
           :links="links"
           :ui="ui.links"
-          v-if="links && !hide.center"
         />
       </slot>
 
-      <div :class="ui.right" v-if="!hide.right">
+      <div v-if="!hide.right" :class="ui.right">
         <slot name="right">
           <SLinks
+            v-if="socials && hide.socials !== true"
             :class="hide.socials ? hideSocialsMap[hide.socials] : undefined"
             :links="socials"
             :ui="ui.socials"
-            v-if="socials && hide.socials !== true"
           />
         </slot>
 
         <slot :open="isMenuOpen" name="panel-button">
           <UButton
+            v-if="!hide.panel"
             :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Menu`"
             :class="ui.mobileButton?.base"
             :icon="isMenuOpen ? mobileButtonIcon.close : mobileButtonIcon.open"
-            @click="isMenuOpen = !isMenuOpen"
             color="gray"
             size="xl"
-            v-if="!hide.panel"
             variant="ghost"
+            @click="isMenuOpen = !isMenuOpen"
           />
         </slot>
       </div>
     </UContainer>
 
     <USlideover
+      v-if="!hide.panel"
       v-bind="{
         side: ui.panel?.slideover?.side,
         ui: ui.panel?.slideover,
       }"
-      v-if="!hide.panel"
       v-model="isMenuOpen"
     >
       <slot name="panel">
@@ -67,25 +67,25 @@
               :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Menu`"
               :class="ui.mobileButton?.base"
               :icon="isMenuOpen ? mobileButtonIcon.close : mobileButtonIcon.open"
-              @click="isMenuOpen = !isMenuOpen"
               color="gray"
               size="xl"
               variant="ghost"
+              @click="isMenuOpen = !isMenuOpen"
             />
           </template>
           <slot name="panel-center">
             <div :class="ui.panel?.card?.panelCenter">
               <SLinks
+                v-if="links"
                 :class="ui.panel?.card?.links"
                 :links="links"
                 :ui="ui.links"
-                v-if="links"
                 vertical
               />
             </div>
           </slot>
           <template #footer>
-            <SLinks :links="socials" :ui="ui.socials" v-if="socials" />
+            <SLinks v-if="socials" :links="socials" :ui="ui.socials" />
           </template>
         </SCard>
       </slot>
