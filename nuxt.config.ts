@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   ui: {
-    icons: ['ph', 'simple-icons'],
+    icons: {},
     safelistColors: ['success', 'info', 'alert', 'warning'],
   },
 })
