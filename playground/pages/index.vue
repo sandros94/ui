@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto h-full w-full">
+  <div class="size-full">
     <div>
       <!-- Component to be tested -->
       <SHero
