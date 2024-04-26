@@ -111,7 +111,7 @@ The layer is based on the [@nuxt/ui](https://github.com/nuxt/ui) module, thus al
   - [ ] SPage
   - [ ] SAside
 - **Units**
-  - [x] [SHero](/components/units/Hero.vue)
+  - [x] [SHero](/components/units/Hero.vue) **IMPORTANT!** Breaking change incoming!
   - [ ] SCookie
   - [ ] SLogin
 
