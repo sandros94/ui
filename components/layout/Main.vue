@@ -15,7 +15,7 @@ import { twMerge } from 'tailwind-merge'
 const { s94Ui: { main: sMain }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { main: MainConfig } }
 
 const configDefault: MainConfig = {
-  wrapper: 'min-h-[calc(100svh-var(--header-height))] @container/main',
+  wrapper: 'min-h-[calc(100svh-var(--header-height))] @container/main mx-auto max-w-7xl',
 }
 
 const props = defineProps({
