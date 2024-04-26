@@ -1,4 +1,4 @@
-# .gitignore v1.2.0
+# .gitignore v1.3.0
 # https://gist.github.com/Sandros94/7f3dc1539c8f5905c495aa1bb417589c
 
 # Nuxt dev/build outputs
@@ -6,6 +6,7 @@
 .nuxt
 .nitro
 .cache
+.data
 dist
 
 # Node dependencies
