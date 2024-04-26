@@ -7,11 +7,12 @@
 </template>
 
 <script setup lang="ts">
+import type { AppConfig } from 'nuxt/schema'
 import type { MainConfig, MainUi, Strategy } from '#s94-ui/types'
 
 import { twMerge } from 'tailwind-merge'
 
-const { s94Ui: { main: sMain }, ui: { strategy } } = useAppConfig()
+const { s94Ui: { main: sMain }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { main: MainConfig } }
 
 const configDefault: MainConfig = {
   wrapper: 'min-h-[calc(100svh-var(--header-height))] @container/main',

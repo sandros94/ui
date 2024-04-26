@@ -94,6 +94,7 @@
 </template>
 
 <script setup lang="ts">
+import type { AppConfig } from 'nuxt/schema'
 import type {
   HeaderConfig,
   HeaderUi,
@@ -102,14 +103,12 @@ import type {
   Strategy,
 } from '#s94-ui/types'
 
-import UButton from '#ui/components/elements/Button.vue'
-import UContainer from '#ui/components/layout/Container.vue'
-import USlideover from '#ui/components/overlays/Slideover.vue'
+import { UButton, UContainer, USlideover } from '#components'
 import { twMerge } from 'tailwind-merge'
 
 import SLinks from '../elements/Links.vue'
 
-const { s94Ui: { main: sHeader }, ui: { strategy } } = useAppConfig()
+const { s94Ui: { main: sHeader }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { main: HeaderConfig } }
 
 const headerConfigDefault: HeaderConfig = {
   default: {

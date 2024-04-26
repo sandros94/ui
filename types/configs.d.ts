@@ -8,7 +8,6 @@ import type {
   LinksConfig,
   LinksGroupConfig,
   MainConfig,
-  S94UiConfig,
 } from '#s94-ui/types'
 
 export interface AllConfigs {
@@ -21,6 +20,22 @@ export interface AllConfigs {
   linksGroup: LinksGroupConfig
   main: MainConfig
 }
+
+export type S94UiConfig = {
+  header?: {
+    height?: string
+  }
+  light?: {
+    background?: string
+    foreground?: string
+  }
+  dark?: {
+    background?: string
+    foreground?: string
+  }
+}
+
+export type S94Ui = S94UiConfig & DeepPartial<AllConfigs>
 
 declare module 'nuxt/schema' {
   interface AppConfigInput {

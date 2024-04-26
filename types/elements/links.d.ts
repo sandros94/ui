@@ -1,4 +1,4 @@
-import type { Link as ULink } from '@nuxt/ui/dist/runtime/types'
+import type { Link as ULink } from '#ui/types'
 import type { AppConfig } from 'nuxt/schema'
 
 import type { ExtractDeepKey } from '../utils'

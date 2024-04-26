@@ -28,7 +28,8 @@ export default <Partial<Config>>{
         warning: colors.red,
       },
       fontFamily: {
-        sans: ['DM Sans', 'DM Mono'],
+        sans: ['DM Sans'],
+        mono: ['DM Mono'],
       },
     },
   },

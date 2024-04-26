@@ -24,6 +24,7 @@
 </template>
 
 <script lang="ts" setup>
+import type { AppConfig } from 'nuxt/schema'
 import type {
   LinksGroup,
   LinksGroupConfig,
@@ -34,7 +35,7 @@ import type {
 
 import SLinks from './Links.vue'
 
-const { s94Ui: { linksGroup: sLinksGroup }, ui: { strategy } } = useAppConfig()
+const { s94Ui: { linksGroup: sLinksGroup }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { linksGroup: LinksGroupConfig } }
 
 const configDefault: LinksGroupConfig = {
   default: {

@@ -1,5 +1,5 @@
 import type { Button } from '#ui/types'
-import type { button as UButton } from '@nuxt/ui/dist/runtime/ui.config'
+import type { button as UButton } from '#ui/ui.config'
 import type { AppConfig } from 'nuxt/schema'
 
 import type { ExtractDeepKey } from '../utils'

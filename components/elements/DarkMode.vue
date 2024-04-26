@@ -27,13 +27,13 @@
 </template>
 
 <script setup lang="ts">
+import type { AppConfig } from 'nuxt/schema'
 import type { DarkModeConfig, DarkModeUi, Strategy } from '#s94-ui/types'
 
 import { mergeConfig } from '#s94-ui/utils'
-import UButton from '#ui/components/elements/Button.vue'
-import UToggle from '#ui/components/forms/Toggle.vue'
+import { UButton, UToggle }from '#components'
 
-const { s94Ui: { darkMode: sDarkMode }, ui: { strategy } } = useAppConfig()
+const { s94Ui: { darkMode: sDarkMode }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { darkMode: DarkModeConfig } }
 
 const darkModeConfigDefault: Partial<DarkModeConfig> = {
   default: {

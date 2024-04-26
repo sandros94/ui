@@ -32,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import type { AppConfig } from 'nuxt/schema'
 import type {
   Links,
   LinksConfig,
@@ -41,10 +42,9 @@ import type {
 } from '#s94-ui/types'
 
 import { mergeConfig } from '#s94-ui/utils'
-import UIcon from '#ui/components/elements/Icon.vue'
-import ULink from '#ui/components/elements/Link.vue'
+import { UIcon, ULink } from '#components'
 
-const { s94Ui: { links: sLinks }, ui: { strategy } } = useAppConfig()
+const { s94Ui: { links: sLinks }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { links: LinksConfig } }
 
 const linksConfigDefault: LinksConfig = {
   default: {

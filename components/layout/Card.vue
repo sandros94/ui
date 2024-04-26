@@ -17,9 +17,10 @@
 </template>
 
 <script setup lang="ts">
+import type { AppConfig } from 'nuxt/schema'
 import type { CardConfig, CardUi, Strategy } from '#s94-ui/types'
 
-const { s94Ui: { card: sCard }, ui: { strategy } } = useAppConfig()
+const { s94Ui: { card: sCard }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { card: CardConfig } }
 
 const configDefault: CardConfig = {
   base: 'flex-grow px-4 py-5 sm:px-6',

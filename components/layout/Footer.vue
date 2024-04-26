@@ -52,6 +52,7 @@
 </template>
 
 <script setup lang="ts">
+import type { AppConfig } from 'nuxt/schema'
 import type {
   FooterConfig,
   FooterUi,
@@ -62,11 +63,9 @@ import type {
 } from '#s94-ui/types'
 import type { Avatar } from '#ui/types'
 
-import SLinksGroup from '#s94-ui/components/elements/LinksGroup.vue'
-import UContainer from '#ui/components/layout/Container.vue'
-import UDivider from '#ui/components/layout/Divider.vue'
+import { SLinksGroup, UContainer, UDivider } from '#components'
 
-const { s94Ui: { footer: sFooter }, ui: { strategy } } = useAppConfig()
+const { s94Ui: { footer: sFooter }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { footer: FooterConfig } }
 
 const configDefault: FooterConfig = {
   default: {

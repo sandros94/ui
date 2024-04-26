@@ -41,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+import type { AppConfig } from 'nuxt/schema'
 import type {
   HeroConfig,
   HeroCta,
@@ -51,10 +52,9 @@ import type {
 } from '#s94-ui/types'
 
 import { mergeConfig } from '#s94-ui/utils'
-import UButton from '#ui/components/elements/Button.vue'
-import UContainer from '#ui/components/layout/Container.vue'
+import { UButton, UContainer } from '#components'
 
-const { s94Ui: { main: sHero }, ui: { strategy } } = useAppConfig()
+const { s94Ui: { main: sHero }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { main: HeroConfig } }
 
 const heroConfigDefault: HeroConfig = {
   default: {

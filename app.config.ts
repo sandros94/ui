@@ -1,6 +1,5 @@
 export default defineAppConfig({
   s94Ui: {
-    /* eslint-disable perfectionist/sort-objects */
     header: {
       height: '4.5rem',
     },
@@ -12,7 +11,6 @@ export default defineAppConfig({
       background: '#090909',
       foreground: '#fafafa',
     },
-    /* eslint-enable perfectionist/sort-objects */
   },
   ui: {
     gray: 'neutral',
