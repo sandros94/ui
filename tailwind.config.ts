@@ -29,7 +29,7 @@ export default <Partial<Config>>{
       },
       fontFamily: {
         sans: ['DM Sans'],
-        mono: ['DM Mono'],
+        mono: ['Fira Code'],
       },
     },
   },
