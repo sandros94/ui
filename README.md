@@ -1,15 +1,14 @@
-# What is this?
-Hi all, welcome to `@sandros94/ui`!
-This project aims to be a Nuxt Layer that not only will be the main starting point for most of my projects, but also a place to learn a lot about component's logic. So if you are after a stable, reliable, Nuxt Layer that provides amazing components and UI, please head over to [Nuxt UI Pro](https://ui.nuxt.com/pro).
-But probably you already know it before finding me.
+# Welcome to `@sandros94/ui`
+This project aims to be a Nuxt Layer as a starting point for my personal projects, but also a place to learn a lot about component's logic. So if you are after a stable, reliable, Nuxt Layer that provides amazing components and UI, please head over to [Nuxt UI Pro](https://ui.nuxt.com/pro) instead.
+**Expect bugs and potentially breaking changes**.
 
 ## How to use it
 
 ### Install
 
-To install this layer you have three options: ~~via npm~~, via Nuxt's Github extends and manually.
+To install this layer you have three options: via npm, via Nuxt's Github extends and manually.
 
-#### ~~Install via npm~~ (once I publish it)
+#### ~~Install via npm~~ (once and if I publish it)
 1. ~~Use your preferred package manager:~~
     ```bash
     npm install @sandros94/ui
@@ -17,12 +16,10 @@ To install this layer you have three options: ~~via npm~~, via Nuxt's Github ext
     pnpm install @sandros94/ui
     bun install @sandros94/ui
     ```
-2. and then point to it in your `nuxt.config.ts`:
+2. and then extend you project in your `nuxt.config.ts`:
     ```ts
     export default defineNuxtConfig({
       extends: ['@sandros94/ui'],
-      modules: ['@nuxt/ui'],
-      // [...] other configs
     })
     ```
 
@@ -30,16 +27,16 @@ To install this layer you have three options: ~~via npm~~, via Nuxt's Github ext
 
 1. Firstly install dependencies (or change the icon packs to your liking):
     ```bash
-    npm i @nuxt/ui @iconify-json/ph @iconify-json/simple-icons
-    yarn i @nuxt/ui @iconify-json/ph @iconify-json/simple-icons
-    pnpm i @nuxt/ui @iconify-json/ph @iconify-json/simple-icons
-    bun i @nuxt/ui @iconify-json/ph @iconify-json/simple-icons
+    npm i @nuxt/ui @nuxt/fonts @iconify/json
+    yarn i @nuxt/ui @nuxt/fonts @iconify/json
+    pnpm i @nuxt/ui @nuxt/fonts @iconify/json
+    bun i @nuxt/ui @nuxt/fonts @iconify/json
     ```
 2. Use the [Github Extend feature built into Nuxt](https://nuxt.com/docs/guide/going-further/layers#git-repository):
     ```ts
     export default defineNuxtConfig({
       extends: ['github:sandros94/ui'],
-      modules: ['@nuxt/ui']
+      modules: ['@nuxt/ui', "@nuxt/fonts", "@nuxt/eslint"],
     })
     ```
 
@@ -50,6 +47,7 @@ To install this layer you have three options: ~~via npm~~, via Nuxt's Github ext
     ```ts
     export default defineNuxtConfig({
       extends: ['./layers/s94-ui'],
+      modules: ['@nuxt/ui', "@nuxt/fonts", "@nuxt/eslint"],
     })
     ```
 
@@ -57,7 +55,7 @@ To install this layer you have three options: ~~via npm~~, via Nuxt's Github ext
 
 Much like `@nuxt/ui` each component has a `:ui` prop to pass a typed object with the ability to customize them:
 ```vue
-example goes here
+example goes here, once I have time...
 ```
 
 Or you could edit them globally via `app.config.ts`
@@ -85,13 +83,13 @@ export default defineAppConfig({
 
 There is a quick alias available as `#s94-ui`:
 ```ts
-import type { HeaderUi } from '#s94-ui'
+import type { HeaderUi } from '#s94-ui/types'
 ```
 
 ### Docs
 
-There are none at the moment. But I do have plans for them, mostly for showcasing the structure, layout and components.
-Unfortunately, in the meantime, you have to refer to each of the component's source code to see their props and slots.
+There are none at the moment.
+Please refer to each of the component's source code to see their props and slots.
 
 ## What it contains
 
