@@ -36,7 +36,7 @@ To install this layer you have three options: via npm, via Nuxt's Github extends
     ```ts
     export default defineNuxtConfig({
       extends: ['github:sandros94/ui'],
-      modules: ['@nuxt/ui', "@nuxt/fonts", "@nuxt/eslint"],
+      modules: ['@nuxt/ui', '@nuxt/fonts'],
     })
     ```
 
@@ -47,7 +47,7 @@ To install this layer you have three options: via npm, via Nuxt's Github extends
     ```ts
     export default defineNuxtConfig({
       extends: ['./layers/s94-ui'],
-      modules: ['@nuxt/ui', "@nuxt/fonts", "@nuxt/eslint"],
+      modules: ['@nuxt/ui', '@nuxt/fonts'],
     })
     ```
 
