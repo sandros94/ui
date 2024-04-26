@@ -1,5 +1,6 @@
 <template>
   <div class="size-full">
+    <SDarkMode toggle />
     <div>
       <!-- Component to be tested -->
       <SHero
