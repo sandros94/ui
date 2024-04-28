@@ -10,7 +10,7 @@
       />
     </slot>
     <UContainer v-if="$slots.left || $slots.logo || title || socials || $slots.default || $slots.right || links" :class="ui.container">
-      <div v-if="($slots.left || $slots.logo || title || socials) && !hide.left" :class="ui.left">
+      <div v-if="!hide.left || $slots.left || $slots.logo || title || socials" :class="ui.left">
         <slot name="left">
           <NuxtLink
             v-if="title || $slots.logo"
@@ -30,7 +30,7 @@
         <slot />
       </div>
 
-      <div v-if="($slots.right || links) && !hide.right" :class="ui.right">
+      <div v-if="!hide.right || $slots.right || links" :class="ui.right">
         <slot name="right">
           <SLinksGroup
             v-if="links"
@@ -43,7 +43,7 @@
         </slot>
       </div>
     </UContainer>
-    <UContainer v-if="(legal || $slots.legal) && !hide.legal" :class="ui.legal">
+    <UContainer v-if="!hide.legal || $slots.legal || legal" :class="ui.legal">
       <slot name="legal">
         {{ legal }}
       </slot>
