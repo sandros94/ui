@@ -9,7 +9,7 @@
         :ui="ui.divider"
       />
     </slot>
-    <UContainer v-if="$slots.left || $slots.logo || title || socials || $slots.default || $slots.right || links" :class="ui.container">
+    <UContainer v-if="($slots.left || $slots.logo || title || socials || $slots.default || $slots.right || links) && !hide.center" :class="ui.container">
       <div v-if="($slots.left || $slots.logo || title || socials) && !hide.left" :class="ui.left">
         <slot name="left">
           <NuxtLink
@@ -122,6 +122,7 @@ const props = defineProps({
   hide: {
     default: () => ({}),
     type: Object as PropType<{
+      center?: boolean
       default?: boolean
       divider?: boolean
       left?: boolean
