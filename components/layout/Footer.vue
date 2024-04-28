@@ -9,7 +9,7 @@
         :ui="ui.divider"
       />
     </slot>
-    <UContainer :class="ui.container">
+    <UContainer v-if="$slots.left || $slots.logo || title || socials || $slots.default || $slots.right || links" :class="ui.container">
       <div v-if="($slots.left || $slots.logo || title || socials) && !hide.left" :class="ui.left">
         <slot name="left">
           <NuxtLink
