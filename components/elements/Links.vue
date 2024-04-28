@@ -1,5 +1,5 @@
 <template>
-  <nav :class="ui.wrapper" v-bind="attrs">
+  <nav v-if="filteredLinks" :class="ui.wrapper" v-bind="attrs">
     <ULink
       v-for="(link, index) in filteredLinks"
       :key="index"
