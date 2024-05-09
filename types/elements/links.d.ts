@@ -1,7 +1,7 @@
-import type { Link as ULink } from '#ui/types'
 import type { AppConfig } from 'nuxt/schema'
 
 import type { ExtractDeepKey } from '../utils'
+import type { Link as ULink } from '#ui/types'
 
 export interface Link extends ULink {
   icon?: string

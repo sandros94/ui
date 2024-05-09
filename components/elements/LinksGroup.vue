@@ -25,6 +25,7 @@
 
 <script lang="ts" setup>
 import type { AppConfig } from 'nuxt/schema'
+import SLinks from './Links.vue'
 import type {
   LinksGroup,
   LinksGroupConfig,
@@ -32,8 +33,6 @@ import type {
   LinksGroupVariant,
   Strategy,
 } from '#s94-ui/types'
-
-import SLinks from './Links.vue'
 
 const { s94Ui: { linksGroup: sLinksGroup }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { linksGroup: LinksGroupConfig } }
 

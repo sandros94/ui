@@ -8,9 +8,8 @@
 
 <script setup lang="ts">
 import type { AppConfig } from 'nuxt/schema'
-import type { MainConfig, MainUi, Strategy } from '#s94-ui/types'
-
 import { twMerge } from 'tailwind-merge'
+import type { MainConfig, MainUi, Strategy } from '#s94-ui/types'
 
 const { s94Ui: { main: sMain }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { main: MainConfig } }
 

@@ -1,7 +1,7 @@
-import type { Links, LinksUi, LinksVariant } from '#s94-ui/types'
 import type { AppConfig } from 'nuxt/schema'
 
 import type { ExtractDeepKey } from '../utils'
+import type { Links, LinksUi, LinksVariant } from '#s94-ui/types'
 
 export interface LinksGroup {
   label?: string

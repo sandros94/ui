@@ -39,7 +39,7 @@ import type { DarkModeConfig, DarkModeUi, Strategy } from '#s94-ui/types'
 import type { ButtonColor, ButtonVariant, ToggleColor } from '#ui/types'
 
 import { mergeConfig } from '#s94-ui/utils'
-import { UButton, UToggle }from '#components'
+import { UButton, UToggle } from '#components'
 
 const { s94Ui: { darkMode: sDarkMode }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { darkMode: DarkModeConfig } }
 const { $colorMode: { unknown }, hook } = useNuxtApp()

@@ -1,8 +1,7 @@
+import type { AppConfig } from 'nuxt/schema'
+import type { ExtractDeepKey } from '../utils'
 import type { DeepPartial, LinksGroupUi, LinksGroupVariant, LinksUi, Strategy } from '#s94-ui/types'
 import type { divider } from '#ui/ui.config'
-import type { AppConfig } from 'nuxt/schema'
-
-import type { ExtractDeepKey } from '../utils'
 
 export interface FooterUi {
   center: string

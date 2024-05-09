@@ -1,8 +1,7 @@
+import type { AppConfig } from 'nuxt/schema'
+import type { ExtractDeepKey } from '../utils'
 import type { Button } from '#ui/types'
 import type { button as UButton } from '#ui/ui.config'
-import type { AppConfig } from 'nuxt/schema'
-
-import type { ExtractDeepKey } from '../utils'
 
 export interface HeroCta extends Button {
   click?: Function

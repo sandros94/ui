@@ -1,10 +1,5 @@
-import type { DeepPartial } from '#s94-ui/types'
-import type { AppConfig } from 'nuxt/schema'
-
 import type { button, toggle } from '#ui/ui.config'
 import type { ButtonColor, ButtonSize, ButtonVariant, ToggleColor, ToggleSize } from '#ui/types'
-
-import type { ExtractDeepKey } from '../utils'
 
 export interface DarkModeUi {
   button: typeof button

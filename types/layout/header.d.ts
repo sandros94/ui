@@ -1,8 +1,7 @@
+import type { AppConfig } from 'nuxt/schema'
+import type { ExtractDeepKey } from '../utils'
 import type { CardUi, LinksUi, Optional } from '#s94-ui/types'
 import type { slideover as slideoverConfig } from '#ui/ui.config'
-import type { AppConfig } from 'nuxt/schema'
-
-import type { ExtractDeepKey } from '../utils'
 
 export interface HeaderUi {
   center: string

@@ -1,7 +1,6 @@
-import type { Strategy } from '#s94-ui/types'
-
 import { createDefu, defu } from 'defu'
 import { extendTailwindMerge } from 'tailwind-merge'
+import type { Strategy } from '#s94-ui/types'
 
 const customTwMerge = extendTailwindMerge<string, string>({
   extend: {
@@ -24,7 +23,7 @@ const defuTwMerge = createDefu((obj, key, value, namespace) => {
   if (namespace.endsWith('chip') && key === 'size') {
     return false
   }
-  if (namespace.endsWith('badge') && key === 'size' || key === 'color' || key === 'variant') {
+  if (namespace.endsWith('badge') && (key === 'size' || key === 'color' || key === 'variant')) {
     return false
   }
   if (typeof obj[key] === 'string' && typeof value === 'string' && obj[key] && value) {

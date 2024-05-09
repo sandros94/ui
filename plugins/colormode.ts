@@ -1,6 +1,6 @@
 // Source: `https://github.com/nuxt/ui/blob/dev/src/runtime/plugins/colors.ts`
-import { defineNuxtPlugin, useAppConfig, useHead, useNuxtApp } from '#imports'
 import { computed } from 'vue'
+import { defineNuxtPlugin, useAppConfig, useHead, useNuxtApp } from '#imports'
 
 export default defineNuxtPlugin(() => {
   const { s94Ui } = useAppConfig()

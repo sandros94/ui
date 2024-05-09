@@ -95,6 +95,8 @@
 
 <script setup lang="ts">
 import type { AppConfig } from 'nuxt/schema'
+import { twMerge } from 'tailwind-merge'
+import SLinks from '../elements/Links.vue'
 import type {
   HeaderConfig,
   HeaderUi,
@@ -104,9 +106,6 @@ import type {
 } from '#s94-ui/types'
 
 import { UButton, UContainer, USlideover } from '#components'
-import { twMerge } from 'tailwind-merge'
-
-import SLinks from '../elements/Links.vue'
 
 const { s94Ui: { main: sHeader }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { main: HeaderConfig } }
 
@@ -155,7 +154,7 @@ const headerConfigDefault: HeaderConfig = {
       panel: {
         card: {
           header: 'flex-row-reverse',
-          footer: 'inline-flex justify-center'
+          footer: 'inline-flex justify-center',
         },
         slideover: {
           side: 'left',

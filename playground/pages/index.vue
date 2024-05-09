@@ -14,7 +14,7 @@
             color: 'gray',
             trailingIcon: 'i-ph-question',
             click: () => isVisible = !isVisible,
-          }
+          },
         ]"
         headline="Welcome to s94/ui"
         horizontal
