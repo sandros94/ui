@@ -21,20 +21,16 @@
   "dependencies": {
     "@iconify/json": "^2.2.198",
     "@nuxt/fonts": "^0.6.1",
-    "@nuxt/ui": "^2.15.1",
+    "@nuxt/ui": "^2.16.0",
     "defu": "^6.1.4"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.6",
     "@nuxt/eslint": "^0.3.10",
     "changelogen": "^0.5.5",
+    "eslint": "^9.2.0",
     "nuxt": "^3.11.2",
     "vue": "^3.4.1",
     "vue-router": "^4.2.5"
-  },
-  "pnpm": {
-    "overrides": {
-      "@nuxtjs/tailwindcss": "6.11.4"
-    }
   }
 }
