@@ -1,8 +1,15 @@
 <template>
   <div>
-    <SMain>
+    <SHeader
+      :links="links"
+      :socials="socials"
+      disable-socials
+      sticky
+      variant="rtl"
+    />
+    <NuxtLayout name="app">
       <slot />
-    </SMain>
+    </NuxtLayout>
     <SFooter
       :divider-avatar="{ src: 'https://avatars.githubusercontent.com/u/13056429?v=4', size: 'lg' }"
       :links="linksGroup"
@@ -24,6 +31,7 @@
 <script setup lang="ts">
 import type { Links, LinksGroup } from '#s94-ui/types'
 
-const linksGroup = useState<LinksGroup[] | undefined>('linksGroup')
+const links = useState<Links | undefined>('links')
 const socials = useState<Links | undefined>('socials')
+const linksGroup = useState<LinksGroup[] | undefined>('linksGroup')
 </script>

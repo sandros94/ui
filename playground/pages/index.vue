@@ -1,6 +1,5 @@
 <template>
   <div class="size-full">
-    <SDarkMode toggle />
     <div>
       <!-- Component to be tested -->
       <SHero
@@ -27,5 +26,6 @@
 </template>
 
 <script setup lang="ts">
-const isVisible = useState('link-is-visible', () => false)
+// TODO: add lorem ipsum conditional text as an example
+const isVisible = useState('content-is-visible', () => false)
 </script>
