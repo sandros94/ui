@@ -16,7 +16,12 @@ callOnce(() => {
     {
       label: 'HOME',
       to: '/',
-    }, {
+    },
+    {
+      label: 'ABOUT',
+      to: '/about',
+    },
+    {
       icon: 'i-simple-icons-github',
       label: 'sandros94/ui',
       target: '_blank',

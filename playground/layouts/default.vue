@@ -3,10 +3,9 @@
     <SHeader
       :links="links"
       :socials="socials"
-      :style="{ top: navPosition }"
       class="transition-all duration-300 ease-in-out"
       disable-socials
-      sticky
+      sticky-hide
       variant="rtl"
     />
     <NuxtLayout name="app">
@@ -36,16 +35,4 @@ import type { Links, LinksGroup } from '#s94-ui/types'
 const links = useState<Links | undefined>('links')
 const socials = useState<Links | undefined>('socials')
 const linksGroup = useState<LinksGroup[] | undefined>('linksGroup')
-
-const navPosition = ref<string>('0')
-const { isScrolling, directions } = useScroll(window)
-const { top: toTop, bottom: toBottom } = toRefs(directions)
-watch([toTop, toBottom], () => {
-  if (isScrolling.value && toTop.value) {
-    navPosition.value = '0'
-  }
-  else if (isScrolling.value && toBottom.value) {
-    navPosition.value = 'calc(var(--header-height) * -1)'
-  }
-})
 </script>

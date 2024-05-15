@@ -1,5 +1,5 @@
 <template>
-  <header :class="ui.wrapper" v-bind="attrs">
+  <header v-bind="attrs" :class="ui.wrapper" :style="{ top: navPosition }">
     <UContainer :class="ui.container">
       <div v-if="!hide.left" :class="ui.left">
         <slot name="left">
@@ -204,6 +204,10 @@ const props = defineProps({
     default: false,
     type: Boolean,
   },
+  stickyHide: {
+    default: false,
+    type: Boolean,
+  },
   title: {
     default: 'S94-UI',
     type: String,
@@ -230,7 +234,7 @@ const hideSocialsMap = {
 const variant = props.variant ?? configDefault.default.variant
 
 const config = mergeConfig<HeaderUi>('merge', configDefault.variant[variant], configDefault.variant.default)
-config.wrapper = twMerge(config.wrapper, props.sticky ? 'sticky top-0 z-50' : '')
+config.wrapper = twMerge(config.wrapper, (props.sticky || props.stickyHide) ? 'sticky top-0 z-50 transition-all duration-300 ease-in-out' : '')
 
 const { attrs, ui } = useUI('s94.header', toRef(props, 'ui'), config, toRef(props, 'class'), true)
 
@@ -242,7 +246,21 @@ const mobileButtonIcon = {
 const route = useRoute()
 const isMenuOpen = ref(false)
 
-watch(() => route.fullPath, () => {
-  isMenuOpen.value = false
+const navPosition = ref<string>('0')
+const { isScrolling, directions } = useScroll(window)
+const { top: toTop, bottom: toBottom } = toRefs(directions)
+
+watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
+  if (newRoute !== prevRoute) {
+    isMenuOpen.value = false
+  }
+  if (props.stickyHide) {
+    if (isScrolling.value && toTop.value) {
+      navPosition.value = '0'
+    }
+    else if (isScrolling.value && toBottom.value) {
+      navPosition.value = 'calc(var(--header-height) * -1)'
+    }
+  }
 })
 </script>
