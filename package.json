@@ -21,7 +21,7 @@
   "dependencies": {
     "@iconify/json": "^2.2.198",
     "@nuxt/fonts": "^0.6.1",
-    "@nuxt/ui": "^2.16.0",
+    "@nuxt/ui": "2.16.0",
     "defu": "^6.1.4"
   },
   "devDependencies": {
