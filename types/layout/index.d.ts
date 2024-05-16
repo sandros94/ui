@@ -1,5 +1,5 @@
 export * from './card'
 export * from './footer'
-export * from './header'
 export * from './main'
+export * from '../../components/layout/Header.vue'
 export * from '../../components/layout/Page.vue'
