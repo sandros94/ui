@@ -61,17 +61,12 @@ callOnce(() => {
           to: '/',
         },
         {
-          label: 'Shop',
-          target: '_blank',
-          to: '/shop',
-        },
-        {
           label: 'About',
           to: '/about',
         },
         {
-          label: 'Contact',
-          to: '/contact',
+          label: 'Test Page',
+          to: '/test',
         },
       ],
     },

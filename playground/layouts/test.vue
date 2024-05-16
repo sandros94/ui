@@ -3,13 +3,11 @@
     <SHeader
       :links="links"
       :socials="socials"
+      class="-mb-[var(--header-height)]"
       disable-socials
       sticky-hide
-      variant="rtl"
     />
-    <NuxtLayout name="app">
-      <slot />
-    </NuxtLayout>
+    <slot />
     <SFooter
       :divider-avatar="{ src: 'https://avatars.githubusercontent.com/u/13056429?v=4', size: 'lg' }"
       :links="linksGroup"
