@@ -5,7 +5,7 @@
       :socials="socials"
       disable-socials
       sticky-hide
-      variant="rtl"
+      rtl
     />
     <NuxtLayout name="app">
       <slot />

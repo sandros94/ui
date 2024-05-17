@@ -9,9 +9,9 @@
     />
     <slot />
     <SFooter
-      :divider-avatar="{ src: 'https://avatars.githubusercontent.com/u/13056429?v=4', size: 'lg' }"
       :links="linksGroup"
       :socials="socials"
+      class="mt-12"
     >
       <template #legal>
         <div>
