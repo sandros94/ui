@@ -46,6 +46,7 @@ export interface HeaderConfig {
   }
   variant: {
     default: HeaderUi
+    faded: Partial<HeaderUi>
   }
 }
 
@@ -116,6 +117,9 @@ const headerConfigDefault: HeaderConfig = {
         wrapper: 'w-fit',
       },
       wrapper: 'w-full bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
+    },
+    faded: {
+      wrapper: 'border-0 bg-background/0 backdrop-blur-none bg-gradient-to-b from-background/75 to-transparent -mb-[var(--header-height)]',
     },
   },
 }

@@ -3,9 +3,9 @@
     <SHeader
       :links="links"
       :socials="socials"
-      class="-mb-[var(--header-height)]"
       disable-socials
       sticky-hide
+      variant="faded"
     />
     <slot />
     <SFooter
