@@ -33,6 +33,8 @@ export interface HeroConfig {
     horizontal: HeroUi
     vertical: HeroUi
     opening: HeroUi
+    // @ts-ignore
+    [key: keyof AppConfig['s94Ui']['hero']['variant']]: Partial<HeroUi>
   }
 }
 
@@ -51,7 +53,7 @@ export interface HeroProps {
 </script>
 
 <script setup lang="ts">
-const { s94Ui: { hero: sHero }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { hero: HeroConfig } }
+const { s94Ui: { hero: sHero }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { hero: HeroConfig }, ui: { strategy: Strategy } }
 
 const heroConfigDefault: HeroConfig = {
   default: {
@@ -94,11 +96,19 @@ const heroConfigDefault: HeroConfig = {
 
 const props = defineProps<HeroProps>()
 
-const config = mergeConfig<HeroConfig>(strategy, sHero, heroConfigDefault)
+const configDefault = mergeConfig<HeroConfig>(strategy, sHero, heroConfigDefault)
 
-const variant = props.variant ?? config.default.variant
+const variantStrategy: {
+  [key in HeroVariant]: Strategy | undefined
+} = {
+  horizontal: 'override',
+  vertical: 'override',
+  opening: 'override',
+}
+const variant = props.variant ?? configDefault.default.variant
+const config = mergeConfig<HeroUi>(variantStrategy[variant] ?? 'merge', configDefault.variant[variant], configDefault.variant.horizontal)
 
-const { attrs, ui } = useUI('s94.hero', toRef(props, 'ui'), config.variant[variant], toRef(props, 'class'))
+const { attrs, ui } = useUI('s94.hero', toRef(props, 'ui'), config, toRef(props, 'class'))
 </script>
 
 <template>
