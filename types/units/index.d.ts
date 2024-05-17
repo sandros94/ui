@@ -1,2 +1,2 @@
-export * from '../../components/units/Hero.vue'
-export * from '../../components/units/Figure.vue'
+export * from '../../components/units/hero.vue'
+export * from '../../components/units/figure.vue'

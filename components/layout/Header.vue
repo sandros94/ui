@@ -1,10 +1,9 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
 import { twMerge } from 'tailwind-merge'
-import SLinks from '../elements/Links.vue'
 import type { CardUi, ExtractDeepKey, LinksUi, Links, Optional, Strategy } from '#s94-ui/types'
 import type { slideover as slideoverConfig } from '#ui/ui.config'
-import { UButton, UContainer, USlideover } from '#components'
+import { SLinks, UButton, UContainer, USlideover } from '#components'
 
 export interface HeaderUi {
   center: string

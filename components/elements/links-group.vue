@@ -25,7 +25,7 @@
 
 <script lang="ts" setup>
 import type { AppConfig } from 'nuxt/schema'
-import SLinks from './Links.vue'
+import SLinks from './links.vue'
 import type {
   LinksGroup,
   LinksGroupConfig,
