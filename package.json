@@ -23,7 +23,8 @@
     "@nuxt/fonts": "^0.6.1",
     "@nuxt/ui": "2.16.0",
     "@vueuse/nuxt": "^10.9.0",
-    "defu": "^6.1.4"
+    "defu": "^6.1.4",
+    "tailwind-variants": "^0.2.1"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.6",
