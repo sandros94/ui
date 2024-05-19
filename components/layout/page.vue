@@ -32,7 +32,7 @@ const configDefault: PageUi = {
   wrapper: 'min-h-[calc(100svh-var(--header-height))] w-svw max-w-full flex max-lg:flex-col overflow-x-hidden',
   asideLeft: 'w-[var(--aside-width)] max-lg:w-full shrink-0',
   asideRight: 'w-[var(--aside-width)] max-lg:w-full shrink-0',
-  container: 'w-full h-fit max-w-full min-h-full shrink flex flex-col',
+  container: 'w-full max-w-full min-h-full shrink flex flex-col',
   top: 'w-full px-4 py-3',
   bottom: 'w-full px-4 py-2',
 }

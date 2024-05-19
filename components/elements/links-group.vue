@@ -114,7 +114,3 @@ const variant = props.variant ?? config.default.variant
 
 const { attrs, ui } = useUI('s94.links-group', toRef(props, 'ui'), config.variant[variant], toRef(props, 'class'))
 </script>
-
-<style>
-
-</style>
