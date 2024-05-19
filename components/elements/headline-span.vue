@@ -19,24 +19,41 @@ const props = defineProps<HeadlineSpanProps>()
 
 const text = toRef(props, 'value')
 const headline = ref<HTMLElement | null>(null)
+const orStyle = ref<{
+  fontSize?: number
+  width?: number
+}>()
 const style = reactive({
   display: 'block',
-  fontSize: '2em',
+  fontSize: '1em',
   whiteSpace: 'nowrap',
   width: 'fit-content',
 })
 
-const { width: windowWidth } = useWindowSize()
 const { width: parentWidth } = useElementSize(useParentElement(headline))
-const { width } = useElementSize(headline)
 
-watchDebounced([windowWidth, parentWidth, text], () => {
-  if (headline.value !== null) {
-    const fontSize = Number.parseFloat(window.getComputedStyle(headline.value).fontSize)
-    style.fontSize = `${parentWidth.value / width.value * fontSize}px`
+function getOrStyle(el: HTMLElement) {
+  return {
+    fontSize: Number.parseInt(window.getComputedStyle(el).fontSize),
+    width: el.offsetWidth,
   }
+}
+
+watchDebounced([text, parentWidth], async ([prevText], [newText]) => {
+  if (!orStyle.value && !!headline.value) {
+    orStyle.value = getOrStyle(headline.value)
+  }
+  if (prevText !== newText && !!headline.value) {
+    style.fontSize = `${orStyle.value?.fontSize}px`
+    await nextTick()
+    orStyle.value = getOrStyle(headline.value)
+  }
+  if (!orStyle.value?.width || !orStyle.value.fontSize) {
+    return
+  }
+  style.fontSize = `${parentWidth.value / orStyle.value.width * orStyle.value.fontSize}px`
 }, {
-  debounce: 100,
+  debounce: 50,
   immediate: true,
 })
 </script>
