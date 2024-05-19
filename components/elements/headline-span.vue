@@ -37,6 +37,7 @@ watchDebounced([windowWidth, parentWidth, text], () => {
   }
 }, {
   debounce: 100,
+  immediate: true,
 })
 </script>
 
