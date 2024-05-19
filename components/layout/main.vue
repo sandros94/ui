@@ -15,7 +15,7 @@ import type { MainConfig, MainUi, Strategy } from '#s94-ui/types'
 const { s94Ui: { main: sMain }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { main: MainConfig } }
 
 const configDefault: MainConfig = {
-  wrapper: 'min-h-full h-fit w-full mx-auto max-w-7xl',
+  wrapper: 'min-h-full h-fit w-full mx-auto max-w-screen-xl py-4',
 }
 
 const props = defineProps({
