@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-svh">
     <SHeader
       :links="links"
       :socials="socials"
@@ -7,7 +7,9 @@
       sticky-hide
       variant="faded"
     />
-    <slot />
+    <SMain>
+      <slot />
+    </SMain>
     <SFooter
       :links="linksGroup"
       :socials="socials"

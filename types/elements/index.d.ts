@@ -1,3 +1,5 @@
 export * from './darkMode'
 export * from './links'
 export * from './linksGroup'
+export * from '../../components/elements/headline-span.vue'
+export * from '../../components/elements/headline.vue'

@@ -9,6 +9,7 @@ import type {
   LinksGroupConfig,
   MainConfig,
 } from '#s94-ui/types'
+import type * as allThemes from '#s94-ui/themes'
 
 export interface AllConfigs {
   card: CardConfig
@@ -35,11 +36,11 @@ export type S94UiConfig = {
   }
 }
 
-export type S94Ui = S94UiConfig & DeepPartial<AllConfigs>
+export type S94Ui = S94UiConfig & DeepPartial<AllConfigs> & DeepPartial<typeof allThemes>
 
 declare module 'nuxt/schema' {
   interface AppConfigInput {
     /** Theme configuration */
-    s94Ui?: Partial<S94UiConfig> & DeepPartial<AllConfigs>
+    s94Ui?: S94Ui
   }
 }
