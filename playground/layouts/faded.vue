@@ -1,5 +1,5 @@
 <template>
-  <div class="h-svh">
+  <div>
     <SHeader
       :links="links"
       :socials="socials"
@@ -7,13 +7,12 @@
       sticky-hide
       variant="faded"
     />
-    <SMain>
+    <NuxtLayout name="app">
       <slot />
-    </SMain>
+    </NuxtLayout>
     <SFooter
       :links="linksGroup"
       :socials="socials"
-      class="mt-12"
     >
       <template #legal>
         <div>
