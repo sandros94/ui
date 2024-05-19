@@ -30,6 +30,7 @@ const style = reactive({
   width: 'fit-content',
 })
 
+const { width: windowWidth } = useWindowSize()
 const { width: parentWidth } = useElementSize(useParentElement(headline))
 
 function getOrStyle(el: HTMLElement) {
@@ -39,7 +40,7 @@ function getOrStyle(el: HTMLElement) {
   }
 }
 
-watchDebounced([text, parentWidth], async ([prevText], [newText]) => {
+watchDebounced([text, windowWidth], async ([prevText], [newText]) => {
   if (!orStyle.value && !!headline.value) {
     orStyle.value = getOrStyle(headline.value)
   }
