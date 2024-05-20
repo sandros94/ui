@@ -1,116 +1,70 @@
+<script lang="ts">
+import { toValue } from 'vue'
+import type { AppConfig } from 'nuxt/schema'
+import { type VariantProps, tv } from 'tailwind-variants'
+import SLinks from './links.vue'
+import type { Links, LinksVariants } from '#s94-ui/types'
+import { linksGroup as theme } from '#s94-ui/themes'
+import _appConfig from '#build/app.config'
+
+export interface LinksGroup {
+  label?: string
+  links: Links
+}
+
+const appConfig = _appConfig as AppConfig & { s94Ui: { links: Partial<typeof theme> } }
+
+const linksGroup = tv({ extend: tv(theme), ...(appConfig.s94Ui.links || {}) })
+
+export type LinksGroupVariants = VariantProps<typeof linksGroup>
+
+export interface LinksGroupProps {
+  links: LinksGroup[] | Ref<LinksGroup[]>
+  linksVariant?: LinksVariants['variant']
+  variant?: LinksGroupVariants['variant']
+  class?: any
+  ui?: Partial<typeof linksGroup.slots>
+}
+
+export interface LinksGroupSlots {
+  label(props: { label?: string }): any
+  links(props: { links?: Links }): any
+  default(props: { index?: number, linksGroup?: LinksGroup }): any
+}
+</script>
+
+<script lang="ts" setup>
+const props = withDefaults(defineProps<LinksGroupProps>(), {
+  linksVariant: 'default',
+})
+const slots = defineSlots<LinksGroupSlots>()
+
+const ui = computed(() => tv({ extend: linksGroup, slots: props.ui })({
+  variant: props.variant,
+}))
+</script>
+
 <template>
-  <nav v-if="links" :class="ui.wrapper" v-bind="attrs">
-    <div v-for="(linksGroup, index) of links" :key="index" :class="ui.group.base">
-      <slot :index="index" :links-group="linksGroup">
-        <div v-if="linksGroup.label || $slots.groupName" :class="ui.group.label">
-          <slot :group-name="linksGroup.label" name="group-name">
-            {{ linksGroup.label }}
+  <nav v-if="links" :class="ui.root({ class: props.class })">
+    <div v-for="(lG, index) of toValue(links)" :key="index" :class="ui.base()">
+      <slot :index="index" :links-group="lG">
+        <div v-if="lG.label || slots.label({ label: lG.label })" :class="ui.label()">
+          <slot name="label" :label="lG.label">
+            {{ lG.label }}
           </slot>
         </div>
-        <slot :links="linksGroup.links" name="links">
+        <slot name="links" :links="lG.links">
           <SLinks
-            :class="ui.group.links?.wrapper"
-            :links="linksGroup.links"
-            :ui="ui.group.links"
-            v-bind="{
-              variant: ui.group.links?.variant,
-              vertical: ui.group.links?.vertical,
+            :links="lG.links"
+            :ui="{
+              root: ui.linksRoot(),
+              base: ui.linksBase(),
             }"
+            :variant="props.linksVariant"
+            vertical
           />
         </slot>
       </slot>
     </div>
   </nav>
 </template>
-
-<script lang="ts" setup>
-import type { AppConfig } from 'nuxt/schema'
-import SLinks from './links.vue'
-import type {
-  LinksGroup,
-  LinksGroupConfig,
-  LinksGroupUi,
-  LinksGroupVariant,
-  Strategy,
-} from '#s94-ui/types'
-
-const { s94Ui: { linksGroup: sLinksGroup }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { linksGroup: LinksGroupConfig } }
-
-const configDefault: LinksGroupConfig = {
-  default: {
-    variant: 'default',
-  },
-  variant: {
-    centered: {
-      group: {
-        base: 'p-2 w-fit text-center',
-        label: 'pb-2 text-lg uppercase',
-        links: {
-          base: 'mx-auto',
-          label: {
-            base: 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100',
-          },
-          variant: 'default',
-          vertical: true,
-        },
-      },
-      wrapper: 'flex flex-wrap justify-center gap-4',
-    },
-    default: {
-      group: {
-        base: 'p-2 w-fit',
-        label: 'pb-2 text-lg uppercase',
-        links: {
-          base: '',
-          label: {
-            base: 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100',
-          },
-          variant: 'default',
-          vertical: true,
-        },
-      },
-      wrapper: 'flex flex-wrap gap-4',
-    },
-    rtl: {
-      group: {
-        base: 'p-2 w-fit text-right',
-        label: 'pb-2 text-lg uppercase',
-        links: {
-          base: 'ml-auto',
-          label: {
-            base: 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100',
-          },
-          variant: 'default',
-          vertical: true,
-        },
-      },
-      wrapper: 'flex flex-wrap gap-4',
-    },
-  },
-}
-
-const config = mergeConfig<LinksGroupConfig>(strategy, sLinksGroup, configDefault)
-
-const props = defineProps({
-  class: {
-    default: undefined,
-    type: String as PropType<any>,
-  },
-  links: {
-    default: undefined,
-    type: Array as PropType<LinksGroup[]>,
-  },
-  ui: {
-    default: () => ({}),
-    type: Object as PropType<Partial<LinksGroupUi> & { strategy?: Strategy }>,
-  },
-  variant: {
-    default: undefined,
-    type: String as PropType<LinksGroupVariant>,
-  },
-})
-
-const variant = props.variant ?? config.default.variant
-
-const { attrs, ui } = useUI('s94.links-group', toRef(props, 'ui'), config.variant[variant], toRef(props, 'class'))
-</script>
