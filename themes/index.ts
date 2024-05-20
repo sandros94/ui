@@ -1,4 +1,5 @@
 export { default as card } from './card'
+export { default as footer } from './footer'
 export { default as headline } from './headline'
 export { default as headlineSpan } from './headline-span'
 export { default as links } from './links'

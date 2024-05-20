@@ -1,20 +1,98 @@
+<script lang="ts">
+import type { AppConfig } from 'nuxt/schema'
+import { type VariantProps as _VrPr, tv } from 'tailwind-variants'
+import { toRefs } from '@vueuse/core'
+import type { DeepPartial, Links, LinksProps, LinksGroup, LinksGroupProps, LinksGroupVariants } from '#s94-ui/types'
+import { footer as theme } from '#s94-ui/themes'
+import type { Avatar } from '#ui/types'
+import type { divider } from '#ui/ui.config'
+import _appConfig from '#build/app.config'
+import { SLinksGroup, UContainer, UDivider } from '#components'
+
+const appConfig = _appConfig as AppConfig & { s94Ui: { footer: Partial<typeof theme> } }
+
+const footer = tv({ extend: tv(theme), ...(appConfig.s94Ui.footer || {}) })
+
+// TODO: Add slim variant
+// type FooterVariants = VariantProps<typeof footer>
+
+export interface FooterProps {
+  separatorAvatar?: Avatar
+  separatorIcon?: string
+  separatorLabel?: string
+  separator?: {
+    avatar?: Avatar
+    icon?: string
+    label?: string
+  }
+  hideCenter?: boolean
+  hideDefault?: boolean
+  hideSeparator?: boolean
+  hideLeft?: boolean
+  hideLegal?: boolean
+  hideRight?: boolean
+  hide?: {
+    center?: boolean
+    default?: boolean
+    separator?: boolean
+    left?: boolean
+    legal?: boolean
+    right?: boolean
+  }
+  legal?: string
+  links?: LinksGroup[]
+  linksGroupVariant?: LinksGroupVariants['variant']
+  socials?: Links
+  socialsClass?: any
+  title?: string
+  titleTo?: string
+  class?: any
+  // variant?: FooterVariants
+  ui?: Partial<typeof footer.slots> & {
+    socials?: LinksProps['ui']
+    linksGroup?: LinksGroupProps['ui']
+    separator?: DeepPartial<typeof divider>
+  }
+}
+
+export interface FooterSlots {
+  separator: any
+  left: any
+  logo: any
+  legal: any
+  socials: any
+  right: any
+  default: any
+}
+</script>
+
+<script setup lang="ts">
+const props = defineProps<FooterProps>()
+const slots = defineSlots<FooterSlots>()
+
+const { socials: socUI, linksGroup: lGUI, separator: sepUI, ..._uiFooter } = toRefs(props.ui ?? {})
+const uiFooter = reactive(_uiFooter)
+
+const _ui = computed(() => tv({ extend: footer, slots: uiFooter })())
+</script>
+
 <template>
-  <footer :class="ui.wrapper" v-bind="attrs">
-    <slot name="divider">
+  <footer :class="_ui.root({ class: props.class })">
+    <slot name="separator">
       <UDivider
-        v-if="!hide.divider"
-        :avatar="dividerAvatar"
-        :icon="dividerIcon"
-        :label="dividerLabel"
-        :ui="ui.divider"
+        v-if="!hideSeparator || !hide?.separator"
+        :avatar="separatorAvatar ?? separator?.avatar"
+        :icon="separatorIcon ?? separator?.icon"
+        :label="separatorLabel ?? separator?.label"
+        :ui="socUI"
       />
     </slot>
-    <UContainer v-if="($slots.left || $slots.logo || title || socials || $slots.default || $slots.right || links) && !hide.center" :class="ui.container">
-      <div v-if="($slots.left || $slots.logo || title || socials) && !hide.left" :class="ui.left">
+    <UContainer v-if="(slots.left || slots.logo || title || socials || slots.default || slots.right || links) && (!hideCenter || !hide?.center)" :class="_ui.container()">
+      <div v-if="(slots.left || slots.logo || title || socials) && (!hideLeft || !hide?.left)" :class="_ui.left()">
         <slot name="left">
           <NuxtLink
-            v-if="title || $slots.logo"
-            :class="ui.logo"
+            v-if="title || slots.logo"
+            :class="_ui.logo()"
             :to="titleTo"
             aria-label="Logo"
           >
@@ -22,149 +100,31 @@
               {{ title }}
             </slot>
           </NuxtLink>
-          <SLinks v-if="socials" :links="socials" :ui="ui.socials" />
+          <SLinks v-if="socials" :class="_ui.socialsClass()" :links="socials" :ui="socUI" />
         </slot>
       </div>
 
-      <div v-if="$slots.default && !hide.default">
+      <div v-if="slots.default && (!hideDefault || !hide?.default)">
         <slot />
       </div>
 
-      <div v-if="($slots.right || links) && !hide.right" :class="ui.right">
+      <div v-if="(slots.right || links) && (!hideRight || !hide?.right)" :class="_ui.right()">
         <slot name="right">
           <SLinksGroup
             v-if="links"
             :links="links"
             v-bind="{
-              variant: ui.linksGroup?.variant,
-              ui: ui.linksGroup?.ui,
+              variant: linksGroupVariant,
+              ui: lGUI,
             }"
           />
         </slot>
       </div>
     </UContainer>
-    <UContainer v-if="(legal || $slots.legal) && !hide.legal" :class="ui.legal">
+    <UContainer v-if="(legal || slots.legal) && (!hideLegal || !hide?.legal)" :class="_ui.legal()">
       <slot name="legal">
         {{ legal }}
       </slot>
     </UContainer>
   </footer>
 </template>
-
-<script setup lang="ts">
-import type { AppConfig } from 'nuxt/schema'
-import type {
-  FooterConfig,
-  FooterUi,
-  FooterVariant,
-  Links,
-  LinksGroup,
-  Strategy,
-} from '#s94-ui/types'
-import type { Avatar } from '#ui/types'
-
-import { SLinksGroup, UContainer, UDivider } from '#components'
-
-const { s94Ui: { footer: sFooter }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { footer: FooterConfig } }
-
-const configDefault: FooterConfig = {
-  default: {
-    variant: 'default',
-  },
-  variant: {
-    default: {
-      center: 'flex items-center justify-center gap-3',
-      container: 'py-4 mt-4 mb-14 lg:mb-20 flex flex-wrap justify-around gap-12 max-w-[90rem]',
-      divider: {
-        border: {
-          base: 'flex border-gray-200 dark:border-gray-800',
-        },
-        icon: {
-          base: 'w-6 h-6',
-        },
-        label: 'text-lg',
-      },
-      left: 'p-2 text-lg flex flex-col gap-3',
-      legal: 'py-2 flex items-center justify-center gap-3 max-w-[90rem] text-sm',
-      linksGroup: {
-        variant: 'centered',
-      },
-      logo: '',
-      right: '',
-      socials: {
-        strategy: 'merge',
-        wrapper: 'text-2xl',
-      },
-      wrapper: 'w-full py-2 mb-8 bg-background',
-    },
-  },
-}
-
-const config = mergeConfig<FooterConfig>(strategy, sFooter, configDefault)
-
-const props = defineProps({
-  class: {
-    default: undefined,
-    type: String as PropType<any>,
-  },
-  dividerAvatar: {
-    default: null,
-    type: Object as PropType<Avatar>,
-  },
-  dividerIcon: {
-    default: '',
-    type: String,
-  },
-  dividerLabel: {
-    default: '',
-    type: String,
-  },
-  hide: {
-    default: () => ({}),
-    type: Object as PropType<{
-      center?: boolean
-      default?: boolean
-      divider?: boolean
-      left?: boolean
-      legal?: boolean
-      right?: boolean
-    }>,
-  },
-  legal: {
-    default: null,
-    type: String,
-  },
-  links: {
-    default: () => [],
-    type: Array as PropType<LinksGroup[]>,
-  },
-  socials: {
-    default: () => [],
-    type: Array as PropType<Links>,
-  },
-  title: {
-    default: null,
-    type: String,
-  },
-  titleTo: {
-    default: '/',
-    type: String,
-  },
-  ui: {
-    default: () => ({}),
-    type: Object as PropType<Partial<FooterUi> & { strategy?: Strategy }>,
-  },
-  variant: {
-    default: undefined,
-    type: String as PropType<FooterVariant>,
-  },
-})
-
-const variant = props.variant ?? config.default.variant
-
-const { attrs, ui } = useUI('s94.footer', toRef(props, 'ui'), config.variant[variant], toRef(props, 'class'))
-</script>
-
-<style scoped>
-
-</style>

@@ -12,7 +12,7 @@
       </SMain>
     </NuxtLayout>
     <SFooter
-      :divider-avatar="{ src: 'https://avatars.githubusercontent.com/u/13056429?v=4', size: 'lg' }"
+      :separator-avatar="{ src: 'https://avatars.githubusercontent.com/u/13056429?v=4', size: 'lg' }"
       :links="linksGroup"
       :socials="socials"
     >
