@@ -9,6 +9,7 @@ export * from '../components/elements/headline-span.vue'
 export * from '../components/elements/headline.vue'
 
 // Layout
+export * from '../components/layout/card.vue'
 export * from '../components/layout/footer.vue'
 export * from '../components/layout/main.vue'
 export * from '../components/layout/header.vue'
