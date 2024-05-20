@@ -9,7 +9,7 @@ const appConfig = _appConfig as AppConfig & { s94Ui: { page: Partial<typeof them
 const page = tv({ extend: tv(theme), ...(appConfig.s94Ui.page || {}) })
 
 export interface PageProps {
-  asides?: string
+  asidesClass?: string
   class?: any
   symmetrical?: boolean
   ui?: Partial<typeof page.slots>
@@ -42,7 +42,7 @@ const ui = computed(() => tv({ extend: page, slots: props.ui })())
     <div :class="ui.wrapper()">
       <div
         v-if="slots.left || props.symmetrical"
-        :class="ui.left({ class: props.asides })"
+        :class="ui.asides({ class: ui.left() })"
       >
         <slot name="left" />
       </div>
@@ -63,7 +63,7 @@ const ui = computed(() => tv({ extend: page, slots: props.ui })())
 
       <div
         v-if="slots.right || props.symmetrical"
-        :class="ui.right({ class: props.asides })"
+        :class="ui.asides({ class: ui.right() })"
       >
         <slot name="right" />
       </div>

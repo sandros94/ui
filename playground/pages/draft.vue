@@ -7,7 +7,7 @@
     </header>
     <div class="bg-pink-500/5 grow flex flex-col lg:flex-row">
       <div class="bg-red-500/10 flex-none max-lg:w-full lg:w-72">
-        Page:AsideLeft
+        Page:Left
       </div>
       <div class="grow max-lg:order-last flex flex-col">
         <div class="bg-yellow-500/10 h-24 flex-none">
@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="bg-red-500/10 max-lg:text-right flex-none max-lg:w-full lg:w-72">
-        Page:AsideRight
+        Page:Right
       </div>
     </div>
     <footer class="bg-green-500/10 h-96 flex-none">
