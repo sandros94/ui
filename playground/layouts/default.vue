@@ -7,7 +7,9 @@
       sticky-hide
     />
     <NuxtLayout name="page">
-      <slot />
+      <SMain padded>
+        <slot />
+      </SMain>
     </NuxtLayout>
     <SFooter
       :divider-avatar="{ src: 'https://avatars.githubusercontent.com/u/13056429?v=4', size: 'lg' }"

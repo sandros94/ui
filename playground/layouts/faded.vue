@@ -9,7 +9,9 @@
       variant="faded"
     />
     <NuxtLayout name="page">
-      <slot />
+      <SMain padded>
+        <slot />
+      </SMain>
     </NuxtLayout>
     <SFooter
       :links="linksGroup"
