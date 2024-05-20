@@ -1,4 +1,3 @@
-export * from './card'
 export * from './footer'
 export * from './main'
 export * from '../../components/layout/header.vue'
