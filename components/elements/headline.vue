@@ -29,7 +29,7 @@ const lines = computed(() => {
   return props.value?.split(/\r?\n/).filter(e => e) || []
 })
 
-const ui = computed(() => tv({ extend: headline, slots: props.ui })({}))
+const ui = computed(() => tv({ extend: headline, slots: props.ui })())
 </script>
 
 <template>

@@ -1,5 +1,0 @@
-export * from '../../components/elements/dark-mode.vue'
-export * from '../../components/elements/links.vue'
-export * from '../../components/elements/links-group.vue'
-export * from '../../components/elements/headline-span.vue'
-export * from '../../components/elements/headline.vue'
