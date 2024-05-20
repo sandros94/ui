@@ -67,7 +67,9 @@ export interface FooterSlots {
 </script>
 
 <script setup lang="ts">
-const props = defineProps<FooterProps>()
+const props = withDefaults(defineProps<FooterProps>(), {
+  linksGroupVariant: 'centered',
+})
 const slots = defineSlots<FooterSlots>()
 
 const { socials: socUI, linksGroup: lGUI, separator: sepUI, ..._uiFooter } = toRefs(props.ui ?? {})

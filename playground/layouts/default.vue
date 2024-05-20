@@ -25,6 +25,9 @@
           & parents
         </div>
       </template>
+      <div class="w-fit mx-auto">
+        <SDarkMode />
+      </div>
     </SFooter>
   </div>
 </template>
