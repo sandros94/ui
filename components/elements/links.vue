@@ -1,28 +1,72 @@
+<script lang="ts">
+import type { AppConfig } from 'nuxt/schema'
+import { type VariantProps, tv } from 'tailwind-variants'
+import type { Link as ULinkType } from '#ui/types'
+import { links as theme } from '#s94-ui/themes'
+import _appConfig from '#build/app.config'
+
+import { UIcon, ULink } from '#components'
+
+export interface Link extends ULinkType {
+  icon?: string
+  if?: () => boolean
+  label?: string
+}
+
+export interface Links extends Array<Link> {}
+
+const appConfig = _appConfig as AppConfig & { s94Ui: { links: Partial<typeof theme> } }
+
+const _links = tv({ extend: tv(theme), ...(appConfig.s94Ui.links || {}) })
+
+export type LinksVariants = VariantProps<typeof _links>
+
+export interface LinksProps {
+  externalIcon?: string
+  links: Links | Ref<Links>
+  variant?: LinksVariants['variant']
+  vertical?: boolean
+  class?: any
+  ui?: Partial<typeof _links.slots>
+}
+</script>
+
+<script setup lang="ts">
+const props = defineProps<LinksProps>()
+
+const filteredLinks = computed(() => unref(props.links).filter(link => link.if ? link.if() : true))
+
+const ui = computed(() => tv({ extend: _links, slots: props.ui })({
+  vertical: props.vertical,
+  variant: props.variant,
+}))
+</script>
+
 <template>
-  <nav v-if="filteredLinks" :class="ui.wrapper" v-bind="attrs">
+  <nav v-if="filteredLinks" :class="ui.root({ class: props.class })">
     <ULink
       v-for="(link, index) in filteredLinks"
       :key="index"
-      :active-class="ui.active"
-      :class="ui.base"
-      :inactive-class="ui.inactive"
+      :active-class="ui.active()"
+      :class="ui.base()"
+      :inactive-class="ui.inactive()"
       :target="link.target"
       :to="link.to"
     >
       <slot name="label">
-        <span :class="ui.label.wrapper">
+        <span :class="ui.labelRoot()">
           <UIcon
             v-if="link.icon"
-            :class="ui.iconClass"
+            :class="ui.iconClass()"
             :name="link.icon"
           />
-          <span v-if="link.label" :class="ui.label.base">
+          <span v-if="link.label" :class="ui.labelBase()">
             {{ link.label }}
           </span>
-          <sup v-if="link.label && link.target === '_blank'" :class="ui.externalLink.base">
+          <sup v-if="link.label && link.target === '_blank'" :class="ui.externalLinkBase()">
             <UIcon
-              :class="ui.externalLink.iconClass"
-              :name="externalIcon ?? configDefault.default.externalIcon"
+              :class="ui.externalLinkIconClass()"
+              :name="externalIcon ?? ui.externalIcon()"
             />
           </sup>
         </span>
@@ -30,94 +74,3 @@
     </ULink>
   </nav>
 </template>
-
-<script setup lang="ts">
-import type { AppConfig } from 'nuxt/schema'
-import type {
-  Links,
-  LinksConfig,
-  LinksUi,
-  LinksVariant,
-  Strategy,
-} from '#s94-ui/types'
-
-import { mergeConfig } from '#s94-ui/utils'
-import { UIcon, ULink } from '#components'
-
-const { s94Ui: { links: sLinks }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { links: LinksConfig } }
-
-const linksConfigDefault: LinksConfig = {
-  default: {
-    externalIcon: 'i-ph-arrow-up-right-light',
-    variant: 'line',
-  },
-
-  variant: {
-    horizontal: {
-      default: {
-        active: 'underline underline-offset-[10%]',
-        base: 'relative inline-flex gap-x-2 font-light hover:underline underline-offset-[10%] decoration-from-font',
-        externalLink: {
-          base: 'static top-0 -mx-1 h-fit',
-          iconClass: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
-        },
-        iconClass: 'place-self-center',
-        inactive: '',
-        label: {
-          base: '',
-          wrapper: 'relative inline-flex max-w-full gap-x-1',
-        },
-        wrapper: 'not-prose flex items-center gap-x-4',
-      },
-      line: {
-        active: 'text-primary',
-        inactive: 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white',
-      },
-    },
-    vertical: {
-      default: {
-        active: '',
-        base: 'max-w-full group relative',
-        externalLink: {
-          base: 'absolute top-0 right-0 translate-x-full h-fit',
-          iconClass: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
-        },
-        iconClass: 'place-self-center',
-        inactive: '',
-        label: {
-          base: 'max-w-full truncate',
-          wrapper: 'relative inline-flex max-w-full gap-x-2',
-        },
-        wrapper: 'not-prose max-w-[inherit] flex flex-col items-start gap-y-2 font-light',
-      },
-      line: {
-        active: 'text-primary border-current',
-        base: 'pl-4 -ml-[1px] mr-[1px] border-s',
-        inactive: 'border-transparent hover:border-black dark:hover:border-white text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white',
-        wrapper: 'border-s border-gray-300 dark:border-gray-700',
-      },
-    },
-  },
-}
-
-const props = defineProps<{
-  class?: any
-  externalIcon?: string
-  links: Links | Ref<Links>
-  ui?: Partial<LinksUi> & { strategy?: Strategy }
-  variant?: LinksVariant
-  vertical?: boolean
-  verticalPadding?: string
-}>()
-
-const configDefault = mergeConfig<LinksConfig>(strategy, sLinks, linksConfigDefault)
-
-const direction = props.vertical ? 'vertical' : 'horizontal'
-const variant = props.variant ?? configDefault.default.variant
-
-const config = mergeConfig<LinksUi>('merge', configDefault.variant[direction][variant], configDefault.variant[direction].default)
-
-const { attrs, ui } = useUI('s94.links', toRef(props, 'ui'), config, toRef(props, 'class'))
-
-const filteredLinks = computed(() => unref(props.links).filter(link => link.if ? link.if() : true))
-</script>
