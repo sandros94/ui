@@ -9,7 +9,7 @@ export default {
     right: 'flex-none max-lg:w-full lg:w-72',
     container: 'grow max-lg:order-last flex flex-col',
     top: 'flex-none',
-    content: 'grow',
+    base: 'grow',
     bottom: 'flex-none',
     footer: 'flex-none',
   },

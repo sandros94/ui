@@ -52,7 +52,7 @@ const ui = computed(() => tv({ extend: page, slots: props.ui })())
           <slot name="top" />
         </div>
 
-        <div :class="ui.content()">
+        <div :class="ui.base()">
           <slot />
         </div>
 
