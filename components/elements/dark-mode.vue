@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
-import type { Strategy } from '#s94-ui/types'
+import type { DeepPartial, Strategy } from '#s94-ui/types'
 import type { ButtonColor, ButtonSize, ButtonVariant, ToggleColor, ToggleSize } from '#ui/types'
 import type { button, toggle as toggleConfig } from '#ui/ui.config'
 
@@ -8,8 +8,8 @@ import { mergeConfig } from '#s94-ui/utils'
 import { UButton, UToggle } from '#components'
 
 export interface DarkModeUi {
-  button: typeof button
-  toggle: typeof toggleConfig
+  button: DeepPartial<typeof button>
+  toggle: DeepPartial<typeof toggleConfig>
 }
 
 export interface DarkModeConfig {
