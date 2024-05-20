@@ -3,11 +3,11 @@
     <header class="bg-green-500/10 h-[--header-height] flex-none">
       Draft Header
     </header>
-    <div class="grow bg-pink-500/5 flex">
-      <div class="flex-none bg-red-500/10 w-72">
+    <div class="grow bg-pink-500/5 flex flex-col lg:flex-row">
+      <div class="flex-none bg-red-500/10 max-lg:w-full lg:w-72">
         Page:AsideLeft
       </div>
-      <div class="grow flex flex-col">
+      <div class="grow max-lg:order-last flex flex-col">
         <div class="flex-none bg-yellow-500/10 h-24">
           Page:Top
         </div>
@@ -31,7 +31,7 @@
           Page:Bottom
         </div>
       </div>
-      <div class="flex-none bg-red-500/10 w-72">
+      <div class="bg-red-500/10 max-lg:text-right flex-none max-lg:w-full lg:w-72">
         Page:AsideRight
       </div>
     </div>
