@@ -5,7 +5,7 @@ A Deep Dive into Vue's Reactive Principles`)
 </script>
 
 <template>
-  <div class="max-w-full w-full">
+  <div>
     <UTextarea v-model="text" class="w-1/3 mx-auto mb-24" />
     <SHeadline :value="text">
       <template #span-1="{ value }">

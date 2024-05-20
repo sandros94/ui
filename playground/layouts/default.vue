@@ -6,7 +6,7 @@
       disable-socials
       sticky-hide
     />
-    <NuxtLayout name="app">
+    <NuxtLayout name="page">
       <slot />
     </NuxtLayout>
     <SFooter

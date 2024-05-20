@@ -3,11 +3,12 @@
     <SHeader
       :links="links"
       :socials="socials"
+      class="-mb-[--header-height]"
       disable-socials
       sticky-hide
       variant="faded"
     />
-    <NuxtLayout name="app">
+    <NuxtLayout name="page">
       <slot />
     </NuxtLayout>
     <SFooter
