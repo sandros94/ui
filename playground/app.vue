@@ -68,6 +68,10 @@ callOnce(() => {
           label: 'Test Page',
           to: '/test',
         },
+        {
+          label: 'Draft',
+          to: '/draft',
+        },
       ],
     },
     {

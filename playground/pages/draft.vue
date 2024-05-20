@@ -1,25 +1,27 @@
 <template>
-  <div class="bg-green-500/5 min-h-svh flex flex-col">
+  <div class="bg-green-500/5 min-h-svh flex flex-col overflow-x-hidden">
     <header class="bg-green-500/10 h-[--header-height] flex-none">
-      Draft Header
+      Draft Header - <NuxtLink class="text-blue-500 underline" to="/">
+        Home
+      </NuxtLink>
     </header>
-    <div class="grow bg-pink-500/5 flex flex-col lg:flex-row">
-      <div class="flex-none bg-red-500/10 max-lg:w-full lg:w-72">
+    <div class="bg-pink-500/5 grow flex flex-col lg:flex-row">
+      <div class="bg-red-500/10 flex-none max-lg:w-full lg:w-72">
         Page:AsideLeft
       </div>
       <div class="grow max-lg:order-last flex flex-col">
-        <div class="flex-none bg-yellow-500/10 h-24">
+        <div class="bg-yellow-500/10 h-24 flex-none">
           Page:Top
         </div>
-        <div class="grow bg-blue-500/5 relative">
+        <div class="bg-blue-500/5 grow relative">
           <span class="absolute">
             Page:Default
           </span>
-          <main class="max-w-screen-lg h-full mx-auto bg-green-500/10 flex flex-col justify-around relative">
+          <main class="bg-green-500/10 max-w-screen-lg h-full mx-auto flex flex-col justify-around relative">
             <span class="absolute top-0 left-0">
               Main:Content
             </span>
-            <div class="min-h-48 max-w-screen-md w-full mx-auto bg-red-500/15">
+            <div class="bg-red-500/15 min-h-48 max-w-screen-md w-full mx-auto">
               <div v-for="i of 20" :key="i" class="text-7xl text-center">
                 Content
               </div>
@@ -27,7 +29,7 @@
             <div />
           </main>
         </div>
-        <div class="flex-none bg-yellow-500/10 h-24">
+        <div class="bg-yellow-500/10 h-24 flex-none">
           Page:Bottom
         </div>
       </div>
@@ -35,7 +37,7 @@
         Page:AsideRight
       </div>
     </div>
-    <footer class="h-96 bg-green-500/10">
+    <footer class="bg-green-500/10 h-96 flex-none">
       Draft Footer
     </footer>
   </div>

@@ -1,68 +1,76 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
-import type { Strategy } from '#s94-ui/types'
+import { tv } from 'tailwind-variants'
+import { page as theme } from '#s94-ui/themes'
+import _appConfig from '#build/app.config'
 
-export interface PageUi {
-  wrapper: string
-  asideLeft: string
-  asideRight: string
-  container: string
-  top: string
-  bottom: string
-}
+const appConfig = _appConfig as AppConfig & { s94Ui: { page: Partial<typeof theme> } }
 
-export interface PageVar {
-  asideWidth: string
-}
-
-export type PageConfig = PageUi & PageVar
+const page = tv({ extend: tv(theme), ...(appConfig.s94Ui.page || {}) })
 
 export interface PageProps {
-  asideWidth?: string
+  asides?: string
   class?: any
   symmetrical?: boolean
-  ui?: Partial<PageUi> & { strategy?: Strategy }
+  ui?: Partial<typeof page.slots>
+}
+
+export interface PageSlots {
+  header: any
+  left: any
+  right: any
+  top: any
+  bottom: any
+  default: any
+  footer: any
 }
 </script>
 
 <script setup lang="ts">
-const { s94Ui: { page: sPage }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { page: PageConfig } }
+const props = defineProps<PageProps>()
+const slots = defineSlots<PageSlots>()
 
-const configDefault: PageUi = {
-  wrapper: 'min-h-[calc(100svh-var(--header-height))] w-svw max-w-full flex max-lg:flex-col overflow-x-hidden',
-  asideLeft: 'w-[var(--aside-width)] max-lg:w-full shrink-0',
-  asideRight: 'w-[var(--aside-width)] max-lg:w-full shrink-0',
-  container: 'w-full max-w-full min-h-full shrink flex flex-col',
-  top: 'w-full px-4 py-3',
-  bottom: 'w-full px-4 py-2',
-}
-
-const props = withDefaults(defineProps<PageProps>(), {
-  asideWidth: '18rem',
-  ui: () => ({}),
-})
-
-const config = mergeConfig<PageConfig>(strategy, sPage, configDefault)
-
-const { attrs, ui } = useUI('s94.main', toRef(props, 'ui'), config, toRef(props, 'class'))
+const ui = computed(() => tv({ extend: page, slots: props.ui })())
 </script>
 
 <template>
-  <div id="page" :class="ui.wrapper" v-bind="attrs">
-    <div v-if="$slots.left || (props.symmetrical && $slots.right)" :class="ui.asideLeft" :style="`--aside-width: ${props.asideWidth};`">
-      <slot name="left" />
+  <div id="s-page" :class="ui.root({ class: props.class })">
+    <div v-if="slots.header" :class="ui.header()">
+      <slot name="header" />
     </div>
-    <div :class="ui.container">
-      <div v-if="$slots.top" :class="ui.top">
-        <slot name="top" />
+
+    <div :class="ui.wrapper()">
+      <div
+        v-if="slots.left || props.symmetrical"
+        :class="ui.left({ class: props.asides })"
+      >
+        <slot name="left" />
       </div>
-      <slot />
-      <div v-if="$slots.bottom" :class="ui.bottom">
-        <slot name="bottom" />
+
+      <div :class="ui.container()">
+        <div v-if="slots.top" :class="ui.top()">
+          <slot name="top" />
+        </div>
+
+        <div :class="ui.content()">
+          <slot />
+        </div>
+
+        <div v-if="slots.bottom" :class="ui.bottom()">
+          <slot name="bottom" />
+        </div>
+      </div>
+
+      <div
+        v-if="slots.right || props.symmetrical"
+        :class="ui.right({ class: props.asides })"
+      >
+        <slot name="right" />
       </div>
     </div>
-    <div v-if="$slots.right || (props.symmetrical && $slots.left)" :class="ui.asideRight" :style="`--aside-width: ${props.asideWidth};`">
-      <slot name="right" />
+
+    <div v-if="slots.footer" :class="ui.footer()">
+      <slot name="footer" />
     </div>
   </div>
 </template>
