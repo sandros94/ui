@@ -86,7 +86,7 @@ const _ui = computed(() => tv({ extend: footer, slots: uiFooter })())
         :avatar="separatorAvatar ?? separator?.avatar"
         :icon="separatorIcon ?? separator?.icon"
         :label="separatorLabel ?? separator?.label"
-        :ui="socUI"
+        :ui="sepUI"
       />
     </slot>
     <UContainer v-if="(slots.left || slots.logo || title || socials || slots.default || slots.right || links) && (!hideCenter || !hide?.center)" :class="_ui.container()">
