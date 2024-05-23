@@ -3,9 +3,10 @@
     <SHeader
       :links="links"
       :socials="socials"
+      title="S94Ui"
       class="-mb-[--header-height]"
-      disable-socials
-      sticky-hide
+      sticky
+      hide-on-scroll
       variant="faded"
     />
     <NuxtLayout name="page">

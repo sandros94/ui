@@ -1,180 +1,136 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
-import { twMerge } from 'tailwind-merge'
-import type { CardUi, ExtractDeepKey, LinksUi, Links, Optional, Strategy } from '#s94-ui/types'
-import type { slideover as slideoverConfig } from '#ui/ui.config'
+import type { VariantProps, TV } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
+import { toRefs } from '@vueuse/core'
+
 import { SLinks, UButton, UContainer, USlideover } from '#components'
+import _appConfig from '#build/app.config'
+import type { Links } from '#s94-ui/types'
 
-export interface HeaderUi {
-  center: string
-  container: string
-  left: string
-  links?: Partial<LinksUi>
-  logo: string
-  mobileButton: {
-    base?: string
-    icon?: {
-      close?: string
-      open?: string
-    }
-  }
-  panel: {
-    card?: Partial<CardUi> & {
-      links?: string
-      panelCenter?: string
-    }
-    slideover?: Optional<typeof slideoverConfig> & { side?: 'left' | 'right' }
-  }
-  right: string
-  socials?: Partial<LinksUi>
-  wrapper: string
-}
+export const theme = {
+  slots: {
+    root: 'w-full bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
+    container: 'flex items-center justify-between gap-3 h-[--header-height] max-w-[90rem]',
+    left: 'lg:flex-1 flex items-center gap-1.5 text-2xl truncate',
+    center: 'hidden lg:flex text-lg',
+    right: 'flex items-center justify-end lg:flex-1 gap-2',
+    logo: 'flex-shrink-0 font-bold text-gray-900 dark:text-white flex items-end gap-1.5 break-keep',
+    mobileButton: 'lg:hidden',
+    slideoverBg: 'bg-background dark:bg-background',
+    slideoverOverlayBg: 'bg-background/75 dark:bg-background/75',
+    panelRoot: '',
+    panelHeader: 'w-full h-[--header-height] inline-flex items-center justify-between border-b border-gray-200 dark:border-gray-800 text-2xl',
+    panelBase: '',
+    panelContent: 'max-w-full w-full h-full pt-[--header-height] m-auto text-xl items-center',
+    panelLinks: 'text-2xl gap-y-3 -mt-[--header-height]',
+    panelFooter: 'w-fit py-8 mx-auto text-2xl',
+    socials: 'w-fit',
+  },
+  variants: {
+    variant: {
+      faded: {
+        root: 'border-0 bg-background/0 backdrop-blur-none bg-gradient-to-b from-background/75 to-transparent',
+      },
+    },
+    sticky: {
+      true: {
+        root: 'sticky top-0 z-50 transition-all duration-300 ease-in-out',
+      },
+    },
+    rtl: {
+      true: {
+        container: 'flex-row-reverse',
+        left: 'flex-row-reverse',
+        right: 'flex-row-reverse',
+        panelHeader: 'flex-row-reverse',
+        panelFooter: 'flex-row-reverse',
+      },
+    },
+    hideSocials: {
+      desktop: {
+        socials: 'lg:hidden',
+      },
+      mobile: {
+        socials: 'hidden lg:flex',
+      },
+      true: {
+        socials: 'hidden',
+      },
+    },
+  },
+} satisfies Parameters<TV>[0]
 
-export interface HeaderConfig {
-  default: {
-    mobileButton?: {
-      icon?: {
-        close?: string
-        open?: string
-      }
-    }
-    variant: HeaderVariant
-    sticky?: boolean
-    stickyHide?: boolean
-    rtl?: boolean
-  }
-  variant: {
-    default: HeaderUi
-    faded: Partial<HeaderUi>
-  }
-}
+const appConfig = _appConfig as AppConfig & { s94Ui: { header: Partial<typeof theme> } }
 
-export type HeaderVariant = ExtractDeepKey<AppConfig, ['s94Ui', 'header', 'variant']> | keyof HeaderConfig['variant']
+const header = tv({ extend: tv(theme), ...(appConfig.s94Ui.header || {}) })
+
+export type HeaderVariants = VariantProps<typeof header>
 
 export interface HeaderProps {
-  class?: any
+  hideCenter?: boolean
+  hideLeft?: boolean
+  hideMobileButton?: boolean
+  hidePanel?: boolean
+  hideRight?: boolean
+  hideOnScroll?: boolean
+  hideSocials?: 'desktop' | 'mobile' | boolean
   hide?: {
     center?: boolean
     left?: boolean
+    mobileButton?: boolean
     panel?: boolean
     right?: boolean
+    onScroll?: boolean
     socials?: 'desktop' | 'mobile' | boolean
   }
   links?: Links
+  mobileButtonIcon?: {
+    close?: string
+    open?: string
+  }
   rtl?: boolean
   socials?: Links
   sticky?: boolean
-  stickyHide?: boolean
   title?: string
   titleTo?: string
-  ui?: Partial<HeaderUi> & { strategy?: Strategy }
-  variant?: HeaderVariant
+  variant?: HeaderVariants['variant']
+  class?: any
+  ui?: Partial<typeof header.slots>
+}
+
+export interface HeaderSlots {
+  center: any
+  left: any
+  logo: any
+  mobileButton(props: { open?: boolean }): any
+  panel: any
+  panelContent: any
+  panelHeader(props: { open?: boolean }): any
+  panelFooter: any
+  right: any
 }
 </script>
 
 <script setup lang="ts">
-const { s94Ui: { main: sHeader }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { main: HeaderConfig } }
-
-const headerConfigDefault: HeaderConfig = {
-  default: {
-    mobileButton: {
-      icon: {
-        close: 'i-ph-x',
-        open: 'i-ph-list',
-      },
-    },
-    variant: 'default',
-    sticky: false,
-    stickyHide: false,
-    rtl: false,
-  },
-  variant: {
-    default: {
-      center: 'hidden lg:flex text-lg',
-      container: 'flex items-center justify-between gap-3 h-[--header-height] max-w-[90rem]',
-      left: 'lg:flex-1 flex items-center gap-1.5 text-2xl truncate',
-      logo: 'flex-shrink-0 font-bold text-gray-900 dark:text-white flex items-end gap-1.5 break-keep',
-      mobileButton: {
-        base: 'lg:hidden',
-      },
-      panel: {
-        card: {
-          footer: 'w-full py-8 mx-auto text-2xl',
-          header: 'w-full h-[--header-height] inline-flex items-center justify-between border-b border-gray-200 dark:border-gray-800 text-2xl',
-          links: 'text-2xl gap-y-3 -mt-[--header-height]',
-          panelCenter: 'max-w-full w-fit h-full pt-[--header-height] m-auto text-xl flex items-center',
-        },
-        slideover: {
-          background: 'bg-background dark:bg-background',
-          overlay: {
-            background: 'bg-background/75 dark:bg-background/75',
-          },
-        },
-      },
-      right: 'flex items-center justify-end lg:flex-1 gap-2',
-      socials: {
-        wrapper: 'w-fit',
-      },
-      wrapper: 'w-full bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
-    },
-    faded: {
-      wrapper: 'border-0 bg-background/0 backdrop-blur-none bg-gradient-to-b from-background/75 to-transparent',
-    },
-  },
-}
-
-const configDefault = mergeConfig<HeaderConfig>(strategy, sHeader, headerConfigDefault)
-
-defineOptions({
-  inheritAttrs: false,
-})
-
 const props = withDefaults(defineProps<HeaderProps>(), {
-  title: 'S94-UI',
+  sticky: false,
+  hideOnScroll: false,
+  mobileButtonIcon: () => ({
+    close: 'i-ph-x',
+    open: 'i-ph-list',
+  }),
+  rtl: false,
   titleTo: '/',
 })
+const slots = defineSlots<HeaderSlots>()
 
-const hideSocialsMap = {
-  desktop: 'lg:hidden',
-  mobile: 'hidden lg:flex',
-}
-
-const variant = props.variant ?? configDefault.default.variant
-const sticky = props.sticky ?? configDefault.default.sticky
-const stickyHide = props.stickyHide ?? configDefault.default.stickyHide
-const rtl = props.rtl ?? configDefault.default.rtl
-
-const _config = mergeConfig<HeaderUi>('merge', configDefault.variant[variant], configDefault.variant.default)
-
-const config = rtl
-  ? mergeConfig<HeaderUi>(
-    'merge',
-    {
-      container: 'flex-row-reverse',
-      left: 'flex-row-reverse',
-      panel: {
-        card: {
-          header: 'flex-row-reverse',
-          footer: 'inline-flex justify-center',
-        },
-        slideover: {
-          side: 'left',
-        },
-      },
-      right: 'flex-row-reverse',
-    },
-    _config,
-  )
-  : _config
-
-config.wrapper = twMerge(config.wrapper, (sticky || stickyHide) ? 'sticky top-0 z-50 transition-all duration-300 ease-in-out' : '')
-
-const { attrs, ui } = useUI('s94.header', toRef(props, 'ui'), config, toRef(props, 'class'), true)
-
-const mobileButtonIcon = {
-  close: ui.value.mobileButton.icon?.close ?? configDefault.default.mobileButton?.icon?.close,
-  open: ui.value.mobileButton.icon?.open ?? configDefault.default.mobileButton?.icon?.open,
-}
+const ui = computed(() => tv({ extend: header, slots: props.ui })({
+  hideSocials: props.hideSocials || props.hide?.socials,
+  rtl: props.rtl,
+  sticky: props.sticky,
+  variant: props.variant,
+}))
 
 const route = useRoute()
 const isMenuOpen = ref(false)
@@ -187,7 +143,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
   if (newRoute !== prevRoute) {
     isMenuOpen.value = false
   }
-  if (stickyHide) {
+  if (props.hide?.onScroll || props.hideOnScroll) {
     if (isScrolling.value && toTop.value) {
       navPosition.value = '0'
     }
@@ -199,11 +155,11 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
 </script>
 
 <template>
-  <header v-bind="attrs" :class="ui.wrapper" :style="{ top: navPosition }">
-    <UContainer :class="ui.container">
-      <div v-if="!hide?.left" :class="ui.left">
+  <header :class="ui.root({ class: props.class })" :style="{ top: navPosition }">
+    <UContainer :class="ui.container()">
+      <div v-if="!hide?.left || !hideLeft || title || slots.left || slots.logo" :class="ui.left()">
         <slot name="left">
-          <NuxtLink :class="ui.logo" :to="titleTo" aria-label="Logo">
+          <NuxtLink :class="ui.logo()" :to="titleTo" aria-label="Logo">
             <slot name="logo">
               {{ title }}
             </slot>
@@ -211,30 +167,26 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
         </slot>
       </div>
 
-      <slot name="center">
-        <SLinks
-          v-if="links && !hide?.center"
-          :class="ui.center"
-          :links="links"
-          :ui="ui.links"
-        />
-      </slot>
+      <div v-if="links && (!hide?.center || !hideCenter)" :class="ui.center()">
+        <slot name="center">
+          <SLinks :links="links" />
+        </slot>
+      </div>
 
-      <div v-if="!hide?.right" :class="ui.right">
+      <div v-if="!hide?.right || !hideRight || socials || slots.right || slots.mobileButton" :class="ui.right()">
         <slot name="right">
           <SLinks
             v-if="socials && hide?.socials !== true"
-            :class="hide?.socials ? hideSocialsMap[hide?.socials] : undefined"
+            :class="ui.socials()"
             :links="socials"
-            :ui="ui.socials"
           />
         </slot>
 
-        <slot :open="isMenuOpen" name="panel-button">
+        <slot name="mobileButton" :open="isMenuOpen">
           <UButton
-            v-if="!hide?.panel"
-            :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Menu`"
-            :class="ui.mobileButton?.base"
+            v-if="!hide?.panel || !hidePanel || !hide?.mobileButton || !hideMobileButton"
+            :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Mobile Menu`"
+            :class="ui.mobileButton()"
             :icon="isMenuOpen ? mobileButtonIcon.close : mobileButtonIcon.open"
             color="gray"
             size="xl"
@@ -246,46 +198,56 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
     </UContainer>
 
     <USlideover
-      v-if="!hide?.panel"
-      v-bind="{
-        side: ui.panel?.slideover?.side,
-        ui: ui.panel?.slideover,
-      }"
+      v-if="!hide?.panel || !hidePanel"
       v-model="isMenuOpen"
+      :side="rtl ? 'left' : 'right'"
+      :ui="{
+        background: ui.slideoverBg(),
+        overlay: {
+          background: ui.slideoverOverlayBg(),
+        },
+      }"
     >
       <slot name="panel">
-        <SCard :ui="ui.panel?.card">
+        <SCard
+          :ui="{
+            root: ui.panelRoot(),
+            header: ui.panelHeader(),
+            base: ui.panelBase(),
+            footer: ui.panelFooter(),
+          }"
+        >
           <template #header>
-            <slot name="left">
-              <NuxtLink :class="ui.logo" :to="titleTo" aria-label="Logo">
+            <slot name="panelHeader" :open="isMenuOpen">
+              <NuxtLink :class="ui.logo()" :to="titleTo" aria-label="Logo">
                 <slot name="logo">
                   {{ title }}
                 </slot>
               </NuxtLink>
-            </slot>
-            <UButton
-              :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Menu`"
-              :class="ui.mobileButton?.base"
-              :icon="isMenuOpen ? mobileButtonIcon.close : mobileButtonIcon.open"
-              color="gray"
-              size="xl"
-              variant="ghost"
-              @click="isMenuOpen = !isMenuOpen"
-            />
-          </template>
-          <slot name="panel-center">
-            <div :class="ui.panel?.card?.panelCenter">
-              <SLinks
-                v-if="links"
-                :class="ui.panel?.card?.links"
-                :links="links"
-                :ui="ui.links"
-                vertical
+              <UButton
+                :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Mobile Menu`"
+                :class="ui.mobileButton()"
+                :icon="isMenuOpen ? mobileButtonIcon.close : mobileButtonIcon.open"
+                color="gray"
+                size="xl"
+                variant="ghost"
+                @click="isMenuOpen = !isMenuOpen"
               />
-            </div>
-          </slot>
+            </slot>
+          </template>
+          <div v-if="links || slots.panelContent" :class="ui.panelContent()">
+            <slot name="panelContent">
+              <SLinks :links="links" vertical />
+            </slot>
+          </div>
           <template #footer>
-            <SLinks v-if="socials" :links="socials" :ui="ui.socials" />
+            <slot name="panelFooter">
+              <SLinks
+                v-if="socials && (hide?.socials !== true || hideSocials !== true)"
+                :class="ui.socials()"
+                :links="socials"
+              />
+            </slot>
           </template>
         </SCard>
       </slot>

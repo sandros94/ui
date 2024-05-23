@@ -3,8 +3,8 @@
     <SHeader
       :links="links"
       :socials="socials"
-      disable-socials
-      sticky-hide
+      title="S94Ui"
+      sticky
     />
     <NuxtLayout name="page">
       <SMain padded>

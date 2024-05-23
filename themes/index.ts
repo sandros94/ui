@@ -8,7 +8,7 @@ export { default as headlineSpan } from './headline-span'
 // Layout
 export { default as card } from './card'
 export { default as footer } from './footer'
-// TODO: export { default as header } from './header'
+export { theme as header } from '../components/layout/header.vue'
 export { default as main } from './main'
 export { default as page } from './page'
 
