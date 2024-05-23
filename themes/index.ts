@@ -13,5 +13,6 @@ export { theme as main } from '../components/layout/main.vue'
 export { theme as page } from '../components/layout/page.vue'
 
 // Units
+export { theme as article } from '../components/units/article.vue'
 // TODO: export { theme as figure } from '../components/units/figure.vue'
 // TODO: export { theme as hero } from '../components/units/hero.vue'

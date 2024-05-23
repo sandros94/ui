@@ -16,5 +16,6 @@ export * from '../components/layout/header.vue'
 export * from '../components/layout/page.vue'
 
 // Units
-export * from '../components/units/hero.vue'
+export * from '../components/units/article.vue'
 export * from '../components/units/figure.vue'
+export * from '../components/units/hero.vue'
