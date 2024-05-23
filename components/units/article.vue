@@ -45,7 +45,7 @@ const ui = computed(() => tv({ extend: article, slots: props.ui })())
 </script>
 
 <template>
-  <article :class="ui.root({ class: props.class })">
+  <div :class="ui.root({ class: props.class })">
     <slot name="headline" :value="headline" :h-ui="{ root: ui.headlineRoot(), span: ui.headlineSpan() }">
       <SHeadline
         v-if="slots.headline({ value: headline })"
@@ -53,7 +53,7 @@ const ui = computed(() => tv({ extend: article, slots: props.ui })())
         :ui="{ root: ui.headlineRoot(), span: ui.headlineSpan() }"
       />
     </slot>
-    <section v-if="value || slots.default({ value })" :class="ui.section()">
+    <div v-if="value || slots.default({ value })" :class="ui.section()">
       <slot :value>
         <p v-if="!Array.isArray(value)" :class="ui.paragraph()">
           {{ value }}
@@ -66,6 +66,6 @@ const ui = computed(() => tv({ extend: article, slots: props.ui })())
           </slot>
         </template>
       </slot>
-    </section>
-  </article>
+    </div>
+  </div>
 </template>
