@@ -1,9 +1,9 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
+
 import type { DeepPartial, Strategy } from '#s94-ui/types'
 import type { ButtonColor, ButtonSize, ButtonVariant, ToggleColor, ToggleSize } from '#ui/types'
 import type { button, toggle as toggleConfig } from '#ui/ui.config'
-
 import { mergeConfig } from '#s94-ui/utils'
 import { UButton, UToggle } from '#components'
 

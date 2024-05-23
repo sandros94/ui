@@ -1,11 +1,70 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
-import { type VariantProps, tv } from 'tailwind-variants'
-import type { Link as ULinkType } from '#ui/types'
-import { links as theme } from '#s94-ui/themes'
-import _appConfig from '#build/app.config'
+import type { VariantProps, TV } from 'tailwind-variants'
+import { tv } from 'tailwind-variants'
 
+import type { Link as ULinkType } from '#ui/types'
+import _appConfig from '#build/app.config'
 import { UIcon, ULink } from '#components'
+
+export const theme = {
+  slots: {
+    root: 'not-prose flex items-center',
+    active: 'text-primary',
+    inactive: 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white',
+    base: 'relative inline-flex gap-x-2 font-light',
+    externalLinkBase: 'top-0 h-fit',
+    externalLinkIconClass: 'subpixel-antialiased text-gray-700 dark:text-gray-300',
+    iconClass: 'place-self-center',
+    labelRoot: 'relative inline-flex max-w-full',
+    labelBase: '',
+  },
+  variants: {
+    vertical: {
+      false: {
+        root: 'gap-x-4',
+        active: 'underline underline-offset-[10%]',
+        base: 'hover:underline underline-offset-[10%] decoration-from-font',
+        externalLinkBase: 'static -mx-1',
+        labelRoot: 'gap-x-1',
+      },
+      true: {
+        root: 'max-w-[inherit] flex-col items-start gap-y-2 font-light',
+        base: 'max-w-full group',
+        externalLinkBase: 'absolute right-0 translate-x-full',
+        labelRoot: 'gap-x-2',
+        labelBase: 'max-w-full truncate',
+      },
+    },
+    variant: {
+      default: {},
+      line: {},
+    },
+  },
+  compoundVariants: [
+    {
+      vertical: true,
+      variant: 'line' as const,
+      class: {
+        root: 'border-s border-gray-300 dark:border-gray-700',
+        active: 'border-current',
+        base: 'pl-4 -ml-[1px] mr-[1px] border-s',
+        inactive: 'border-transparent hover:border-black dark:hover:border-white',
+      },
+    },
+    {
+      vertical: true,
+      variant: 'default' as const,
+      class: {
+        base: 'hover:underline underline-offset-[10%] decoration-from-font',
+      },
+    },
+  ],
+  defaultVariants: {
+    vertical: false,
+    variant: 'line' as const,
+  },
+} satisfies Omit<Parameters<TV>[0], 'compoundVariants' | 'defaultVariants'> & { compoundVariants: any, defaultVariants: any }
 
 export interface Link extends ULinkType {
   icon?: string
@@ -23,7 +82,7 @@ export type LinksVariants = VariantProps<typeof _links>
 
 export interface LinksProps {
   externalIcon?: string
-  links: Links | Ref<Links>
+  links?: Links | Ref<Links>
   variant?: LinksVariants['variant']
   vertical?: boolean
   class?: any
@@ -32,9 +91,11 @@ export interface LinksProps {
 </script>
 
 <script setup lang="ts">
-const props = defineProps<LinksProps>()
+const props = withDefaults(defineProps<LinksProps>(), {
+  externalIcon: 'i-ph-arrow-up-right-light',
+})
 
-const filteredLinks = computed(() => unref(props.links).filter(link => link.if ? link.if() : true))
+const filteredLinks = computed(() => unref(props.links ?? []).filter(link => link.if ? link.if() : true))
 
 const ui = computed(() => tv({ extend: _links, slots: props.ui })({
   vertical: props.vertical,
@@ -66,7 +127,7 @@ const ui = computed(() => tv({ extend: _links, slots: props.ui })({
           <sup v-if="link.label && link.target === '_blank'" :class="ui.externalLinkBase()">
             <UIcon
               :class="ui.externalLinkIconClass()"
-              :name="externalIcon ?? ui.externalIcon()"
+              :name="externalIcon"
             />
           </sup>
         </span>

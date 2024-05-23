@@ -1,8 +1,23 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
+import type { TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
-import { main as theme } from '#s94-ui/themes'
+
 import _appConfig from '#build/app.config'
+
+export const theme = {
+  slots: {
+    root: 'max-w-screen-lg h-full mx-auto',
+    base: 'min-h-fit w-full mx-auto',
+  },
+  variants: {
+    padded: {
+      true: {
+        root: 'flex flex-col justify-around',
+      },
+    },
+  },
+} satisfies Parameters<TV>[0]
 
 const appConfig = _appConfig as AppConfig & { s94Ui: { main: Partial<typeof theme> } }
 
