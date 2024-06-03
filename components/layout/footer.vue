@@ -2,11 +2,9 @@
 import type { AppConfig } from 'nuxt/schema'
 import type { VariantProps as _VrPr, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
-import { toRefs } from '@vueuse/core'
 
-import type { DeepPartial, Links, LinksProps, LinksGroup, LinksGroupProps, LinksGroupVariants, LinksVariants } from '#s94-ui/types'
+import type { Links, LinksGroup, LinksGroupVariants, LinksVariants } from '#s94-ui/types'
 import type { Avatar } from '#ui/types'
-import type { divider } from '#ui/ui.config'
 import _appConfig from '#build/app.config'
 import { SLinksGroup, UContainer, UDivider } from '#components'
 
@@ -64,11 +62,7 @@ export interface FooterProps {
   titleTo?: string
   class?: any
   // variant?: FooterVariants
-  ui?: Partial<typeof footer.slots> & {
-    socials?: LinksProps['ui']
-    linksGroup?: LinksGroupProps['ui']
-    separator?: DeepPartial<typeof divider>
-  }
+  ui?: Partial<typeof footer.slots>
 }
 
 export interface FooterSlots {
@@ -88,10 +82,7 @@ const props = withDefaults(defineProps<FooterProps>(), {
 })
 const slots = defineSlots<FooterSlots>()
 
-const { socials: socUI, linksGroup: lGUI, separator: sepUI, ..._uiFooter } = toRefs(props.ui ?? {})
-const uiFooter = reactive(_uiFooter)
-
-const _ui = computed(() => tv({ extend: footer, slots: uiFooter })())
+const _ui = computed(() => tv({ extend: footer, slots: props.ui })())
 </script>
 
 <template>
@@ -102,7 +93,6 @@ const _ui = computed(() => tv({ extend: footer, slots: uiFooter })())
         :avatar="separatorAvatar ?? separator?.avatar"
         :icon="separatorIcon ?? separator?.icon"
         :label="separatorLabel ?? separator?.label"
-        :ui="sepUI"
       />
     </slot>
     <UContainer v-if="(slots.left || slots.logo || title || socials || slots.default || slots.right || links) && (!hideCenter || !hide?.center)" :class="_ui.container()">
@@ -118,7 +108,7 @@ const _ui = computed(() => tv({ extend: footer, slots: uiFooter })())
               {{ title }}
             </slot>
           </NuxtLink>
-          <SLinks v-if="socials" :class="_ui.socialsClass()" :links="socials" :variant="socialsVariant" :ui="socUI" />
+          <SLinks v-if="socials" :class="_ui.socialsClass()" :links="socials" :variant="socialsVariant" />
         </slot>
       </div>
 
@@ -134,7 +124,6 @@ const _ui = computed(() => tv({ extend: footer, slots: uiFooter })())
               links,
               linksVariant: linksVariant,
               variant: linksGroupVariant,
-              ui: lGUI,
             }"
           />
         </slot>
