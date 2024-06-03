@@ -39,6 +39,12 @@ export const theme = {
     variant: {
       default: {},
       line: {},
+      elegant: {
+        root: 'gap-x-8 gap-y-5 w-fit mx-auto',
+        active: 'no-underline from-primary/80 to-primary/80 bg-[length:100%_1px]',
+        inactive: 'from-gray-700 to-gray-700 dark:from-gray-300 dark:to-gray-300',
+        base: 'hover:no-underline font-normal border-b-0 bg-gradient-to-r bg-no-repeat transition-all duration-200 ease-in-out bg-[length:0px_1px] bg-bottom hover:bg-[length:100%_1px] mx-auto',
+      },
     },
   },
   compoundVariants: [
@@ -135,3 +141,12 @@ const ui = computed(() => tv({ extend: _links, slots: props.ui })({
     </ULink>
   </nav>
 </template>
+
+<style scoped>
+.menu-border {
+  background-size: 50% 1px;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
+  background-position: 0% 100%, 100% 0%;
+  background-repeat: no-repeat, no-repeat;
+}
+</style>
