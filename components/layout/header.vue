@@ -169,7 +169,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
         </slot>
       </div>
 
-      <div v-if="links && (!hide?.center || !hideCenter)" :class="ui.center()">
+      <div v-if="links || slots.center && (!hide?.center || !hideCenter)" :class="ui.center()">
         <slot name="center">
           <SLinks :links="links" :variant="linksVariant" />
         </slot>
