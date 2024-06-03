@@ -3,6 +3,7 @@
     <SHeader
       :links="links"
       :socials="socials"
+      links-variant="elegant"
       title="S94Ui"
       sticky
     />

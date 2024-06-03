@@ -6,7 +6,7 @@ import { toRefs } from '@vueuse/core'
 
 import { SLinks, UButton, UContainer, USlideover } from '#components'
 import _appConfig from '#build/app.config'
-import type { Links } from '#s94-ui/types'
+import type { Links, LinksVariants } from '#s94-ui/types'
 
 export const theme = {
   slots: {
@@ -85,12 +85,14 @@ export interface HeaderProps {
     socials?: 'desktop' | 'mobile' | boolean
   }
   links?: Links
+  linksVariant?: LinksVariants['variant']
   mobileButtonIcon?: {
     close?: string
     open?: string
   }
   rtl?: boolean
   socials?: Links
+  socialsVariant?: LinksVariants['variant']
   sticky?: boolean
   title?: string
   titleTo?: string
@@ -169,7 +171,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
 
       <div v-if="links && (!hide?.center || !hideCenter)" :class="ui.center()">
         <slot name="center">
-          <SLinks :links="links" />
+          <SLinks :links="links" :variant="linksVariant" />
         </slot>
       </div>
 
@@ -179,6 +181,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
             v-if="socials && hide?.socials !== true"
             :class="ui.socials()"
             :links="socials"
+            :variant="socialsVariant"
           />
         </slot>
 
@@ -237,7 +240,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
           </template>
           <div v-if="links || slots.panelContent" :class="ui.panelContent()">
             <slot name="panelContent">
-              <SLinks :links="links" vertical />
+              <SLinks :links="links" :variant="linksVariant" vertical />
             </slot>
           </div>
           <template #footer>
@@ -246,6 +249,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
                 v-if="socials && (hide?.socials !== true || hideSocials !== true)"
                 :class="ui.socials()"
                 :links="socials"
+                :variant="socialsVariant"
               />
             </slot>
           </template>
