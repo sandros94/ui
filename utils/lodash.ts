@@ -15,7 +15,7 @@ export function get(object: Record<string, any>, path: (number | string)[] | str
   if (typeof path === 'string') {
     path = path.split('.').map((key) => {
       const numKey = Number(key)
-      return isNaN(numKey) ? key : numKey
+      return Number.isNaN(numKey) ? key : numKey
     })
   }
 

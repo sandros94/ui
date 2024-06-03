@@ -5,7 +5,7 @@ import type { Strategy } from '#s94-ui/types'
 const customTwMerge = extendTailwindMerge<string, string>({
   extend: {
     classGroups: {
-      icons: [(classPart: string) => /^i-/.test(classPart)],
+      icons: [(classPart: string) => classPart.startsWith('i-')],
     },
   },
 })
@@ -50,7 +50,7 @@ export function hexToRgb(hex: string) {
 
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result
-    ? `${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(result[3], 16)}`
+    ? `${Number.parseInt(result[1], 16)} ${Number.parseInt(result[2], 16)} ${Number.parseInt(result[3], 16)}`
     : null
 }
 
@@ -79,8 +79,8 @@ export function getSlotsChildren(slots: any) {
  * This is used for the .number modifier in v-model
  */
 export function looseToNumber(val: any): any {
-  const n = parseFloat(val)
-  return isNaN(n) ? val : n
+  const n = Number.parseFloat(val)
+  return Number.isNaN(n) ? val : n
 }
 
 export * from './lodash'
