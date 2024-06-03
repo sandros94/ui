@@ -150,7 +150,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
       navPosition.value = '0'
     }
     else if (isScrolling.value && toBottom.value) {
-      navPosition.value = 'calc(var(--header-height) * -1)'
+      navPosition.value = 'calc((var(--header-height) + 2px) * -1)'
     }
   }
 })
