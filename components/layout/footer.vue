@@ -4,7 +4,7 @@ import type { VariantProps as _VrPr, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 import { toRefs } from '@vueuse/core'
 
-import type { DeepPartial, Links, LinksProps, LinksGroup, LinksGroupProps, LinksGroupVariants } from '#s94-ui/types'
+import type { DeepPartial, Links, LinksProps, LinksGroup, LinksGroupProps, LinksGroupVariants, LinksVariants } from '#s94-ui/types'
 import type { Avatar } from '#ui/types'
 import type { divider } from '#ui/ui.config'
 import _appConfig from '#build/app.config'
@@ -55,8 +55,10 @@ export interface FooterProps {
   }
   legal?: string
   links?: LinksGroup[]
+  linksVariant?: LinksVariants['variant']
   linksGroupVariant?: LinksGroupVariants['variant']
   socials?: Links
+  socialsVariant?: LinksVariants['variant']
   socialsClass?: any
   title?: string
   titleTo?: string
@@ -116,7 +118,7 @@ const _ui = computed(() => tv({ extend: footer, slots: uiFooter })())
               {{ title }}
             </slot>
           </NuxtLink>
-          <SLinks v-if="socials" :class="_ui.socialsClass()" :links="socials" :ui="socUI" />
+          <SLinks v-if="socials" :class="_ui.socialsClass()" :links="socials" :variant="socialsVariant" :ui="socUI" />
         </slot>
       </div>
 
@@ -128,8 +130,9 @@ const _ui = computed(() => tv({ extend: footer, slots: uiFooter })())
         <slot name="right">
           <SLinksGroup
             v-if="links"
-            :links="links"
             v-bind="{
+              links,
+              linksVariant: linksVariant,
               variant: linksGroupVariant,
               ui: lGUI,
             }"
