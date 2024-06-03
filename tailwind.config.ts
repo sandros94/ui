@@ -27,10 +27,6 @@ export default <Partial<Config>>{
         transparent: 'transparent',
         warning: colors.red,
       },
-      fontFamily: {
-        sans: ['DM Sans'],
-        mono: ['Fira Code'],
-      },
     },
   },
 }

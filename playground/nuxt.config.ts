@@ -8,6 +8,19 @@ export default defineNuxtConfig({
     },
   },
 
+  tailwindcss: {
+    config: {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans'],
+            mono: ['Fira Code'],
+          },
+        },
+      },
+    },
+  },
+
   devtools: {
     timeline: {
       enabled: true,
