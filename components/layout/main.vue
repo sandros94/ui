@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
-import type { TV } from 'tailwind-variants'
+import type { TV, VariantProps } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
@@ -22,6 +22,8 @@ export const theme = {
 const appConfig = _appConfig as AppConfig & { s94Ui: { main: Partial<typeof theme> } }
 
 const main = tv({ extend: tv(theme), ...(appConfig.s94Ui.main || {}) })
+
+export type MainVariants = VariantProps<typeof main>
 
 export interface MainProps {
   padded?: boolean
