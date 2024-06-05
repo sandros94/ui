@@ -8,6 +8,38 @@ export default defineNuxtConfig({
     },
   },
 
+  fonts: {
+    families: [
+      {
+        name: 'DM Sans',
+        provider: 'google',
+        weights: [
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900,
+          1000,
+        ],
+      },
+      {
+        name: 'Fira Code',
+        provider: 'google',
+        weights: [
+          300,
+          400,
+          500,
+          600,
+          700,
+        ],
+      },
+    ],
+  },
+
   tailwindcss: {
     config: {
       theme: {

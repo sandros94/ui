@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss'
 import typography from '@tailwindcss/typography'
 import colors from 'tailwindcss/colors'
 
-export default <Partial<Config>>{
+export default <Partial<Config>> {
   plugins: [typography],
   safelist: [
     {
