@@ -29,6 +29,9 @@ export const theme = {
   },
   variants: {
     variant: {
+      transparent: {
+        root: 'border-0 bg-background/0 backdrop-blur-none',
+      },
       faded: {
         root: 'border-0 bg-background/0 backdrop-blur-none bg-gradient-to-b from-background/75 to-transparent',
       },
