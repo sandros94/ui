@@ -1,20 +1,19 @@
 // Source: `https://github.com/nuxt/ui/blob/dev/src/runtime/plugins/colors.ts`
 import { computed } from 'vue'
-import { defineNuxtPlugin, useAppConfig, useHead, useNuxtApp } from '#imports'
+import { defineNuxtPlugin, useAppConfig, useHead } from '#imports'
 
-export default defineNuxtPlugin(() => {
-  const { s94Ui } = useAppConfig()
-  const nuxtApp = useNuxtApp()
+export default defineNuxtPlugin(({ isHydrating, payload: { serverRendered } }) => {
+  const { header: { height }, light, dark } = useAppConfig().s94Ui
 
   const root = computed(() => {
     return `:root {
-  --header-height: ${s94Ui.header.height};
+  --header-height: ${height};
 
-  ${Object.entries(s94Ui.light).map(([key, value]) => `--s94-ui-${key}: ${value};`).join('\n')}
+  ${Object.entries(light).map(([key, value]) => `--s94-ui-${key}: ${value};`).join('\n')}
 }
 
 .dark {
-  ${Object.entries(s94Ui.dark).map(([key, value]) => `--s94-ui-${key}: ${value};`).join('\n')}
+  ${Object.entries(dark).map(([key, value]) => `--s94-ui-${key}: ${value};`).join('\n')}
 }`
   })
 
@@ -28,7 +27,7 @@ export default defineNuxtPlugin(() => {
   }
 
   // SPA mode
-  if (import.meta.client && nuxtApp.isHydrating && !nuxtApp.payload.serverRendered) {
+  if (import.meta.client && isHydrating && !serverRendered) {
     const style = document.createElement('style')
 
     style.innerHTML = root.value
