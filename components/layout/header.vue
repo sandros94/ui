@@ -10,12 +10,12 @@ import type { Links, LinksVariants } from '#s94-ui/types'
 
 export const theme = {
   slots: {
-    root: 'w-full bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
+    root: 'w-full bg-background/75 backdrop-blur text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
     container: 'flex items-center justify-between gap-3 h-[--header-height] max-w-[90rem]',
     left: 'lg:flex-1 flex items-center gap-1.5 text-2xl truncate',
     center: 'hidden lg:flex text-lg',
     right: 'flex items-center justify-end lg:flex-1 gap-2',
-    logo: 'flex-shrink-0 font-bold text-gray-900 dark:text-white flex items-end gap-1.5 break-keep',
+    logo: 'flex-shrink-0 font-bold flex items-end gap-1.5 break-keep',
     mobileButton: 'lg:hidden',
     slideoverBg: 'bg-background dark:bg-background',
     slideoverOverlayBg: 'bg-background/75 dark:bg-background/75',
@@ -90,6 +90,7 @@ export interface HeaderProps {
     close?: string
     open?: string
   }
+  mobileButtonColor?: string
   rtl?: boolean
   socials?: Links
   socialsVariant?: LinksVariants['variant']
@@ -122,6 +123,7 @@ const props = withDefaults(defineProps<HeaderProps>(), {
     close: 'i-ph-x',
     open: 'i-ph-list',
   }),
+  mobileButtonColor: 'gray',
   rtl: false,
   titleTo: '/',
 })
@@ -191,7 +193,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
             :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Mobile Menu`"
             :class="ui.mobileButton()"
             :icon="isMenuOpen ? mobileButtonIcon.close : mobileButtonIcon.open"
-            color="gray"
+            :color="mobileButtonColor"
             size="xl"
             variant="ghost"
             @click="isMenuOpen = !isMenuOpen"
@@ -231,7 +233,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
                 :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Mobile Menu`"
                 :class="ui.mobileButton()"
                 :icon="isMenuOpen ? mobileButtonIcon.close : mobileButtonIcon.open"
-                color="gray"
+                :color="mobileButtonColor"
                 size="xl"
                 variant="ghost"
                 @click="isMenuOpen = !isMenuOpen"
