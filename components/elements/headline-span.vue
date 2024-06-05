@@ -1,13 +1,9 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
-import type { TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-
-export const theme = {
-  base: 'max-w-full mx-auto leading-none',
-} satisfies Parameters<TV>[0]
+import theme from '#s94-ui/themes/headline-span'
 
 const appConfig = _appConfig as AppConfig & { s94Ui: { headlineSpan: Partial<typeof theme> } }
 

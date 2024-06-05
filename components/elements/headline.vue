@@ -1,16 +1,9 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
-import type { TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-
-export const theme = {
-  slots: {
-    root: 'mx-auto font-bold',
-    span: 'mx-auto leading-none',
-  },
-} satisfies Parameters<TV>[0]
+import theme from '#s94-ui/themes/headline'
 
 const appConfig = _appConfig as AppConfig & { s94Ui: { headline: Partial<typeof theme> } }
 
