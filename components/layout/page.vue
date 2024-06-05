@@ -1,9 +1,25 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
+import type { TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-import theme from '#s94-ui/themes/page'
+
+export const theme = {
+  slots: {
+    root: 'min-h-svh flex flex-col overflow-x-hidden',
+    header: 'h-[--header-height] flex-none',
+    wrapper: ' grow flex flex-col lg:flex-row',
+    asides: 'flex-none max-lg:w-full lg:w-72',
+    left: 'text-let',
+    right: 'text-right',
+    container: 'grow max-lg:order-last flex flex-col',
+    top: 'flex-none',
+    base: 'grow',
+    bottom: 'flex-none',
+    footer: 'flex-none',
+  },
+} satisfies Parameters<TV>[0]
 
 const appConfig = _appConfig as AppConfig & { s94Ui: { page: Partial<typeof theme> } }
 

@@ -1,9 +1,18 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
+import type { TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-import theme from '#s94-ui/themes/card'
+
+export const theme = {
+  slots: {
+    root: 'min-h-full flex flex-col overflow-hidden',
+    header: 'flex-none px-4 py-5 sm:px-6',
+    base: 'grow px-4 py-5 sm:px-6 overflow-y-auto',
+    footer: 'flex-none px-4 py-5 sm:px-6',
+  },
+} satisfies Parameters<TV>[0]
 
 const appConfig = _appConfig as AppConfig & { s94Ui: { card: Partial<typeof theme> } }
 
