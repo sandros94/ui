@@ -1,6 +1,8 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
 import type { Strategy } from '#s94-ui/types'
+import { mergeConfig } from '#s94-ui/utils'
+import { useAppConfig, useUI } from '#imports'
 
 export interface FigureUi {
   wrapper: string

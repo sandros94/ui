@@ -6,6 +6,14 @@ import type { ButtonColor, ButtonSize, ButtonVariant, ToggleColor, ToggleSize } 
 import type { button, toggle as toggleConfig } from '#ui/ui.config'
 import { mergeConfig } from '#s94-ui/utils'
 import { UButton, UToggle } from '#components'
+import {
+  ref,
+  useAppConfig,
+  useDarkMode,
+  useId,
+  useNuxtApp,
+  useUI,
+} from '#imports'
 
 export interface DarkModeUi {
   button: DeepPartial<typeof button>

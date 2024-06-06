@@ -6,6 +6,7 @@ import { tv } from 'tailwind-variants'
 import type { Link as ULinkType } from '#ui/types'
 import _appConfig from '#build/app.config'
 import { UIcon, ULink } from '#components'
+import { computed } from '#imports'
 
 export const theme = {
   slots: {

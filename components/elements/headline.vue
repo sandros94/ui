@@ -4,6 +4,7 @@ import type { TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
+import { computed } from '#imports'
 
 export const theme = {
   slots: {

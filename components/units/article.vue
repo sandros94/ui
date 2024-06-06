@@ -5,6 +5,7 @@ import { tv } from 'tailwind-variants'
 
 import type { HeadlineProps } from '#s94-ui/types'
 import _appConfig from '#build/app.config'
+import { computed, defineSlots } from '#imports'
 
 export const theme = {
   slots: {

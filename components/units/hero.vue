@@ -4,6 +4,7 @@ import type { ExtractDeepKey, Strategy } from '#s94-ui/types'
 import type { Button } from '#ui/types'
 import { mergeConfig } from '#s94-ui/utils'
 import { UButton } from '#components'
+import { useAppConfig, useUI } from '#imports'
 
 type UButtonProps = Pick<InstanceType<typeof UButton>['$props'], 'class' | 'ui'>
 
