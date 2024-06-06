@@ -60,7 +60,7 @@ watchDebounced([text, windowWidth], async ([prevText], [newText]) => {
   }
   style.fontSize = `${parentWidth.value / orStyle.value.width * orStyle.value.fontSize}px`
 }, {
-  debounce: 50,
+  debounce: 100,
   immediate: true,
 })
 </script>
