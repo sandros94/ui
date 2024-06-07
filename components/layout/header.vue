@@ -165,7 +165,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
 <template>
   <header :class="ui.root({ class: props.class })" :style="{ top: navPosition }">
     <UContainer :class="ui.container()">
-      <div v-if="!hide?.left || !hideLeft || title || slots.left || slots.logo" :class="ui.left()">
+      <div v-if="(!hide?.left && !hideLeft) && (title || slots.left || slots.logo)" :class="ui.left()">
         <slot name="left">
           <NuxtLink :class="ui.logo()" :to="titleTo" aria-label="Logo">
             <slot name="logo">
@@ -175,13 +175,13 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
         </slot>
       </div>
 
-      <div v-if="links || slots.center && (!hide?.center || !hideCenter)" :class="ui.center()">
+      <div v-if="(!hide?.center && !hideCenter) && (links || slots.center)" :class="ui.center()">
         <slot name="center">
           <SLinks :links="links" :variant="linksVariant" />
         </slot>
       </div>
 
-      <div v-if="!hide?.right || !hideRight || socials || slots.right || slots.mobileButton" :class="ui.right()">
+      <div v-if="(!hide?.right && !hideRight) && (socials || slots.right || slots.mobileButton)" :class="ui.right()">
         <slot name="right">
           <SLinks
             v-if="socials && hide?.socials !== true"
@@ -193,7 +193,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
 
         <slot name="mobileButton" :open="isMenuOpen">
           <UButton
-            v-if="!hide?.panel || !hidePanel || !hide?.mobileButton || !hideMobileButton"
+            v-if="!hide?.panel && !hidePanel && !hide?.mobileButton && !hideMobileButton"
             :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Mobile Menu`"
             :class="ui.mobileButton()"
             :icon="isMenuOpen ? mobileButtonIcon.close : mobileButtonIcon.open"
@@ -207,7 +207,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
     </UContainer>
 
     <USlideover
-      v-if="!hide?.panel || !hidePanel"
+      v-if="!hide?.panel && !hidePanel"
       v-model="isMenuOpen"
       :side="rtl ? 'left' : 'right'"
       :ui="{
@@ -252,7 +252,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
           <template #footer>
             <slot name="panelFooter">
               <SLinks
-                v-if="socials && (hide?.socials !== true || hideSocials !== true)"
+                v-if="(!hide?.socials && !hideSocials) && socials"
                 :class="ui.socials()"
                 :links="socials"
                 :variant="socialsVariant"
