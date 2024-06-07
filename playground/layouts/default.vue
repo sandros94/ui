@@ -1,13 +1,15 @@
 <template>
   <div>
-    <SHeader
-      :links="links"
-      :socials="socials"
-      links-variant="elegant"
-      title="S94Ui"
-      sticky
-    />
     <NuxtLayout name="page">
+      <template #header>
+        <SHeader
+          :links="links"
+          :socials="socials"
+          links-variant="elegant"
+          title="S94Ui"
+          sticky
+        />
+      </template>
       <SMain padded>
         <slot />
       </SMain>

@@ -10,7 +10,7 @@ export const theme = {
   slots: {
     root: 'min-h-svh flex flex-col overflow-x-hidden',
     header: 'h-[--header-height] flex-none',
-    wrapper: ' grow flex flex-col lg:flex-row',
+    wrapper: 'grow flex flex-col lg:flex-row',
     asides: 'flex-none max-lg:w-full lg:w-72',
     left: 'text-let',
     right: 'text-right',
