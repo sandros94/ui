@@ -12,9 +12,14 @@ export const theme = {
     base: 'min-h-fit w-full mx-auto',
   },
   variants: {
+    centered: {
+      true: {
+        root: 'min-h-[calc(100svh-var(--header-height)*2)] flex flex-col justify-center',
+      },
+    },
     padded: {
       true: {
-        root: 'flex flex-col justify-around',
+        root: 'min-h-[calc(100svh-var(--header-height)*2)] flex flex-col justify-around',
       },
     },
   },
@@ -27,6 +32,7 @@ const main = tv({ extend: tv(theme), ...(appConfig.s94Ui.main || {}) })
 export type MainVariants = VariantProps<typeof main>
 
 export interface MainProps {
+  centered?: boolean
   padded?: boolean
   class?: any
   ui?: Partial<typeof main.slots>
@@ -39,11 +45,13 @@ export interface MainSlots {
 
 <script setup lang="ts">
 const props = withDefaults(defineProps<MainProps>(), {
+  centered: false,
   padded: false,
 })
 const slots = defineSlots<MainSlots>()
 
 const ui = computed(() => tv({ extend: main, slots: props.ui })({
+  centered: props.centered,
   padded: props.padded,
 }))
 </script>
