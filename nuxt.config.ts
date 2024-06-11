@@ -1,22 +1,66 @@
-import { createResolver } from 'nuxt/kit'
-
-const { resolve } = createResolver(import.meta.url)
-
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui', '@nuxt/fonts', '@vueuse/nuxt'],
-  alias: { '#s94-ui': resolve('./') },
-  components: [
-    { path: '#s94-ui/components', pathPrefix: false, prefix: 'S' },
-  ],
-  css: [
-    '#s94-ui/assets/css/main.css',
-  ],
+  extends: ['./main'],
 
-  devtools: { enabled: true },
+  fonts: {
+    families: [
+      {
+        name: 'DM Sans',
+        provider: 'google',
+        weights: [
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900,
+          1000,
+        ],
+      },
+      {
+        name: 'Fira Code',
+        provider: 'google',
+        weights: [
+          300,
+          400,
+          500,
+          600,
+          700,
+        ],
+      },
+    ],
+  },
 
-  ui: {
-    icons: 'all',
-    safelistColors: ['success', 'info', 'alert', 'warning'],
+  tailwindcss: {
+    config: {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans'],
+            mono: ['Fira Code'],
+          },
+        },
+      },
+    },
+  },
+
+  devtools: {
+    timeline: {
+      enabled: true,
+      functions: {
+        include: [
+          // track all functions from tailwind-variants
+          entry => entry.from === 'tailwind-variants',
+          // track all functions from @vueuse/core
+          entry => entry.from === '@vueuse/core',
+        ],
+        exclude: [
+          'useRouter',
+          'useState',
+        ],
+      },
+    },
   },
 })
