@@ -60,8 +60,8 @@ const darkModeConfigDefault: Partial<DarkModeConfig> = {
       size: 'md',
       variant: 'ghost',
     },
-    offIcon: 'i-ph-sun',
-    onIcon: 'i-ph-moon',
+    offIcon: 'i-heroicons-sun',
+    onIcon: 'i-heroicons-moon',
     style: 'button',
     toggle: {
       color: 'primary',

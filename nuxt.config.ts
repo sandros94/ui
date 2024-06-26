@@ -46,6 +46,10 @@ export default defineNuxtConfig({
     },
   },
 
+  ui: {
+    icons: ['heroicons', 'ph', 'simple-icons'],
+  },
+
   devtools: {
     timeline: {
       enabled: true,

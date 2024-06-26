@@ -124,8 +124,8 @@ const props = withDefaults(defineProps<HeaderProps>(), {
   sticky: false,
   hideOnScroll: false,
   mobileButtonIcon: () => ({
-    close: 'i-ph-x',
-    open: 'i-ph-list',
+    close: 'i-heroicons-x-mark',
+    open: 'i-heroicons-bars-2',
   }),
   mobileButtonColor: 'gray',
   rtl: false,

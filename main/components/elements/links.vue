@@ -98,7 +98,7 @@ export interface LinksProps {
 
 <script setup lang="ts">
 const props = withDefaults(defineProps<LinksProps>(), {
-  externalIcon: 'i-ph-arrow-up-right-light',
+  externalIcon: 'i-heroicons-arrow-up-right-20-solid',
 })
 
 const filteredLinks = computed(() => unref(props.links ?? []).filter(link => link.if ? link.if() : true))
