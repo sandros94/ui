@@ -1,8 +1,10 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
-import type { Strategy } from '#s94-ui/types'
-import { mergeConfig } from '#s94-ui/utils'
-import { useAppConfig, useUI } from '#imports'
+import type { VariantProps, TV } from 'tailwind-variants'
+
+import { tv } from 'tailwind-variants'
+import _appConfig from '#build/app.config'
+import { computed, defineSlots } from '#imports'
 
 export interface FigureUi {
   wrapper: string
@@ -10,40 +12,45 @@ export interface FigureUi {
   caption: string
 }
 
-export type FigureConfig = FigureUi
+export const theme = {
+  slots: {
+    root: 'w-full mx-4 my-8',
+    container: 'shadow rounded',
+    caption: 'w-full mx-12 mt-4 text-sm text-center text-gray-700 dark:text-gray-300',
+  },
+} satisfies Parameters<TV>[0]
+
+const appConfig = _appConfig as AppConfig & { s94Ui: { figure: Partial<typeof theme> } }
+
+const figure = tv({ extend: tv(theme), ...(appConfig.s94Ui.figure || {}) })
+
+export type FigureVariants = VariantProps<typeof figure>
 
 export interface FigureProps {
-  // TODO: add image and image alt
-  caption?: string
+  caption?: string | string[]
   class?: any
-  ui?: Partial<FigureUi> & { strategy?: Strategy }
+  ui?: Partial<typeof figure.slots>
+}
+
+export interface FigureSlots {
+  default: any
+  caption: any
 }
 </script>
 
 <script setup lang="ts">
-const { s94Ui: { figure: sFigure }, ui: { strategy } } = useAppConfig() as AppConfig & { s94Ui: { figure: FigureConfig } }
+const props = defineProps<FigureProps>()
+const slots = defineSlots<FigureSlots>()
 
-const configDefault: FigureUi = {
-  wrapper: 'w-full mx-4 my-8',
-  container: 'shadow rounded',
-  caption: 'w-full mx-12 mt-4 text-sm text-center text-gray-700 dark:text-gray-300',
-}
-
-const props = withDefaults(defineProps<FigureProps>(), {
-  ui: () => ({}),
-})
-
-const config = mergeConfig<FigureConfig>(strategy, sFigure, configDefault)
-
-const { attrs, ui } = useUI('s94.main', toRef(props, 'ui'), config, toRef(props, 'class'))
+const ui = computed(() => tv({ extend: figure, slots: props.ui })({}))
 </script>
 
 <template>
-  <figure v-if="$slots.default" :class="ui.wrapper" v-bind="attrs">
+  <figure v-if="slots.default" :class="ui.root({ class: props.class })">
     <div :class="ui.container">
       <slot />
     </div>
-    <figcaption v-if="props.caption" :class="ui.caption">
+    <figcaption v-if="props.caption || slots.caption" :class="ui.caption()">
       <slot name="caption">
         {{ props.caption }}
       </slot>
