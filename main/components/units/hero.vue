@@ -9,7 +9,7 @@ import { useAppConfig, useUI } from '#imports'
 type UButtonProps = Pick<InstanceType<typeof UButton>['$props'], 'class' | 'ui'>
 
 export interface HeroCta extends Button, UButtonProps {
-  click?: Function
+  click?: ((...args: any[]) => void) | undefined
   if?: () => boolean
 }
 

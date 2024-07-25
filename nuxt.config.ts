@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     config: {
       stylistic: true,
       tooling: true,
-    }
+    },
   },
 
   fonts: {

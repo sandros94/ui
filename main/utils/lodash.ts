@@ -5,6 +5,7 @@ export function omit<T extends Record<string, any>, K extends keyof T>(
   const result = { ...object }
 
   for (const key of keysToOmit) {
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete result[key]
   }
 

@@ -16,4 +16,3 @@ type DeepKey<T, Keys extends string[]> =
 export type ExtractDeepKey<T, Path extends string[]> = DeepKey<T, Path> extends infer Result
   ? Result extends Record<string, any> ? keyof Result : never
   : never
-
