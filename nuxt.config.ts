@@ -1,6 +1,17 @@
 export default defineNuxtConfig({
   extends: ['./main'],
 
+  modules: [
+    '@nuxt/eslint',
+  ],
+
+  eslint: {
+    config: {
+      stylistic: true,
+      tooling: true,
+    }
+  },
+
   fonts: {
     families: [
       {
