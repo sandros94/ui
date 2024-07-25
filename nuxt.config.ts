@@ -46,10 +46,6 @@ export default defineNuxtConfig({
     },
   },
 
-  ui: {
-    icons: ['heroicons', 'ph', 'simple-icons'],
-  },
-
   devtools: {
     timeline: {
       enabled: true,
@@ -67,4 +63,6 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  compatibilityDate: '2024-07-25',
 })
