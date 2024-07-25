@@ -1,14 +1,13 @@
 <script lang="ts">
 import type { AppConfig } from 'nuxt/schema'
 import type { ExtractDeepKey, Strategy } from '#s94-ui/types'
-import type { Button } from '#ui/types'
 import { mergeConfig } from '#s94-ui/utils'
 import { UButton } from '#components'
 import { useAppConfig, useUI } from '#imports'
 
-type UButtonProps = Pick<InstanceType<typeof UButton>['$props'], 'class' | 'ui'>
+type UButtonProps = InstanceType<typeof UButton>['$props']
 
-export interface HeroCta extends Button, UButtonProps {
+export interface HeroCta extends UButtonProps {
   click?: ((...args: any[]) => void) | undefined
   if?: () => boolean
 }

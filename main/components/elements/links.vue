@@ -3,7 +3,6 @@ import type { AppConfig } from 'nuxt/schema'
 import type { VariantProps, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
-import type { Link as ULinkType } from '#ui/types'
 import _appConfig from '#build/app.config'
 import { UIcon, ULink } from '#components'
 import { computed } from '#imports'
@@ -72,7 +71,9 @@ export const theme = {
   },
 } satisfies Omit<Parameters<TV>[0], 'compoundVariants' | 'defaultVariants'> & { compoundVariants: any, defaultVariants: any }
 
-export interface Link extends ULinkType {
+type ULinkProps = InstanceType<typeof ULink>['$props']
+
+export interface Link extends ULinkProps {
   icon?: string
   if?: () => boolean
   label?: string

@@ -102,7 +102,7 @@ hook('page:finish', () => {
       v-bind="attrs"
       v-model="isDark"
       :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
-      :color="color ?? ui.default?.toggle?.color"
+      :color="color as any ?? ui.default?.toggle?.color"
       :off-icon="offIcon ?? ui.default?.offIcon"
       :on-icon="onIcon ?? ui.default?.onIcon"
       :ui="ui.style?.toggle"
@@ -112,7 +112,7 @@ hook('page:finish', () => {
         :id="idToggleLoading"
         v-bind="attrs"
         :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
-        :color="color ?? ui.default?.toggle?.color"
+        :color="color as any ?? ui.default?.toggle?.color"
         :loading="true"
         :ui="ui.style?.toggle"
       />
