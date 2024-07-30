@@ -9,7 +9,7 @@
   "main": "./nuxt.config.ts",
   "dependencies": {
     "@nuxt/fonts": "^0.7.1",
-    "@nuxt/ui": "2.18.0",
+    "@nuxt/ui": "2.18.3",
     "@vueuse/nuxt": "^10.11.0",
     "tailwind-variants": "^0.2.1"
   },
