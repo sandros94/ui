@@ -79,7 +79,7 @@ export interface Link extends ULinkProps {
   label?: string
 }
 
-export interface Links extends Array<Link> {}
+export type Links = Array<Link>
 
 const appConfig = _appConfig as AppConfig & { s94Ui: { links: Partial<typeof theme> } }
 
