@@ -81,6 +81,8 @@ const isLoading = ref(true)
 const idToggleLoading = useId()
 
 hook('page:finish', () => {
+  // TODO: Better handle unknown color mode
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   !unknown ? isLoading.value = false : isLoading.value = true
 })
 </script>
