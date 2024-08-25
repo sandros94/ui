@@ -8,12 +8,12 @@
   },
   "main": "./nuxt.config.ts",
   "dependencies": {
-    "@nuxt/fonts": "^0.7.1",
+    "@nuxt/fonts": "^0.7.2",
     "@nuxt/ui": "^2.18.4",
-    "@vueuse/nuxt": "^10.11.0",
+    "@vueuse/nuxt": "^10.11.1",
     "tailwind-variants": "^0.2.1"
   },
   "devDependencies": {
-    "nuxt": "^3.12.4"
+    "nuxt": "^3.13.0"
   }
 }
