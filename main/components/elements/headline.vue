@@ -44,7 +44,7 @@ const ui = computed(() => tv({ extend: headline, slots: props.ui })())
 <template>
   <h1 v-if="lines" :class="ui.root({ class: props.class })">
     <template v-for="(l, i) of lines" :key="i">
-      <slot :name="`span-${i}`" :value="l">
+      <slot :name="`span-${i}`" :index="i" :value="l">
         <SHeadlineSpan :class="ui.span()" :value="l" />
       </slot>
     </template>
