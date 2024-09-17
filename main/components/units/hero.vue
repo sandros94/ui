@@ -82,12 +82,12 @@ const heroConfigDefault: HeroConfig = {
     },
     opening: {
       base: 'absolute h-full w-full flex flex-col justify-around text-center',
-      container: 'relative h-full w-fit max-w-screen-xl mx-auto',
+      container: 'relative h-full w-fit max-w-screen-xl mx-auto text-gray-900 dark:text-white',
       cta: {
         wrapper: 'absolute inset-x-[10%] lg:inset-x-[15%] bottom-20 flex flex-wrap gap-x-4 gap-y-2',
       },
-      headline: 'h-fit text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white',
-      subhead: 'h-fit text-2xl lg:text-xl tracking-tight text-gray-600 dark:text-gray-300',
+      headline: 'h-fit text-5xl lg:text-6xl font-bold tracking-tight',
+      subhead: 'h-fit text-2xl lg:text-xl tracking-tight',
       img: 'inset-0 max-lg:object-cover size-full -z-30 h-full w-fit mx-auto',
       wrapper: 'not-prose mx-auto max-w-full h-svh',
     },
