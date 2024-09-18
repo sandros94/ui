@@ -1,10 +1,18 @@
 <script lang="ts">
-import type { AppConfig } from 'nuxt/schema'
+import type { AppConfig } from '@nuxt/schema'
 import type { TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-import { reactive, ref, toRef, watchDebounced } from '#imports'
+import {
+  nextTick,
+  reactive,
+  ref,
+  toRef,
+  watchDebounced,
+  useElementSize,
+  useWindowSize,
+} from '#imports'
 
 export const theme = {
   base: 'max-w-full mx-auto leading-none',

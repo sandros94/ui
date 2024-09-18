@@ -1,13 +1,14 @@
 <script lang="ts">
-import type { AppConfig } from 'nuxt/schema'
+import type { AppConfig } from '@nuxt/schema'
 import type { VariantProps, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 import { toRefs } from '@vueuse/core'
 
+import type { Button } from '#ui/types'
 import { SLinks, UButton, UContainer, USlideover } from '#components'
 import _appConfig from '#build/app.config'
 import type { Links, LinksVariants } from '#s94-ui/types'
-import { computed, defineSlots, ref, useRoute, watch } from '#imports'
+import { computed, defineSlots, ref, useRoute, useScroll, watch } from '#imports'
 
 export const theme = {
   slots: {
@@ -94,7 +95,7 @@ export interface HeaderProps {
     close?: string
     open?: string
   }
-  mobileButtonColor?: string
+  mobileButtonColor?: Button['color']
   rtl?: boolean
   socials?: Links
   socialsVariant?: LinksVariants['variant']

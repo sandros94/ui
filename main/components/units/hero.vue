@@ -1,9 +1,9 @@
 <script lang="ts">
-import type { AppConfig } from 'nuxt/schema'
+import type { AppConfig } from '@nuxt/schema'
 import type { ExtractDeepKey, Strategy } from '#s94-ui/types'
 import { mergeConfig } from '#s94-ui/utils'
 import { UButton } from '#components'
-import { useAppConfig, useUI } from '#imports'
+import { toRef, useAppConfig, useUI } from '#imports'
 
 type UButtonProps = InstanceType<typeof UButton>['$props']
 
@@ -18,6 +18,8 @@ export interface HeroUi {
   cta: {
     button?: UButtonProps
     wrapper?: string
+    class?: any
+    ui?: Record<string, any>
   }
   headline: string
   subhead: string

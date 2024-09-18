@@ -22,10 +22,14 @@
         <img alt="Hero image" src="https://cms.thetouchofficial.com/assets/071702b5-1a55-45d2-b81a-6ddd8d3fa707?withoutEnlargement=true&width=1920&format=webp&fit=outside">
       </SHero>
     </div>
+    <!-- New SResizableAreas component -->
+    <SResizableAreas />
   </div>
 </template>
 
 <script setup lang="ts">
+import { SResizableAreas } from '#components'
+
 // TODO: add lorem ipsum conditional text as an example
 const isVisible = useState('content-is-visible', () => false)
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { AppConfig } from 'nuxt/schema'
+import type { AppConfig } from '@nuxt/schema'
 import type { TV, VariantProps } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 

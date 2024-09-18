@@ -1,11 +1,15 @@
 <script lang="ts">
-import type { AppConfig } from 'nuxt/schema'
+import type { AppConfig } from '@nuxt/schema'
 import type { VariantProps, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
 import { UIcon, ULink } from '#components'
-import { computed } from '#imports'
+import {
+  type Ref,
+  unref,
+  computed,
+} from '#imports'
 
 export const theme = {
   slots: {

@@ -26,7 +26,7 @@ export type S94UiConfig = {
 
 export type S94Ui = S94UiConfig & AllConfigs & typeof allThemes
 
-declare module 'nuxt/schema' {
+declare module '@nuxt/schema' {
   interface AppConfigInput {
     /** Theme configuration */
     s94Ui?: DeepPartial<S94Ui>
