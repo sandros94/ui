@@ -12,7 +12,7 @@ export default defineNuxtPlugin(({ isHydrating, payload: { serverRendered } }) =
   ${Object.entries(light).map(([key, value]) => `--s94-ui-${key}: ${value};`).join('\n')}
 }
 
-.dark {
+@media (prefers-color-scheme: dark) {
   ${Object.entries(dark).map(([key, value]) => `--s94-ui-${key}: ${value};`).join('\n')}
 }`
   })
