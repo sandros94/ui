@@ -81,11 +81,11 @@ callOnce(() => {
       links: [
         {
           label: 'Privacy Policy',
-          to: '/privacy-policy',
+          to: '/',
         },
         {
           label: 'Terms of Use',
-          to: '/terms-of-use',
+          to: '/',
         },
       ],
     },

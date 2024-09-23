@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
-  extends: ['./main'],
+  extends: [
+    // ['./main', { install: true }],
+    ['./main-v3', { install: true }],
+  ],
 
   modules: [
     '@nuxt/eslint',
@@ -44,20 +47,9 @@ export default defineNuxtConfig({
     ],
   },
 
-  tailwindcss: {
-    config: {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['DM Sans'],
-            mono: ['Fira Code'],
-          },
-        },
-      },
-    },
-  },
-
   devtools: {
+    enabled: true,
+    componentInspector: false,
     timeline: {
       enabled: true,
       functions: {
