@@ -17,5 +17,17 @@ export default defineAppConfig({
       gray: 'neutral',
       primary: 'orange',
     },
+    modal: {
+      slots: {
+        overlay: 'bg-background/75 dark:bg-background/75',
+        content: 'bg-background dark:bg-background',
+      },
+    },
+    slideover: {
+      slots: {
+        overlay: 'bg-background/75 dark:bg-background/75',
+        content: 'bg-background dark:bg-background',
+      },
+    },
   },
 })
