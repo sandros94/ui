@@ -6,7 +6,6 @@ const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
-    '@nuxt/fonts',
     '@vueuse/nuxt',
   ],
 
