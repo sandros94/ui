@@ -17,6 +17,11 @@ export default defineAppConfig({
       gray: 'neutral',
       primary: 'orange',
     },
+    button: {
+      slots: {
+        label: 'mx-auto',
+      },
+    },
     modal: {
       slots: {
         overlay: 'bg-background/75 dark:bg-background/75',
