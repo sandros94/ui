@@ -1,5 +1,5 @@
 <template>
-  <SPage symmetrical>
+  <SPage :symmetrical="$attrs.symmetrical as (boolean | undefined)">
     <template v-if="$slots.header" #header>
       <slot name="header" />
     </template>
