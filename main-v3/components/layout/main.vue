@@ -15,11 +15,13 @@ export const theme = {
     centered: {
       true: {
         root: 'min-h-[calc(100svh-var(--header-height)*2)] flex flex-col justify-center',
+        base: 'w-fit',
       },
     },
     padded: {
       true: {
         root: 'min-h-[calc(100svh-var(--header-height)*2)] flex flex-col justify-around',
+        base: 'w-fit',
       },
     },
   },
