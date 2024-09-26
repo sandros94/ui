@@ -1,5 +1,5 @@
 <template>
-  <SPage :symmetrical="$attrs.symmetrical as (boolean | undefined)">
+  <SPage :symmetrical>
     <template v-if="$slots.header" #header>
       <slot name="header" />
     </template>
@@ -11,3 +11,9 @@
     </template>
   </SPage>
 </template>
+
+<script setup lang="ts">
+const { symmetrical } = useAttrs() as {
+  symmetrical?: boolean
+}
+</script>
