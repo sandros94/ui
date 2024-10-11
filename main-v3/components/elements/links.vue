@@ -15,7 +15,7 @@ import {
 export const theme = {
   slots: {
     root: 'not-prose flex items-center',
-    active: 'text-[--ui-primary]',
+    active: 'text-[var(--ui-primary)]',
     inactive: 'opacity-80 hover:opacity-100',
     base: 'relative inline-flex gap-x-2 font-light',
     externalLinkBase: 'top-0 h-fit',

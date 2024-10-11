@@ -31,18 +31,18 @@
     width: min(.5rem, 8px);
   }
   ::-webkit-scrollbar-track {
-    @apply bg-[--ui-bg];
+    @apply bg-[var(--ui-bg)];
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-[--ui-text]/20 border-[--ui-bg] border-2;
+    @apply bg-[var(--ui-text)]/20 border-[var(--ui-bg)] border-2;
     border-radius: min(.25rem, 4px);
     background-clip: padding-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-[--ui-text]/40;
+    @apply bg-[var(--ui-text)]/40;
   }
   ::-webkit-scrollbar-thumb:active {
-    @apply bg-[--ui-primary];
+    @apply bg-[var(--ui-primary)];
   }
   /* Scrollbar End */
 

@@ -13,27 +13,27 @@ import { computed, defineSlots, ref, useRoute, useScroll, watch } from '#imports
 
 export const theme = {
   slots: {
-    root: 'w-full bg-[--ui-bg]/75 backdrop-blur text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
-    container: 'flex items-center justify-between gap-3 h-[--s94-ui-header] max-w-[90rem]',
+    root: 'w-full bg-[var(--ui-bg)]/75 backdrop-blur text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
+    container: 'flex items-center justify-between gap-3 h-[var(--s94-ui-header)] max-w-[90rem]',
     left: 'lg:flex-1 flex items-center gap-1.5 text-2xl truncate',
     center: 'hidden lg:flex text-lg',
     right: 'flex items-center justify-end lg:flex-1 gap-2',
     logo: 'flex-shrink-0 font-bold flex items-end gap-1.5 break-keep',
     mobileButton: 'lg:hidden',
-    slideoverOverlay: 'bg-[--ui-bg]/75 dark:bg-[--ui-bg]/75',
-    slideoverContent: 'bg-[--ui-bg] dark:bg-[--ui-bg]',
-    slideoverHeader: 'w-full h-[--s94-ui-header] inline-flex items-center justify-between border-b border-gray-200 dark:border-gray-800 text-2xl',
+    slideoverOverlay: 'bg-[var(--ui-bg)]/75 dark:bg-[var(--ui-bg)]/75',
+    slideoverContent: 'bg-[var(--ui-bg)] dark:bg-[var(--ui-bg)]',
+    slideoverHeader: 'w-full h-[var(--s94-ui-header)] inline-flex items-center justify-between border-b border-gray-200 dark:border-gray-800 text-2xl',
     slideoverBody: 'size-full flex flex-col justify-around text-xl',
-    slideoverFooter: 'w-fit mx-auto text-xl min-h-[--s94-ui-header]',
+    slideoverFooter: 'w-fit mx-auto text-xl min-h-[var(--s94-ui-header)]',
     socials: 'w-fit',
   },
   variants: {
     variant: {
       transparent: {
-        root: 'border-0 bg-[--ui-bg]/0 backdrop-blur-none',
+        root: 'border-0 bg-[var(--ui-bg)]/0 backdrop-blur-none',
       },
       faded: {
-        root: 'border-0 bg-[--ui-bg]/0 backdrop-blur-none bg-gradient-to-b from-[--ui-bg]/75 to-transparent',
+        root: 'border-0 bg-[var(--ui-bg)]/0 backdrop-blur-none bg-gradient-to-b from-[var(--ui-bg)]/75 to-transparent',
       },
     },
     sticky: {

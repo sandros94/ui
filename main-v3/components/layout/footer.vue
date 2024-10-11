@@ -11,7 +11,7 @@ import { computed, defineSlots } from '#imports'
 
 export const theme = {
   slots: {
-    root: 'w-full py-2 mb-8 bg-[--ui-bg]',
+    root: 'w-full py-2 mb-8 bg-[var(--ui-bg)]',
     container: 'py-4 mt-4 mb-14 lg:mb-20 flex flex-col lg:flex-row justify-around gap-12 max-w-[90rem]',
     left: 'flex-1 p-2 text-lg flex flex-col gap-3 items-center',
     socialsClass: 'text-2xl w-fit',
