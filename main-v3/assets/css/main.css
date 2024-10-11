@@ -6,6 +6,12 @@
 @theme {
   --color-current: currentColor;
   --color-transparent: transparent;
+
+  --width-breakpoint-sm: var(--breakpoint-sm);
+  --width-breakpoint-md: var(--breakpoint-md);
+  --width-breakpoint-lg: var(--breakpoint-lg);
+  --width-breakpoint-xl: var(--breakpoint-xl);
+  --width-breakpoint-2xl: var(--breakpoint-2xl);
 }
 
 :root {
