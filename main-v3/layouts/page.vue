@@ -3,6 +3,7 @@
     <template v-if="$slots.header" #header>
       <slot name="header" />
     </template>
+    <NuxtLoadingIndicator />
 
     <slot />
 

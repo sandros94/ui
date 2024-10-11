@@ -4,7 +4,7 @@ import type { VariantProps, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-import type { LinkProps } from '#ui/components/Link.vue'
+import type { LinkProps } from '#ui/types'
 import { UIcon, ULink } from '#components'
 import {
   type Ref,
@@ -15,7 +15,7 @@ import {
 export const theme = {
   slots: {
     root: 'not-prose flex items-center',
-    active: 'text-primary',
+    active: 'text-[--ui-primary]',
     inactive: 'opacity-80 hover:opacity-100',
     base: 'relative inline-flex gap-x-2 font-light',
     externalLinkBase: 'top-0 h-fit',
