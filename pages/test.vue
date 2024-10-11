@@ -6,7 +6,9 @@ A Deep Dive into Vue's Reactive Principles`)
 
 <template>
   <div>
-    <UTextarea v-model="text" class="w-1/3 mx-auto mb-24" />
+    <div class="w-1/2 mx-auto">
+      <UTextarea v-model="text" />
+    </div>
     <SHeadline :value="text">
       <template #span-1="{ value }">
         <SHeadlineSpan class="text-green-500" :value="value.toUpperCase()" />
