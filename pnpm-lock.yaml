@@ -55,8 +55,8 @@ importers:
         specifier: ^3.13.2
         version: 3.13.2(@parcel/watcher@2.4.1)(@types/node@22.5.5)(eslint@9.11.0(jiti@2.3.3))(ioredis@5.4.1)(lightningcss@1.27.0)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.22.4)(terser@5.33.0)(typescript@5.6.2)(vite@5.4.7(@types/node@22.5.5)(lightningcss@1.27.0)(terser@5.33.0))(vue-tsc@2.1.6(typescript@5.6.2))
       nuxt-qrcode:
-        specifier: ^0.2.0
-        version: 0.2.0(magicast@0.3.5)(rollup@4.22.4)(vue@3.5.8(typescript@5.6.2))
+        specifier: ^0.2.1
+        version: 0.2.1(magicast@0.3.5)(rollup@4.22.4)(vue@3.5.8(typescript@5.6.2))
 
 packages:
 
@@ -3339,8 +3339,8 @@ packages:
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
 
-  nuxt-qrcode@0.2.0:
-    resolution: {integrity: sha512-HWpF89a/jxt9SXLa1IcakOQ+dBhXYiWntorUWzCgYu+11bToJWEShCJ45HFgRo9ye/cQB+SHuYfMOvjBkVtCkA==}
+  nuxt-qrcode@0.2.1:
+    resolution: {integrity: sha512-SKBOUxS5odQNPp4g2BQfc7eiPy0OEJqseK+9z8zPKdZ3JZUh4qkuY8LHnr6s0A1LiyBYgdoWc39wBnkPo+GTWQ==}
 
   nuxt@3.13.2:
     resolution: {integrity: sha512-Bjc2qRsipfBhjXsBEJCN+EUAukhdgFv/KoIR5HFB2hZOYRSqXBod3oWQs78k3ja1nlIhAEdBG533898KJxUtJw==}
@@ -8287,7 +8287,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  nuxt-qrcode@0.2.0(magicast@0.3.5)(rollup@4.22.4)(vue@3.5.8(typescript@5.6.2)):
+  nuxt-qrcode@0.2.1(magicast@0.3.5)(rollup@4.22.4)(vue@3.5.8(typescript@5.6.2)):
     dependencies:
       '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.22.4)
       '@vueuse/core': 11.1.0(vue@3.5.8(typescript@5.6.2))
