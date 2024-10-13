@@ -92,11 +92,11 @@ hook('page:finish', () => {
   <UButton
     v-if="!props.toggle"
     :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
-    :color="color ?? ui.default?.button?.color"
-    :icon="isDark ? (onIcon ?? ui.default?.onIcon) : (offIcon ?? ui.default?.offIcon)"
+    :color="color || ui.default?.button?.color"
+    :icon="isDark ? (onIcon || ui.default?.onIcon) : (offIcon || ui.default?.offIcon)"
     :loading="isLoading"
     :ui="ui.style?.button"
-    :variant="variant ?? ui.default?.button?.variant"
+    :variant="variant || ui.default?.button?.variant"
     v-bind="attrs"
     @click="isDark = !isDark"
   />
@@ -105,9 +105,9 @@ hook('page:finish', () => {
       v-bind="attrs"
       v-model="isDark"
       :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
-      :color="color as any ?? ui.default?.toggle?.color"
-      :off-icon="offIcon ?? ui.default?.offIcon"
-      :on-icon="onIcon ?? ui.default?.onIcon"
+      :color="color as any || ui.default?.toggle?.color"
+      :off-icon="offIcon || ui.default?.offIcon"
+      :on-icon="onIcon || ui.default?.onIcon"
       :ui="ui.style?.toggle"
     />
     <template #placeholder>
@@ -115,7 +115,7 @@ hook('page:finish', () => {
         :id="idToggleLoading"
         v-bind="attrs"
         :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
-        :color="color as any ?? ui.default?.toggle?.color"
+        :color="color as any || ui.default?.toggle?.color"
         :loading="true"
         :ui="ui.style?.toggle"
       />

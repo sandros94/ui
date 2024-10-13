@@ -107,8 +107,8 @@ const variantStrategy: {
   vertical: 'override',
   opening: 'override',
 }
-const variant = props.variant ?? configDefault.default.variant
-const config = mergeConfig<HeroUi>(variantStrategy[variant] ?? 'merge', configDefault.variant[variant], configDefault.variant.horizontal)
+const variant = props.variant || configDefault.default.variant
+const config = mergeConfig<HeroUi>(variantStrategy[variant] || 'merge', configDefault.variant[variant], configDefault.variant.horizontal)
 
 const { attrs, ui } = useUI('s94.hero', toRef(props, 'ui'), config, toRef(props, 'class'))
 </script>
@@ -141,8 +141,8 @@ const { attrs, ui } = useUI('s94.hero', toRef(props, 'ui'), config, toRef(props,
               v-for="(link, index) in cta"
               v-bind="link"
               :key="index"
-              :class="link.class ?? ui.cta.button?.class"
-              :ui="link.ui ?? ui.cta.button?.ui"
+              :class="link.class || ui.cta.button?.class"
+              :ui="link.ui || ui.cta.button?.ui"
               @click="link.click"
             />
           </slot>

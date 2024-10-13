@@ -91,9 +91,9 @@ const _ui = computed(() => tv({ extend: footer, slots: props.ui })())
     <slot name="separator">
       <UDivider
         v-if="!hideSeparator || !hide?.separator"
-        :avatar="separatorAvatar ?? separator?.avatar"
-        :icon="separatorIcon ?? separator?.icon"
-        :label="separatorLabel ?? separator?.label"
+        :avatar="separatorAvatar || separator?.avatar"
+        :icon="separatorIcon || separator?.icon"
+        :label="separatorLabel || separator?.label"
       />
     </slot>
     <UContainer v-if="(slots.left || slots.logo || title || socials || slots.default || slots.right || links) && (!hideCenter || !hide?.center)" :class="_ui.container()">
