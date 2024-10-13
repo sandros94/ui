@@ -21,6 +21,7 @@
       >
         <img alt="Hero image" src="https://cms.thetouchofficial.com/assets/071702b5-1a55-45d2-b81a-6ddd8d3fa707?withoutEnlargement=true&width=1920&format=webp&fit=outside">
       </SHero>
+      <Qrcode value="https://github.com/sandros94/ui" variant="rounded" />
     </div>
   </div>
 </template>
