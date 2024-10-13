@@ -77,7 +77,7 @@ export interface HeroProps {
 <script setup lang="ts">
 const props = defineProps<HeroProps>()
 
-const filteredCta = computed(() => unref(props.cta ?? []).filter(cta => cta.if ? cta.if() : true))
+const filteredCta = computed(() => unref(props.cta || []).filter(cta => cta.if ? cta.if() : true))
 
 const ui = computed(() => tv({ extend: _hero, slots: props.ui })({
   variant: props.variant,
@@ -113,7 +113,7 @@ const ui = computed(() => tv({ extend: _hero, slots: props.ui })({
               v-bind="link"
               :key="index"
               :class="link.class"
-              :ui="link.ui ?? props.uiButton"
+              :ui="link.ui || props.uiButton"
               @click="link.click"
             />
           </slot>

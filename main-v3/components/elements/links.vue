@@ -105,7 +105,7 @@ const props = withDefaults(defineProps<LinksProps>(), {
   externalIcon: 'i-heroicons-arrow-up-right-20-solid',
 })
 
-const filteredLinks = computed(() => unref(props.links ?? []).filter(link => link.if ? link.if() : true))
+const filteredLinks = computed(() => unref(props.links || []).filter(link => link.if ? link.if() : true))
 
 const ui = computed(() => tv({ extend: _links, slots: props.ui })({
   vertical: props.vertical,
