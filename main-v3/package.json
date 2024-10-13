@@ -11,10 +11,10 @@
     "@nuxt/ui": "^3.0.0-alpha.6",
     "@tailwindcss/typography": "^0.5.15",
     "@vueuse/nuxt": "^11.1.0",
+    "nuxt-qrcode": "^0.2.1",
     "tailwind-variants": "^0.2.1"
   },
   "devDependencies": {
-    "nuxt": "^3.13.2",
-    "nuxt-qrcode": "^0.2.1"
+    "nuxt": "^3.13.2"
   }
 }
