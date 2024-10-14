@@ -10,7 +10,7 @@
           sticky
         />
       </template>
-      <SMain padded>
+      <SMain>
         <slot />
       </SMain>
     </NuxtLayout>
