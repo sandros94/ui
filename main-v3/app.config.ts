@@ -1,4 +1,5 @@
 export default defineAppConfig({
+  s94Ui: {},
   ui: {
     colors: {
       neutral: 'neutral',
