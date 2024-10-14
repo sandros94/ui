@@ -11,5 +11,5 @@
     })
 2. Install deps
     ```bash
-    ni @nuxt/ui @tailwindcss/typography @vueuse/nuxt nuxt-qrcode tailwind-variants
+    ni @nuxt/ui@next @tailwindcss/typography @vueuse/nuxt nuxt-qrcode tailwind-variants
     ```
