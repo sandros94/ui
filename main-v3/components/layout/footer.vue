@@ -4,14 +4,14 @@ import type { VariantProps as _VrPr, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import type { Links, LinksGroup, LinksGroupVariants, LinksVariants } from '#s94-ui/types'
-import type { AvatarProps } from '#ui/components/Avatar.vue'
+import type { AvatarProps } from '#ui/types'
 import _appConfig from '#build/app.config'
 import { SLinksGroup, UContainer, USeparator } from '#components'
 import { computed, defineSlots } from '#imports'
 
 export const theme = {
   slots: {
-    root: 'w-full py-2 mb-8 bg-background',
+    root: 'w-full py-2 mb-8 bg-[var(--ui-bg)]',
     container: 'py-4 mt-4 mb-14 lg:mb-20 flex flex-col lg:flex-row justify-around gap-12 max-w-[90rem]',
     left: 'flex-1 p-2 text-lg flex flex-col gap-3 items-center',
     socialsClass: 'text-2xl w-fit',
@@ -91,9 +91,9 @@ const _ui = computed(() => tv({ extend: footer, slots: props.ui })())
     <slot name="separator">
       <USeparator
         v-if="!hideSeparator || !hide?.separator"
-        :avatar="separatorAvatar ?? separator?.avatar"
-        :icon="separatorIcon ?? separator?.icon"
-        :label="separatorLabel ?? separator?.label"
+        :avatar="separatorAvatar || separator?.avatar"
+        :icon="separatorIcon || separator?.icon"
+        :label="separatorLabel || separator?.label"
       />
     </slot>
     <UContainer v-if="(slots.left || slots.logo || title || socials || slots.default || slots.right || links) && (!hideCenter || !hide?.center)" :class="_ui.container()">

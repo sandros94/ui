@@ -4,7 +4,7 @@ import type { VariantProps, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-import type { ButtonProps } from '#ui/components/Button.vue'
+import type { ButtonProps } from '#ui/types'
 
 export const theme = {
   slots: {
@@ -21,7 +21,7 @@ export const theme = {
       horizontal: {
         base: 'prose dark:prose-invert py-16 sm:py-24 relative mx-auto max-w-full',
         content: '',
-        container: 'px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 md:items-center gap-8 sm:gap-y-16 max-w-screen-lg',
+        container: 'px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 md:items-center gap-8 sm:gap-y-16 max-w-breakpoint-lg',
         cta: 'mt-12',
         headline: 'sm:text-3xl text-gray-900 dark:text-white',
         subhead: 'text-lg text-gray-600 dark:text-gray-300',
@@ -29,7 +29,7 @@ export const theme = {
       vertical: {
         base: 'prose dark:prose-invert py-16 sm:py-24 relative mx-auto max-w-full',
         content: 'text-center',
-        container: 'px-4 sm:px-6 lg:px-8 flex flex-col gap-8 sm:gap-y-16 max-w-screen-lg',
+        container: 'px-4 sm:px-6 lg:px-8 flex flex-col gap-8 sm:gap-y-16 max-w-breakpoint-lg',
         cta: 'justify-center mt-12',
         headline: 'sm:text-3xl text-gray-900 dark:text-white',
         subhead: 'text-lg tracking-tight text-gray-600 dark:text-gray-300',
@@ -37,7 +37,7 @@ export const theme = {
       opening: {
         base: 'not-prose mx-auto max-w-full h-svh',
         content: 'absolute h-full w-full flex flex-col justify-around text-center',
-        container: 'relative h-full w-fit max-w-screen-xl text-gray-900 dark:text-white',
+        container: 'relative h-full w-fit max-w-breakpoint-xl text-gray-900 dark:text-white',
         cta: 'absolute inset-x-[10%] lg:inset-x-[15%] bottom-20 gap-x-4 gap-y-2',
         headline: 'h-fit text-5xl lg:text-6xl',
         subhead: 'h-fit lg:text-xl tracking-tight',
@@ -77,7 +77,7 @@ export interface HeroProps {
 <script setup lang="ts">
 const props = defineProps<HeroProps>()
 
-const filteredCta = computed(() => unref(props.cta ?? []).filter(cta => cta.if ? cta.if() : true))
+const filteredCta = computed(() => unref(props.cta || []).filter(cta => cta.if ? cta.if() : true))
 
 const ui = computed(() => tv({ extend: _hero, slots: props.ui })({
   variant: props.variant,
@@ -113,7 +113,7 @@ const ui = computed(() => tv({ extend: _hero, slots: props.ui })({
               v-bind="link"
               :key="index"
               :class="link.class"
-              :ui="link.ui ?? props.uiButton"
+              :ui="link.ui || props.uiButton"
               @click="link.click"
             />
           </slot>

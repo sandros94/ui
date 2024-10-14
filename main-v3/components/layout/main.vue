@@ -8,7 +8,7 @@ import { computed, defineSlots } from '#imports'
 
 export const theme = {
   slots: {
-    root: 'max-w-screen-lg h-full mx-auto p-2 lg:p-4',
+    root: 'max-w-breakpoint-lg h-full mx-auto p-2 lg:p-4',
     base: 'min-h-fit w-full mx-auto',
   },
   variants: {
