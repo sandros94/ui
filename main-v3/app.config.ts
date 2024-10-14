@@ -11,5 +11,8 @@ export default defineAppConfig({
         root: 'w-full',
       },
     },
+    buttonGroup: {
+      base: 'w-full',
+    },
   },
 })
