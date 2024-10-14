@@ -1,37 +1,13 @@
 export default defineAppConfig({
-  s94Ui: {
-    header: {
-      height: '4.5rem',
-    },
-    light: {
-      background: '#fafafa',
-      foreground: '#000000',
-    },
-    dark: {
-      background: '#090909',
-      foreground: '#fafafa',
-    },
-  },
   ui: {
     colors: {
-      gray: 'neutral',
+      neutral: 'neutral',
       primary: 'orange',
+      info: 'sky',
     },
-    button: {
+    textarea: {
       slots: {
-        label: 'mx-auto',
-      },
-    },
-    modal: {
-      slots: {
-        overlay: 'bg-background/75 dark:bg-background/75',
-        content: 'bg-background dark:bg-background',
-      },
-    },
-    slideover: {
-      slots: {
-        overlay: 'bg-background/75 dark:bg-background/75',
-        content: 'bg-background dark:bg-background',
+        root: 'w-full',
       },
     },
   },

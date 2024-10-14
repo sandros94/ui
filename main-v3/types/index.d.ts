@@ -1,21 +1,21 @@
-export * from './configs'
-export * from './utils'
+export type * from './configs'
+export type * from './utils'
 
 // Elements
-export * from '../components/elements/dark-mode.vue'
-export * from '../components/elements/links.vue'
-export * from '../components/elements/links-group.vue'
-export * from '../components/elements/headline-span.vue'
-export * from '../components/elements/headline.vue'
+export type * from '../components/elements/dark-mode.vue'
+export type * from '../components/elements/links.vue'
+export type * from '../components/elements/links-group.vue'
+export type * from '../components/elements/headline-span.vue'
+export type * from '../components/elements/headline.vue'
 
 // Layout
-export * from '../components/layout/card.vue'
-export * from '../components/layout/footer.vue'
-export * from '../components/layout/main.vue'
-export * from '../components/layout/header.vue'
-export * from '../components/layout/page.vue'
+export type * from '../components/layout/card.vue'
+export type * from '../components/layout/footer.vue'
+export type * from '../components/layout/main.vue'
+export type * from '../components/layout/header.vue'
+export type * from '../components/layout/page.vue'
 
 // Units
-export * from '../components/units/article.vue'
-export * from '../components/units/figure.vue'
-export * from '../components/units/hero.vue'
+export type * from '../components/units/article.vue'
+export type * from '../components/units/figure.vue'
+export type * from '../components/units/hero.vue'
