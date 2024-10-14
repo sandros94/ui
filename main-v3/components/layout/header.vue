@@ -13,7 +13,7 @@ import { computed, defineSlots, ref, useRoute, useScroll, watch } from '#imports
 
 export const theme = {
   slots: {
-    root: 'w-full bg-[var(--ui-bg)]/75 backdrop-blur text-gray-900 dark:text-white border-b border-[var(--ui-border)] -mb-px text-xl',
+    root: 'w-full bg-[var(--ui-bg)]/75 backdrop-blur border-b border-[var(--ui-border)] -mb-px text-xl',
     container: 'flex items-center justify-between gap-3 h-[var(--s94-ui-header)] max-w-[90rem]',
     left: 'lg:flex-1 flex items-center gap-1.5 text-2xl truncate',
     center: 'hidden lg:flex text-lg',
