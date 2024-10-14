@@ -13,7 +13,7 @@ import { computed, defineSlots, ref, useRoute, useScroll, watch } from '#imports
 
 export const theme = {
   slots: {
-    root: 'w-full bg-[var(--ui-bg)]/75 backdrop-blur text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 -mb-px text-xl',
+    root: 'w-full bg-[var(--ui-bg)]/75 backdrop-blur text-gray-900 dark:text-white border-b border-[var(--ui-border)] -mb-px text-xl',
     container: 'flex items-center justify-between gap-3 h-[var(--s94-ui-header)] max-w-[90rem]',
     left: 'lg:flex-1 flex items-center gap-1.5 text-2xl truncate',
     center: 'hidden lg:flex text-lg',
@@ -22,7 +22,7 @@ export const theme = {
     mobileButton: 'lg:hidden',
     slideoverOverlay: 'bg-[var(--ui-bg)]/75 dark:bg-[var(--ui-bg)]/75',
     slideoverContent: 'bg-[var(--ui-bg)] dark:bg-[var(--ui-bg)]',
-    slideoverHeader: 'w-full h-[var(--s94-ui-header)] inline-flex items-center justify-between border-b border-gray-200 dark:border-gray-800 text-2xl',
+    slideoverHeader: 'w-full h-[var(--s94-ui-header)] inline-flex items-center justify-between border-b border-[var(--ui-border)] text-2xl',
     slideoverBody: 'size-full flex flex-col justify-around text-xl',
     slideoverFooter: 'w-fit mx-auto text-xl min-h-[var(--s94-ui-header)]',
     socials: 'w-fit',

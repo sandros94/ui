@@ -56,7 +56,7 @@ export const theme = {
       vertical: true,
       variant: 'line' as const,
       class: {
-        root: 'border-s border-gray-300 dark:border-gray-700',
+        root: 'border-s border-[var(--ui-border)]',
         active: 'border-current',
         base: 'pl-4 -ml-[1px] mr-[1px] border-s',
         inactive: 'border-transparent hover:border-black dark:hover:border-white',
