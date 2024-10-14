@@ -4,7 +4,7 @@ import type { VariantProps, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-import type { ButtonProps } from '#ui/types'
+import type { ButtonProps } from '#ui/types/index'
 
 export const theme = {
   slots: {

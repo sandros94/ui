@@ -4,7 +4,7 @@ import type { VariantProps, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-import type { LinkProps } from '#ui/types'
+import type { LinkProps } from '#ui/types/index'
 import { UIcon, ULink } from '#components'
 import {
   type Ref,

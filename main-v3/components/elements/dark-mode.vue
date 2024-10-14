@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { ButtonProps, SwitchProps } from '#ui/types'
+import type { ButtonProps, SwitchProps } from '#ui/types/index'
 import { UButton, USwitch } from '#components'
 import {
   ref,
