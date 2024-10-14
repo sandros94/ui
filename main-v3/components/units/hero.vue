@@ -4,7 +4,7 @@ import type { VariantProps, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-import type { ButtonProps } from '#ui/types/index'
+import type { ButtonProps } from '#ui/components/Button.vue'
 
 export const theme = {
   slots: {

@@ -4,7 +4,7 @@ import type { VariantProps as _VrPr, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import type { Links, LinksGroup, LinksGroupVariants, LinksVariants } from '#s94-ui/types'
-import type { AvatarProps } from '#ui/types/index'
+import type { AvatarProps } from '#ui/components/Avatar.vue'
 import _appConfig from '#build/app.config'
 import { SLinksGroup, UContainer, USeparator } from '#components'
 import { computed, defineSlots } from '#imports'

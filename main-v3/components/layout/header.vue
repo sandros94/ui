@@ -5,7 +5,7 @@ import { VisuallyHidden } from 'radix-vue'
 import { tv } from 'tailwind-variants'
 import { toRefs } from '@vueuse/core'
 
-import type { ButtonProps } from '#ui/types/index'
+import type { ButtonProps } from '#ui/components/Button.vue'
 import { SLinks, UButton, UContainer, USlideover } from '#components'
 import _appConfig from '#build/app.config'
 import type { Links, LinksVariants } from '#s94-ui/types'
