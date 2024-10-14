@@ -30,6 +30,7 @@
       </template>
       <div class="w-fit mx-auto">
         <!-- <SDarkMode /> -->
+        <SDarkMode switch />
       </div>
     </SFooter>
   </div>

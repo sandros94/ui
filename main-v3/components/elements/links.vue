@@ -4,7 +4,7 @@ import type { VariantProps, TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
 
 import _appConfig from '#build/app.config'
-import type { LinkProps } from '#ui/components/Link.vue'
+import type { LinkProps } from '#ui/types'
 import { UIcon, ULink } from '#components'
 import {
   type Ref,
@@ -16,7 +16,7 @@ export const theme = {
   slots: {
     root: 'not-prose flex items-center',
     active: 'text-[var(--ui-primary)]',
-    inactive: 'opacity-80 hover:opacity-100',
+    inactive: '',
     base: 'relative inline-flex gap-x-2 font-light',
     externalLinkBase: 'top-0 h-fit',
     externalLinkIconClass: 'subpixel-antialiased',
@@ -56,7 +56,7 @@ export const theme = {
       vertical: true,
       variant: 'line' as const,
       class: {
-        root: 'border-s border-gray-300 dark:border-gray-700',
+        root: 'border-s border-[var(--ui-border)]',
         active: 'border-current',
         base: 'pl-4 -ml-[1px] mr-[1px] border-s',
         inactive: 'border-transparent hover:border-black dark:hover:border-white',

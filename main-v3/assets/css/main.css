@@ -17,13 +17,15 @@
 :root {
   --s94-ui-header: 4.5rem;
 
-  --ui-text: #090909;
-  --ui-bg: #fafafa;
+  --ui-color-neutral-950: #090909;
+
+  --ui-text-highlighted: var(--ui-color-neutral-950);
+  --ui-bg: var(--ui-color-neutral-50);
 }
 
 .dark {
-  --ui-text: #fafafa;
-  --ui-bg: #090909;
+  --ui-text-highlighted: var(--ui-color-neutral-50);
+  --ui-bg: var(--ui-color-neutral-950);
 }
 
   /* Scrollbar Start */

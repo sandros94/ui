@@ -874,8 +874,8 @@ packages:
   '@iconify-json/simple-icons@1.2.4':
     resolution: {integrity: sha512-AKUGO7cX2KykFEJ+P6tY3wGhGgbrL3RMqbxNTfutGsKojaSEFosN/cmWQ9l9hmUiS2IN7fVLsPMAIvV1uJyyVw==}
 
-  '@iconify/collections@1.0.469':
-    resolution: {integrity: sha512-L1fCxNvUQQXR2FQgIfwN1mBVXhtgsyq2U2KyM8qZyWx+r8MxTU9b9lFfWIu/1ZlINc9KiXK1A26kVhAL1zko5g==}
+  '@iconify/collections@1.0.471':
+    resolution: {integrity: sha512-R1rjlg4ym/9vvJ9Fg9iNfdDpb9BRkMy8950MV/D9SssbOKFR+JW1fcm7h4D6RtipWbHAJRkuJOww2pWfN85cCA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -979,8 +979,8 @@ packages:
     peerDependencies:
       vite: '*'
 
-  '@nuxt/devtools-kit@1.5.2':
-    resolution: {integrity: sha512-IMbwflL/JLuK1JcM5yWKa+T5JGjwnCACZJw218/8bUTt/uTVgtkMueE+1/p9rhCWxvGQiT3xnCIXKhEg7xP58Q==}
+  '@nuxt/devtools-kit@1.6.0':
+    resolution: {integrity: sha512-kJ8mVKwTSN3tdEVNy7mxKCiQk9wsG5t3oOrRMWk6IEbTSov+5sOULqQSM/+OWxWsEDmDfA7QlS5sM3Ti9uMRqQ==}
     peerDependencies:
       vite: '*'
 
@@ -5233,7 +5233,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify/collections@1.0.469':
+  '@iconify/collections@1.0.471':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -5371,7 +5371,7 @@ snapshots:
       - supports-color
       - webpack-sources
 
-  '@nuxt/devtools-kit@1.5.2(magicast@0.3.5)(rollup@4.22.4)(vite@5.4.7(@types/node@22.5.5)(lightningcss@1.27.0)(terser@5.33.0))':
+  '@nuxt/devtools-kit@1.6.0(magicast@0.3.5)(rollup@4.22.4)(vite@5.4.7(@types/node@22.5.5)(lightningcss@1.27.0)(terser@5.33.0))':
     dependencies:
       '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.22.4)
       '@nuxt/schema': 3.13.2(rollup@4.22.4)
@@ -5505,7 +5505,7 @@ snapshots:
 
   '@nuxt/fonts@0.10.0(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.22.4)(vite@5.4.7(@types/node@22.5.5)(lightningcss@1.27.0)(terser@5.33.0))':
     dependencies:
-      '@nuxt/devtools-kit': 1.5.2(magicast@0.3.5)(rollup@4.22.4)(vite@5.4.7(@types/node@22.5.5)(lightningcss@1.27.0)(terser@5.33.0))
+      '@nuxt/devtools-kit': 1.6.0(magicast@0.3.5)(rollup@4.22.4)(vite@5.4.7(@types/node@22.5.5)(lightningcss@1.27.0)(terser@5.33.0))
       '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.22.4)
       chalk: 5.3.0
       css-tree: 3.0.0
@@ -5549,11 +5549,11 @@ snapshots:
 
   '@nuxt/icon@1.5.6(magicast@0.3.5)(rollup@4.22.4)(vite@5.4.7(@types/node@22.5.5)(lightningcss@1.27.0)(terser@5.33.0))(vue@3.5.8(typescript@5.6.2))':
     dependencies:
-      '@iconify/collections': 1.0.469
+      '@iconify/collections': 1.0.471
       '@iconify/types': 2.0.0
       '@iconify/utils': 2.1.33
       '@iconify/vue': 4.1.3-beta.1(vue@3.5.8(typescript@5.6.2))
-      '@nuxt/devtools-kit': 1.5.2(magicast@0.3.5)(rollup@4.22.4)(vite@5.4.7(@types/node@22.5.5)(lightningcss@1.27.0)(terser@5.33.0))
+      '@nuxt/devtools-kit': 1.6.0(magicast@0.3.5)(rollup@4.22.4)(vite@5.4.7(@types/node@22.5.5)(lightningcss@1.27.0)(terser@5.33.0))
       '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.22.4)
       consola: 3.2.3
       local-pkg: 0.5.0

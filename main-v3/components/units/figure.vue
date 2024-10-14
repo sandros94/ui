@@ -16,7 +16,7 @@ export const theme = {
   slots: {
     root: 'w-full mx-4 my-8',
     container: 'shadow rounded',
-    caption: 'w-full mx-12 mt-4 text-sm text-center text-gray-700 dark:text-gray-300',
+    caption: 'w-full mx-12 mt-4 text-sm text-center text-[var(--ui-text-toned)]',
   },
 } satisfies Parameters<TV>[0]
 

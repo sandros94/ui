@@ -23,7 +23,7 @@ export default defineNuxtConfig({
   qrcode: {
     options: {
       whiteColor: 'var(--ui-bg)',
-      blackColor: 'var(--ui-text)',
+      blackColor: 'var(--ui-text-highlighted)',
     },
   },
 })
