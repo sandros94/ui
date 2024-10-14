@@ -1,77 +1,29 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
 @plugin "@tailwindcss/typography";
 
-@utility h-header {
-  @apply h-[--header-height]
-}
-@utility min-h-header {
-  @apply min-h-[--header-height]
-}
-@utility bg-primary {
-  @apply bg-[var(--ui-primary)]
-}
-
 @theme {
-  --color-primary-50: var(--ui-color-primary-50);
-  --color-primary-100: var(--ui-color-primary-100);
-  --color-primary-200: var(--ui-color-primary-200);
-  --color-primary-300: var(--ui-color-primary-300);
-  --color-primary-400: var(--ui-color-primary-400);
-  --color-primary-500: var(--ui-color-primary-500);
-  --color-primary-600: var(--ui-color-primary-600);
-  --color-primary-700: var(--ui-color-primary-700);
-  --color-primary-800: var(--ui-color-primary-800);
-  --color-primary-900: var(--ui-color-primary-900);
-  --color-primary-950: var(--ui-color-primary-950);
-
-  --color-foreground: var(--s94-ui-foreground);
-  --color-background: var(--s94-ui-background);
   --color-current: currentColor;
   --color-transparent: transparent;
 
-  --color-alert-50: var(--color-yellow-50);
-  --color-alert-100: var(--color-yellow-100);
-  --color-alert-200: var(--color-yellow-200);
-  --color-alert-300: var(--color-yellow-300);
-  --color-alert-400: var(--color-yellow-400);
-  --color-alert-500: var(--color-yellow-500);
-  --color-alert-600: var(--color-yellow-600);
-  --color-alert-700: var(--color-yellow-700);
-  --color-alert-800: var(--color-yellow-800);
-  --color-alert-900: var(--color-yellow-900);
-  --color-alert-950: var(--color-yellow-950);
-  --color-alert-DEFAULT: var(--color-alert-500);
-
-  --color-info-50: var(--color-sky-50);
-  --color-info-100: var(--color-sky-100);
-  --color-info-200: var(--color-sky-200);
-  --color-info-300: var(--color-sky-300);
-  --color-info-400: var(--color-sky-400);
-  --color-info-500: var(--color-sky-500);
-  --color-info-600: var(--color-sky-600);
-  --color-info-700: var(--color-sky-700);
-  --color-info-800: var(--color-sky-800);
-  --color-info-900: var(--color-sky-900);
-  --color-info-950: var(--color-sky-950);
-  --color-info-DEFAULT: var(--color-info-500);
-
-  --color-success-50: var(--color-green-50);
-  --color-success-100: var(--color-green-100);
-  --color-success-200: var(--color-green-200);
-  --color-success-300: var(--color-green-300);
-  --color-success-400: var(--color-green-400);
-  --color-success-500: var(--color-green-500);
-  --color-success-600: var(--color-green-600);
-  --color-success-700: var(--color-green-700);
-  --color-success-800: var(--color-green-800);
-  --color-success-900: var(--color-green-900);
-  --color-success-950: var(--color-green-950);
-  --color-success-DEFAULT: var(--color-success-500);
+  --width-breakpoint-sm: var(--breakpoint-sm);
+  --width-breakpoint-md: var(--breakpoint-md);
+  --width-breakpoint-lg: var(--breakpoint-lg);
+  --width-breakpoint-xl: var(--breakpoint-xl);
+  --width-breakpoint-2xl: var(--breakpoint-2xl);
 }
 
-body {
-  @apply text-foreground bg-background;
+:root {
+  --s94-ui-header: 4.5rem;
+
+  --ui-text: #090909;
+  --ui-bg: #fafafa;
+}
+
+.dark {
+  --ui-text: #fafafa;
+  --ui-bg: #090909;
 }
 
   /* Scrollbar Start */
@@ -79,18 +31,18 @@ body {
     width: min(.5rem, 8px);
   }
   ::-webkit-scrollbar-track {
-    @apply bg-background;
+    @apply bg-[var(--ui-bg)];
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-foreground/20 border-[--s94-ui-background] border-2;
+    @apply bg-[var(--ui-text)]/20 border-[var(--ui-bg)] border-2;
     border-radius: min(.25rem, 4px);
     background-clip: padding-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-foreground/40;
+    @apply bg-[var(--ui-text)]/40;
   }
   ::-webkit-scrollbar-thumb:active {
-    @apply bg-primary-500;
+    @apply bg-[var(--ui-primary)];
   }
   /* Scrollbar End */
 
