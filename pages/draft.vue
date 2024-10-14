@@ -17,11 +17,11 @@
           <span class="absolute">
             Page:Default
           </span>
-          <main class="bg-green-500/10 max-w-screen-lg h-full mx-auto flex flex-col justify-around relative">
+          <main class="bg-green-500/10 max-w-breakpoint-lg h-full mx-auto flex flex-col justify-around relative">
             <span class="absolute top-0 left-0">
               Main:Content
             </span>
-            <div class="bg-red-500/15 min-h-48 max-w-screen-md w-full mx-auto">
+            <div class="bg-red-500/15 min-h-48 max-w-breakpoint-md w-full mx-auto">
               <div v-for="i of 20" :key="i" class="text-7xl text-center">
                 Content
               </div>
