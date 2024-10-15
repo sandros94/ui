@@ -1,6 +1,3 @@
-export type * from './configs'
-export type * from './utils'
-
 // Elements
 export type * from '../components/elements/dark-mode.vue'
 export type * from '../components/elements/links.vue'
