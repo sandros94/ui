@@ -152,7 +152,7 @@ This is actually the main reason I'm making this repo public, so that people cou
 
 ### Credits
 
-- [Nuxt UI](https://github.com/nuxt/ui): this project would exists otherwise.
+- [Nuxt UI](https://github.com/nuxt/ui): this project wouldn't exists otherwise.
 - [Nuxt UI Pro](https://ui.nuxt.com/pro) & [Tailwind UI](https://tailwindui.com/): as a point of reference to aim at.
 - [Anu](https://github.com/jd-solanki/anu): always inspiring me to start my own custom layer based on a ui library.
 
