@@ -14,9 +14,9 @@ import { computed, defineSlots, ref, useRoute, useScroll, watch } from '#imports
 export const theme = {
   slots: {
     root: 'w-full bg-[var(--ui-bg)]/75 backdrop-blur border-b border-[var(--ui-border)] -mb-px text-xl',
-    container: 'flex items-center justify-between gap-3 h-[var(--s94-ui-header)] max-w-[90rem]',
-    left: 'lg:flex-1 flex items-center gap-1.5 text-2xl truncate',
-    center: 'hidden lg:flex text-lg',
+    container: 'flex items-center justify-between gap-3 h-[var(--s94-ui-header)] max-w-breakpoint-2xl first:basis-1/2 last:basis-1/2',
+    left: 'lg:flex-1 flex justify-start items-center gap-1.5 text-2xl truncate',
+    center: 'hidden lg:flex justify-center text-lg',
     right: 'flex items-center justify-end lg:flex-1 gap-2',
     logo: 'flex-shrink-0 font-bold flex items-end gap-1.5 break-keep',
     mobileButton: 'lg:hidden',
