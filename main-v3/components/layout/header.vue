@@ -89,11 +89,15 @@ export interface HeaderProps {
   }
   links?: Links
   linksVariant?: LinksVariants['variant']
-  mobileButtonIcon?: {
-    close?: string
-    open?: string
+  mobileButton?: {
+    icon?: {
+      close?: string
+      open?: string
+    }
+    color?: ButtonProps['color']
+    size?: ButtonProps['size']
+    variant?: ButtonProps['variant']
   }
-  mobileButtonColor?: ButtonProps['color']
   rtl?: boolean
   socials?: Links
   socialsVariant?: LinksVariants['variant']
@@ -111,7 +115,6 @@ export interface HeaderSlots {
   logo: any
   mobileButton(props: { open?: boolean }): any
   slideoverTitle: any
-  slideoverClose(props: { open?: boolean }): any
   slideoverBody: any
   slideoverFooter: any
   right: any
@@ -122,11 +125,6 @@ export interface HeaderSlots {
 const props = withDefaults(defineProps<HeaderProps>(), {
   sticky: false,
   hideOnScroll: false,
-  mobileButtonIcon: () => ({
-    close: 'i-heroicons-x-mark',
-    open: 'i-heroicons-bars-2',
-  }),
-  mobileButtonColor: 'neutral',
   rtl: false,
   titleTo: '/',
 })
@@ -207,10 +205,12 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
               v-if="!hide?.panel && !hidePanel && !hide?.mobileButton && !hideMobileButton"
               :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Mobile Menu`"
               :class="ui.mobileButton()"
-              :icon="isMenuOpen ? mobileButtonIcon.close : mobileButtonIcon.open"
-              :color="mobileButtonColor"
-              size="xl"
-              variant="ghost"
+              :icon="isMenuOpen
+                ? mobileButton?.icon?.close || appConfig.ui.icons.close
+                : mobileButton?.icon?.open || appConfig.ui.icons.menu"
+              :color="mobileButton?.color || 'neutral'"
+              :size="mobileButton?.size || 'xl'"
+              :variant="mobileButton?.variant || 'ghost'"
               @click="isMenuOpen = !isMenuOpen"
             />
           </slot>
@@ -225,14 +225,16 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
             </slot>
           </template>
           <template #close>
-            <slot name="slideoverClose" :open="isMenuOpen">
+            <slot name="mobileButton" :open="isMenuOpen">
               <UButton
                 :aria-label="`${isMenuOpen ? 'Close' : 'Open'} Mobile Menu`"
                 :class="ui.mobileButton()"
-                :icon="isMenuOpen ? mobileButtonIcon.close : mobileButtonIcon.open"
-                :color="mobileButtonColor"
-                size="xl"
-                variant="ghost"
+                :icon="isMenuOpen
+                  ? mobileButton?.icon?.close || appConfig.ui.icons.close
+                  : mobileButton?.icon?.open || appConfig.ui.icons.menu"
+                :color="mobileButton?.color || 'neutral'"
+                :size="mobileButton?.size || 'xl'"
+                :variant="mobileButton?.variant || 'ghost'"
                 @click="isMenuOpen = !isMenuOpen"
               />
             </slot>
