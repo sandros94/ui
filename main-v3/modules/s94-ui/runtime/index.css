@@ -14,39 +14,41 @@
   --width-breakpoint-2xl: var(--breakpoint-2xl);
 }
 
-:root {
-  --s94-ui-header: 4.5rem;
-
-  --ui-color-neutral-950: #090909;
-
-  --ui-text-highlighted: var(--ui-color-neutral-950);
-  --ui-bg: var(--ui-color-neutral-50);
+@layer base {
+  :root {
+    --ui-header-height: var(--spacing-14);
+  
+    --ui-color-neutral-950: #090909;
+  
+    --ui-text-highlighted: var(--ui-color-neutral-950);
+    --ui-bg: var(--ui-color-neutral-50);
+  }
+  
+  .dark {
+    --ui-text-highlighted: var(--ui-color-neutral-50);
+    --ui-bg: var(--ui-color-neutral-950);
+  }
 }
 
-.dark {
-  --ui-text-highlighted: var(--ui-color-neutral-50);
-  --ui-bg: var(--ui-color-neutral-950);
+/* Scrollbar Start */
+::-webkit-scrollbar {
+  width: min(.5rem, 8px);
 }
-
-  /* Scrollbar Start */
-  ::-webkit-scrollbar {
-    width: min(.5rem, 8px);
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-[var(--ui-bg)];
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-[var(--ui-text)]/20 border-[var(--ui-bg)] border-2;
-    border-radius: min(.25rem, 4px);
-    background-clip: padding-box;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-[var(--ui-text)]/40;
-  }
-  ::-webkit-scrollbar-thumb:active {
-    @apply bg-[var(--ui-primary)];
-  }
-  /* Scrollbar End */
+::-webkit-scrollbar-track {
+  @apply bg-[var(--ui-bg)];
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-[var(--ui-text)]/20 border-[var(--ui-bg)] border-2;
+  border-radius: min(.25rem, 4px);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-[var(--ui-text)]/40;
+}
+::-webkit-scrollbar-thumb:active {
+  @apply bg-[var(--ui-primary)];
+}
+/* Scrollbar End */
 
 .linkExternalArrow {
   width: auto;

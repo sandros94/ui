@@ -14,13 +14,13 @@ export const theme = {
   variants: {
     centered: {
       true: {
-        root: 'min-h-[calc(100svh-var(--s94-ui-header)*2)] flex flex-col justify-center',
+        root: 'min-h-[calc(100svh-var(--ui-header-height)*2)] flex flex-col justify-center',
         base: 'w-fit',
       },
     },
     padded: {
       true: {
-        root: 'min-h-[calc(100svh-var(--s94-ui-header)*2)] flex flex-col justify-around',
+        root: 'min-h-[calc(100svh-var(--ui-header-height)*2)] flex flex-col justify-around',
         base: 'w-fit',
       },
     },

@@ -14,7 +14,7 @@ import { computed, defineSlots, ref, useRoute, watch, toRefs } from '#imports'
 export const theme = {
   slots: {
     root: 'w-full bg-[var(--ui-bg)]/75 backdrop-blur border-b border-[var(--ui-border)] -mb-px text-xl',
-    container: 'flex items-center justify-between gap-3 h-[var(--s94-ui-header)] max-w-breakpoint-2xl first:basis-1/2 last:basis-1/2',
+    container: 'flex items-center justify-between gap-3 h-[var(--ui-header-height)] max-w-breakpoint-2xl first:basis-1/2 last:basis-1/2',
     left: 'lg:flex-1 flex justify-start items-center gap-1.5 text-2xl truncate',
     center: 'hidden lg:flex justify-center text-lg',
     right: 'flex items-center justify-end lg:flex-1 gap-2',
@@ -22,9 +22,9 @@ export const theme = {
     mobileButton: 'lg:hidden',
     slideoverOverlay: 'bg-[var(--ui-bg)]/75 dark:bg-[var(--ui-bg)]/75',
     slideoverContent: 'bg-[var(--ui-bg)] dark:bg-[var(--ui-bg)]',
-    slideoverHeader: 'w-full h-[var(--s94-ui-header)] inline-flex items-center justify-between border-b border-[var(--ui-border)] text-2xl',
+    slideoverHeader: 'w-full h-[var(--ui-header-height)] inline-flex items-center justify-between border-b border-[var(--ui-border)] text-2xl',
     slideoverBody: 'size-full flex flex-col justify-around text-xl',
-    slideoverFooter: 'w-fit mx-auto text-xl min-h-[var(--s94-ui-header)]',
+    slideoverFooter: 'w-fit mx-auto text-xl min-h-[var(--ui-header-height)]',
     socials: 'w-fit',
   },
   variants: {
@@ -153,7 +153,7 @@ watch([() => route.fullPath, toTop, toBottom], ([newRoute], [prevRoute]) => {
       navPosition.value = '0'
     }
     else if (isScrolling.value && toBottom.value) {
-      navPosition.value = 'calc((var(--s94-ui-header) + 2px) * -1)'
+      navPosition.value = 'calc((var(--ui-header-height) + 2px) * -1)'
     }
   }
 })
