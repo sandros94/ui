@@ -2,6 +2,12 @@
 import type { AppConfig } from '@nuxt/schema'
 import type { TV } from 'tailwind-variants'
 import { tv } from 'tailwind-variants'
+import {
+  useElementSize,
+  useParentElement,
+  useWindowSize,
+  watchDebounced,
+} from '@vueuse/core'
 
 import _appConfig from '#build/app.config'
 import {
@@ -9,9 +15,6 @@ import {
   reactive,
   ref,
   toRef,
-  watchDebounced,
-  useElementSize,
-  useWindowSize,
 } from '#imports'
 
 export const theme = {

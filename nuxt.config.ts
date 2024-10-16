@@ -1,11 +1,12 @@
 export default defineNuxtConfig({
   extends: [
     // ['./main', { install: true }],
-    ['./main-v3', { install: true }],
+    './main-v3',
   ],
 
   modules: [
     '@nuxt/eslint',
+    'nuxt-qrcode',
   ],
 
   eslint: {

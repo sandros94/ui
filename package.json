@@ -18,6 +18,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
+  "dependencies": {
+    "nuxt-qrcode": "^0.2.1"
+  },
   "devDependencies": {
     "@iconify-json/ph": "^1.2.0",
     "@iconify-json/simple-icons": "^1.2.4",
