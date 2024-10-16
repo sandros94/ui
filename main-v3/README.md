@@ -6,6 +6,6 @@
     ```ts
     export default defineNuxtConfig({
       extends: [
-        'gh:sandros94/ui/main-v3#8a8d5310a48bda66b7ea93f9986e72da8aa13982',
+        'gh:sandros94/ui/main-v3#da784869b2c65ae87b60cf720a9c34251383818f',
       ],
     })
