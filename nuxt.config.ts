@@ -16,10 +16,6 @@ export default defineNuxtConfig({
     },
   },
 
-  css: [
-    '#s94-ui/index.css',
-  ],
-
   fonts: {
     families: [
       {
