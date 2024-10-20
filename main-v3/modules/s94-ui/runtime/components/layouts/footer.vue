@@ -15,6 +15,7 @@ export const theme = {
     container: 'py-4 mt-4 mb-14 lg:mb-20 flex flex-col lg:flex-row justify-around gap-12 max-w-[90rem]',
     left: 'flex-1 p-2 text-lg flex flex-col gap-3 items-center',
     socialsClass: 'text-2xl w-fit',
+    center: 'flex-initial flex items-center justify-center gap-3',
     right: 'flex-1 p-2',
     legal: 'py-2 flex items-center justify-center gap-3 max-w-[90rem] text-sm',
     logo: '',
@@ -37,12 +38,14 @@ export interface FooterProps {
     icon?: string
     label?: string
   }
+  hideCenter?: boolean
   hideDefault?: boolean
   hideSeparator?: boolean
   hideLeft?: boolean
   hideLegal?: boolean
   hideRight?: boolean
   hide?: {
+    center?: boolean
     default?: boolean
     separator?: boolean
     left?: boolean
@@ -93,7 +96,7 @@ const _ui = computed(() => tv({ extend: footer, slots: props.ui })())
         :label="separatorLabel || separator?.label"
       />
     </slot>
-    <UContainer v-if="(slots.left || slots.logo || title || socials || slots.default || slots.right || links)" :class="_ui.container()">
+    <UContainer v-if="(slots.left || slots.logo || title || socials || slots.default || slots.right || links) && (!hideCenter || !hide?.center)" :class="_ui.container()">
       <div v-if="(slots.left || slots.logo || title || socials) && (!hideLeft || !hide?.left)" :class="_ui.left()">
         <slot name="left">
           <NuxtLink
@@ -110,7 +113,9 @@ const _ui = computed(() => tv({ extend: footer, slots: props.ui })())
         </slot>
       </div>
 
-      <slot />
+      <div v-if="slots.default && (!hideDefault || !hide?.default)">
+        <slot />
+      </div>
 
       <div v-if="(slots.right || links) && (!hideRight || !hide?.right)" :class="_ui.right()">
         <slot name="right">
