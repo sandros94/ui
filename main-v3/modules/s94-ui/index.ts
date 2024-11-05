@@ -1,7 +1,6 @@
 import {
   createResolver,
   defineNuxtModule,
-  addLayout,
   installModule,
   hasNuxtModule,
   addComponentsDir,
@@ -89,8 +88,6 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     addImportsDir(resolve('./runtime/composables'))
-
-    addLayout(resolve('./runtime/layouts/page.vue'), 'page')
   },
 })
 
