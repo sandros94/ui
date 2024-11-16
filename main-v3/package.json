@@ -8,11 +8,8 @@
   },
   "main": "./nuxt.config.ts",
   "dependencies": {
-    "@nuxt/ui": "^3.0.0-alpha.7",
+    "@nuxt/ui": "^3.0.0-alpha.8",
     "@tailwindcss/typography": "^0.5.15",
     "@vueuse/core": "^11.2.0"
-  },
-  "devDependencies": {
-    "nuxt": "^3.13.2"
   }
 }
