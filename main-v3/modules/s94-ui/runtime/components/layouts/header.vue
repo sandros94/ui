@@ -9,7 +9,7 @@ import type { ButtonProps } from '#ui/types'
 import { SLinks, UButton, UContainer, USlideover } from '#components'
 import _appConfig from '#build/app.config'
 import type { Links, LinksVariants } from '#s94-ui/types'
-import { computed, defineSlots, ref, useRoute, watch, toRefs } from '#imports'
+import { computed, ref, useRoute, watch, toRefs } from '#imports'
 
 export const theme = {
   slots: {

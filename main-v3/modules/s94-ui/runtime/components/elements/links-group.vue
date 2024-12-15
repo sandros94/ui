@@ -7,7 +7,7 @@ import { tv } from 'tailwind-variants'
 import SLinks from './links.vue'
 import type { Links, LinksVariants } from '#s94-ui/types'
 import _appConfig from '#build/app.config'
-import { type Ref, computed, defineSlots } from '#imports'
+import { type Ref, computed } from '#imports'
 
 export const theme = {
   slots: {

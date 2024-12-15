@@ -4,7 +4,7 @@ import type { VariantProps, TV } from 'tailwind-variants'
 
 import { tv } from 'tailwind-variants'
 import _appConfig from '#build/app.config'
-import { computed, defineSlots } from '#imports'
+import { computed } from '#imports'
 
 export interface FigureUi {
   wrapper: string

@@ -7,7 +7,7 @@ import type { Links, LinksGroup, LinksGroupVariants, LinksVariants } from '#s94-
 import type { AvatarProps } from '#ui/types'
 import _appConfig from '#build/app.config'
 import { SLinksGroup, UContainer, USeparator } from '#components'
-import { computed, defineSlots } from '#imports'
+import { computed } from '#imports'
 
 export const theme = {
   slots: {
