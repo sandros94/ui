@@ -101,9 +101,7 @@ export interface LinksProps {
 </script>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<LinksProps>(), {
-  externalIcon: 'i-heroicons-arrow-up-right-20-solid',
-})
+const props = defineProps<LinksProps>()
 
 const filteredLinks = computed(() => unref(props.links || []).filter(link => link.if ? link.if() : true))
 
@@ -137,7 +135,7 @@ const ui = computed(() => tv({ extend: _links, slots: props.ui })({
           <sup v-if="link.label && link.target === '_blank'" :class="ui.externalLinkBase()">
             <UIcon
               :class="ui.externalLinkIconClass()"
-              :name="externalIcon"
+              :name="externalIcon || appConfig.ui.icons.external"
             />
           </sup>
         </span>

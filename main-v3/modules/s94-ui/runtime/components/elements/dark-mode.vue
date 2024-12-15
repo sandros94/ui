@@ -25,21 +25,24 @@ export interface DarkModeProps {
 
 <script setup lang="ts">
 const { $colorMode: { unknown }, hook } = useNuxtApp()
+const { icons } = useAppConfig().ui
 
 const props = withDefaults(defineProps<DarkModeProps>(), {
-  onIcon: 'i-heroicons-sun',
-  offIcon: 'i-heroicons-moon',
   size: 'md',
 })
 
 const isDark = useDarkMode()
 const isLoading = ref(true)
 const idToggleLoading = useId()
+const onIcon = props.onIcon || icons.moon
+const offIcon = props.offIcon || icons.sun
 
 hook('page:finish', () => {
   // TODO: Better handle unknown color mode
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  !unknown ? isLoading.value = false : isLoading.value = true
+  !unknown
+    ? isLoading.value = false
+    : isLoading.value = true
 })
 </script>
 
@@ -48,7 +51,7 @@ hook('page:finish', () => {
     v-if="!props.switch"
     :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
     :color="props.color"
-    :icon="isDark ? (props.onIcon) : (props.offIcon)"
+    :icon="isDark ? (onIcon) : (offIcon)"
     :loading="isLoading"
     :ui="props.ui?.button"
     :variant="props.variant"
@@ -60,8 +63,8 @@ hook('page:finish', () => {
       :aria-label="`Switch to ${isDark ? 'light' : 'dark'} theme`"
       :color="props.color"
       :size="props.size"
-      :off-icon="offIcon"
-      :on-icon="onIcon"
+      :unchecked-icon="offIcon"
+      :checked-icon="onIcon"
       :ui="props.ui?.switch"
     />
     <template #placeholder>

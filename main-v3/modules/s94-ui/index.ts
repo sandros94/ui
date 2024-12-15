@@ -50,7 +50,9 @@ export default defineNuxtModule<ModuleOptions>({
         base: 'w-full',
       },
       icons: {
-        menu: 'i-heroicons-bars-2',
+        menu: 'i-lucide-equal',
+        sun: 'i-lucide-sun',
+        moon: 'i-lucide-moon',
       },
       textarea: {
         slots: {
@@ -58,15 +60,6 @@ export default defineNuxtModule<ModuleOptions>({
         },
       },
     })
-
-    if (hasNuxtModule('nuxt-qrcode')) {
-      nuxt.options.qrcode = defu(nuxt.options.qrcode, {
-        options: {
-          whiteColor: 'var(--ui-bg)',
-          blackColor: 'var(--ui-text-highlighted)',
-        },
-      })
-    }
 
     addComponentsDir({
       global: globalComponent(nuxt.options.s94Ui.global, 'elements'),

@@ -19,17 +19,17 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "nuxt-qrcode": "^0.3.0"
+    "nuxt-qrcode": "^0.4.1"
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.2.1",
-    "@iconify-json/simple-icons": "^1.2.11",
-    "@nuxt/devtools": "^1.6.0",
-    "@nuxt/eslint": "^0.7.0",
+    "@iconify-json/simple-icons": "^1.2.15",
+    "@nuxt/devtools": "^1.6.4",
+    "@nuxt/eslint": "^0.7.3",
     "changelogen": "^0.5.7",
     "eslint": "^9.15.0",
     "nuxt": "^3.14.159",
-    "vue-router": "^4.4.5",
+    "vue-router": "^4.5.0",
     "vue-tsc": "^2.1.10"
   }
 }
