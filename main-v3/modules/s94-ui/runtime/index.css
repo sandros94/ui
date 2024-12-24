@@ -16,7 +16,7 @@
 
 @layer base {
   :root {
-    --ui-header-height: var(--spacing-14);
+    --ui-header-height: 3.5rem;
   
     --ui-color-neutral-950: #090909;
   
